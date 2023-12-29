@@ -49,8 +49,6 @@ const NewUser = () => {
         }
       }
     };
-    
-    // Call the function
     checkOrCreateUser();
 
   }, [isSignedIn, user]);

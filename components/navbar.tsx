@@ -36,68 +36,42 @@ const Navbar = () => {
         <div className="flex items-center space-x-2">
           <Link href="/">
             
-              <div className="text-black font-3xl font-bold">
+              <div className="font-3xl font-bold">
                 {/* <Image src="/logo-gash-1.png" height={50} width={100} alt="logo" /> */}
-                Hookmah
+                Hook <span className='text-green-500'>mah</span>
               </div>
           </Link>
         </div>
         <div className="flex items-center space-x-4">
         <ModeToggle />
           { user?.isSignedIn ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant='secondary'
-                  className='relative h-8 w-8 rounded-full'>
-                  <Avatar className='h-8 w-8'>
-                    <UserButton afterSignOutUrl='/' />
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className='w-56' align='end' forceMount>
-                <DropdownMenuLabel className='font-normal'>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  {isTeacher && (
-                    <DropdownMenuItem asChild>
-                      <Link href='/dashboard/teacher/courses'>
-                        <Terminal
-                          className='mr-2 h-4 w-4'
-                          aria-hidden='true'
-                        />
-                        Hookmah
-                        <DropdownMenuShortcut>⌘D</DropdownMenuShortcut>
-                      </Link>
-                    </DropdownMenuItem>
-                  )}
-                  <DropdownMenuItem asChild>
-                    <Link href='/dashboard/account'>
-                      <UserCircle
-                        className='mr-2 h-4 w-4'
-                        aria-hidden='true'
-                      />
-                      Cuenta
-                      <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+             <UserButton afterSignOutUrl='/' />
           ) : (
+            <div className='flex mr-2 '>
+
+            <div className='mr-2'>
             <Link href='/new'>
               <div
                 className={buttonVariants({
                   size: "sm",
                 })}>
-                <LogIn className='h-4 w-4' />
+                Sign up
               </div>
             </Link>
+             </div>
+
+             <div> 
+            <Link href='/new'>
+              <div
+                className={buttonVariants({
+                  size: "sm",
+                })}>
+                Sign In
+              </div>
+            </Link>
+            </div>
+
+            </div>
           )}
         </div>
       </div>

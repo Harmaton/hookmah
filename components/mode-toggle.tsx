@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
-import { useTheme } from "next-themes"
+import * as React from "react";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { useTheme } from "next-themes";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import { Lightbulb, SunDimIcon, WorkflowIcon } from "lucide-react";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme()
+  const { setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -24,17 +25,17 @@ export function ModeToggle() {
           <span className="sr-only">Alternar tema</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Luz
+      <DropdownMenuContent align="center" className="w-2">
+        <DropdownMenuItem className="justify-center items-center" onClick={() => setTheme("light")}>
+          <Lightbulb className="h-4 w-4 justify-center items-center" />
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Oscuro
+        <DropdownMenuItem className="justify-center items-center" onClick={() => setTheme("dark")}>
+          <SunDimIcon className="h-4 w-4 items-center" />
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-        Sistema
+        <DropdownMenuItem className="justify-center items-center" onClick={() => setTheme("system")}>
+          <WorkflowIcon className="h-4 w-4 items-center" />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
