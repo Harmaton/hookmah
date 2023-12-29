@@ -6,7 +6,7 @@ import { JSX, SVGProps } from "react"
 export default function Footer() {
   return (
     <section className="w-full m-2 py-12">
-      <div className="container grid grid-cols-2 sm:grid-cols-4 gap-8 px-4 md:px-8">
+      <div className="container grid grid-cols-2 sm:grid-cols-3 gap-8 px-4 md:px-8">
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Follow us</h3>
           <div className="flex space-x-4">
@@ -22,7 +22,7 @@ export default function Footer() {
           <p className="text-sm hover:text-gray-300 transition-colors">Email: info@company.com</p>
           <p className="text-sm hover:text-gray-300 transition-colors">Address: 123 Main St, Anytown, USA</p>
         </div>
-        <div className="space-y-4">
+        {/* <div className="space-y-4">
           <h3 className="text-lg font-semibold">Newsletter</h3>
           <form action="#" method="POST">
             <input
@@ -33,7 +33,7 @@ export default function Footer() {
             />
             <Button className="mt-2 w-full">Subscribe</Button>
           </form>
-        </div>
+        </div> */}
         <div className="space-y-4 flex flex-col">
           <h3 className=" text-lg font-semibold">Quick Links</h3>
           <Link className="text-sm hover:underline" href="#">
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="mt-12 text-center text-gray-400 text-sm">
-        <p className="animate-pulse">© 2023 Company Name. All rights reserved.</p>
+        <p className="animate-pulse">© 2024 Hookmah. All rights reserved.</p>
       </div>
     </section>
   )

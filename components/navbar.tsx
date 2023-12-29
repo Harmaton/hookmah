@@ -36,9 +36,12 @@ const Navbar = () => {
         <div className="flex items-center space-x-2">
           <Link href="/">
             
-              <div className="font-3xl font-bold">
+              <div className="font-4xl font-bold">
                 {/* <Image src="/logo-gash-1.png" height={50} width={100} alt="logo" /> */}
-                Hook <span className='text-green-500'>mah</span>
+                <h1 className='text-2xl'>
+                Hook <span className='text-red-500'>mah</span>
+                </h1>
+               
               </div>
           </Link>
         </div>
