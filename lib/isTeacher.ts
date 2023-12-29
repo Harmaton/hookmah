@@ -1,6 +1,6 @@
 const checkIsTeacher = async (email: string) => {
     try {
-      const response = await fetch('/api/check-teacher', {
+      const response = await fetch('/api/users/teachers/check-teacher', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -8,3 +8,37 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model User {
+  id           String         @id @default(uuid())
+  clerkId      String         @unique
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  email        String         @unique
+  
+  isadmin   Boolean @default(false)
+  isTeacher Boolean @default(false)
+  isStudent Boolean @default(false)
+
+  studentStatusExpiresAt DateTime?
+
+  image String?   @db.Text
+  nickname String? @unique
+  country String?
+  description String?  @db.Text
+  linkedIn String? @db.Text
+  facebook String? @db.Text
+  youtube String? @db.Text
+  twitter String? @db.Text
+  whatsapp String?
+  instagram String?
+  mail String?
+  
+//   taughtCourses Course[] @relation("teacher")
+
+//   comments Comment[] @relation("user") 
+//   ratings Rating[] @relation("user") 
+  
+//   points Int?    
+//   subscription Subscription[]
+//   calendarevent CalendarEvent[] 
+}
