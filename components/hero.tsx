@@ -4,9 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CardContent, Card } from "@/components/ui/card";
 import { ArrowBigRight, Group } from "lucide-react";
-import React, { FC, useEffect, useState } from "react";
-import AnimatedLetters from "./animated-letters";
-import TextAnimation from "./textAnimation";
+import React, { FC } from "react";
 
 const Hero: FC = () => {
   return (
