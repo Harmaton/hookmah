@@ -10,16 +10,14 @@ import TextAnimation from "./textAnimation";
 
 const Hero: FC = () => {
   return (
-    <section className="flex flex-col items-center justify-center w-full h-screen p-3  bg-gradient-to-r from-orange-700 via-blue-500 to-green-400">
+    <section className="container relative mt-4 p-3  bg-gradient-to-r from-orange-700 via-blue-500 to-green-400">
       <div className="max-w-2xl mx-auto space-y-6 text-center">
-        <h1 className="text-5xl font-bold tracking-tight ">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight relative">
           {/* <Typewriter text="Empowering Teachers with AI" speed={100} />*/}
           Ignite <span className="text-red-300 m-2">AI-Powered</span>Evolution in <span className="text-red-300 m-2">Education</span>with Smart Empowerment
         </h1>
         <p className="text-lg ">
-        Step into a world where brilliance meets simplicity. Our cutting-edge AI is not just a tool;  the catalyst for a
-        revolution in teaching. Dive into the future as we redefine education, from crafting annual programming marvels to
-        leading enlightening learning sessions. Our AI is the guide in this transformative journey.
+        Step into a world where cutting-edge AI revolutionizes education. From annual programming marvels to enlightening learning sessions, our AI is the catalyst for a transformative journey, redefining teaching and simplicity.
         </p>
         <Card className="flex flex-col items-center justify-center w-full p-6  rounded-lg shadow-lg">
           <CardContent className="flex flex-col items-center justify-center space-y-4">
