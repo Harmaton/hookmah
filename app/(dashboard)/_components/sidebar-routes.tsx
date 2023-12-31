@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart,  BookMarked, GalleryHorizontal, GalleryVerticalEnd, Library, List } from "lucide-react";
+import { BarChart,  Webhook, GalleryHorizontal, GalleryVerticalEnd, Library, List, FolderKanban, PenLine } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { SidebarItem } from "./sidebar-item";
@@ -23,21 +23,21 @@ const guestRoutes = [
     href: "/experience",
   }
 ];
-const teacherRoutes = [
+const adminRoutes = [
   {
-    icon: List,
-    label: "Cursos",
-    href: "/dashboard/teacher/courses",
+    icon: FolderKanban,
+    label: "Analytics",
+    href: "/admin/teacher/courses",
   },
   {
-    icon: BookMarked,
-    label: "Citas reservadas",
-    href: "/dashboard/teacher/booked_apointments",
+    icon: PenLine,
+    label: "Manage Teachers",
+    href: "/admin/teacher",
   },
   {
-    icon: BarChart,
-    label: "Calendario",
-    href: "/dashboard/teacher/calendar",
+    icon: Webhook,
+    label: "Support",
+    href: "/admin/teacher",
   },
 ]
 
@@ -46,9 +46,9 @@ export const SidebarRoutes = () => {
 
   const pathname = usePathname();
 
-  const isTeacherPage = pathname?.includes("/teacher");
+  const isAdmin = pathname?.includes("/admin");
 
-  const routes = isTeacherPage ? teacherRoutes : guestRoutes;
+  const routes = isAdmin ? adminRoutes : guestRoutes;
 
 
   return (

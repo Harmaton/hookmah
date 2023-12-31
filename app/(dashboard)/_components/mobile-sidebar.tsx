@@ -13,7 +13,7 @@ export const MobileSidebar = () => {
       <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition">
         <Menu />
       </SheetTrigger>
-      <SheetContent side="left" className="p-6">
+      <SheetContent side="left" className="p-4">
         <Sidebar />
       </SheetContent>
     </Sheet>
