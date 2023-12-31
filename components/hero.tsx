@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CardContent, Card } from "@/components/ui/card";
-import { ArrowBigRight, Group } from "lucide-react";
+import { ArrowBigRight, Fingerprint, Group } from "lucide-react";
 import React, { FC } from "react";
 
 const Hero: FC = () => {
@@ -23,12 +23,20 @@ const Hero: FC = () => {
             <p className="text-sm text-gray-500">
               Click the button below to go to your dashboard.
             </p>
-            <Link href="#">
+            <Link href="/annual">
               <Button className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-green-500">
                 Get Started for Free
                 <ArrowBigRight className="w-4 h-4" />
               </Button>
             </Link>
+
+            <Link href="/admin/analytics">
+              <Button className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-green-500">
+                Admin Dashboard
+                <Fingerprint className="w-4 h-4" />
+              </Button>
+            </Link>
+
           </CardContent>
         </Card>
       </div>

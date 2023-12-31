@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function About2() {
   return (
     <div className="m-auto">
-      <div className="container mx-auto px-6 py-12 ml-5">
+      <div className="container mx-auto px-6 py-12 m-auto">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 lg:pr-24 lg:order-1"> {/* Changed lg:w-1/2 to lg:pr-24 and added lg:order-1 */}
           <h1 className="text-3xl font-bold leading-tight mb-4">
@@ -23,7 +23,7 @@ export default function About2() {
               <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
-          <div className="lg:w-1/2 lg:order-2 m-auto"> {/* Changed lg:w-1/2 to lg:order-2 */}
+          <div className="lg:w-1/2 lg:order-2 m-auto hidden"> {/* Changed lg:w-1/2 to lg:order-2 */}
             <Image
               className="m-auto"
               src="/undraw-book.svg"

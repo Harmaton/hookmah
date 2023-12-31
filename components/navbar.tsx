@@ -42,32 +42,35 @@ const Navbar = () => {
 
   return (
     <nav className="p-4 top-0 z-40 w-full m-0 md:pr-10 bg-transparent sticky">
-
       <div className="px-4 sm:px-10 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-        <HopOff className="h-6 w-6" />
           <Link href="/">
-          
-            <div className="font-4xl font-bold">
+            <div className="font-3xl font-bold">
               {/* <Image src="/logo-gash-1.png" height={50} width={100} alt="logo" /> */}
-
-              <h1 className="text-2xl">
+              <h1 className="">
                 Hook <span className="text-red-500">mah</span>
               </h1>
             </div>
           </Link>
         </div>
 
-
         <div className="flex-grow md:flex md:items-center md:justify-center hidden  space-x-4">
-             <NavigationMenuDemo />
-          </div>
-
+          <NavigationMenuDemo />
+        </div>
 
         <div className="flex items-center space-x-4">
           <ModeToggle />
           {user?.isSignedIn ? (
+            <>
+             <div className="flex mr-2 ">
+              <Link href='/annual'>
+              <Button>
+                Dashboard
+              </Button>
+              </Link>
+              </div>
             <UserButton afterSignOutUrl="/" />
+            </>
           ) : (
             <div className="flex mr-2 ">
               <div className="mr-2">

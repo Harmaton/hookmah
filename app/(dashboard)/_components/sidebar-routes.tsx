@@ -27,17 +27,17 @@ const adminRoutes = [
   {
     icon: FolderKanban,
     label: "Analytics",
-    href: "/admin/teacher/courses",
+    href: "/admin/analytics",
   },
   {
     icon: PenLine,
     label: "Manage Teachers",
-    href: "/admin/teacher",
+    href: "/admin/teachers",
   },
   {
     icon: Webhook,
     label: "Support",
-    href: "/admin/teacher",
+    href: "/admin/support",
   },
 ]
 
