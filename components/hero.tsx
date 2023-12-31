@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CardContent, Card } from "@/components/ui/card";
-import { ArrowBigRight, Fingerprint, Group } from "lucide-react";
+import { ArrowBigRight, Fingerprint, Group, TrendingUp } from "lucide-react";
 import React, { FC } from "react";
 
 const Hero: FC = () => {
@@ -26,7 +26,7 @@ const Hero: FC = () => {
             <Link href="/annual">
               <Button className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-green-500">
                 Get Started for Free
-                <ArrowBigRight className="w-4 h-4" />
+                <TrendingUp className="w-4 h-4" />
               </Button>
             </Link>
 
