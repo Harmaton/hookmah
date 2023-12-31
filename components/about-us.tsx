@@ -1,42 +1,40 @@
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
-import { Button } from "@/components/ui/button"
-import { ChevronRight } from "lucide-react"
-import Image from "next/image"
-
-export default function About() {
+export default function About3() {
   return (
     <div className="">
       <div className="container mx-auto px-6 py-12">
         <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 ">
+          <div className="lg:w-1/2 lg:order-1 mb-8 lg:mb-0 ">
             <Image
-            className="ml-5"
-            src='/undraw-book.svg'
-            height={500}
-            width={500}
-            alt='bk'
+              className="m-auto"
+              src="/undraw-book.svg"
+              height={300}
+              width={300}
+              alt="bk"
             />
           </div>
-          <div className="lg:w-1/2 lg:pl-24">
-            <h1 className="text-5xl font-bold leading-tight mb-4">
-              Smartrak is a AI Technology Solutions company focused on
+          <div className="lg:w-1/2 lg:pl-24 lg:order-2 m-auto">
+          <h1 className="text-3xl font-bold leading-tight mb-4">
+            Your AI Partner in Crafting Annual Educational Journeys
             </h1>
             <ul className="mb-8">
-              <li>Revolutionizing your business with our Advanced AI</li>
-              <li>Intelligent and Predictive Assets Monitoring</li>
+            <li>Redefining your teaching odyssey with our Creative AI Storyweaver</li>
+            <li>Guiding Intuitive and Forward-thinking Educational Program Design</li>
             </ul>
             <p className="mb-8">
-              We help businesses to lead the charge to digital innovation and tap into the power of the AI, by
-              transforming and creating a competitive advantage that will scale.
+            Join us on an educational adventure as Hookmah, our visionary AI, crafts not just lesson plans, but immersive narratives that inspire and shape the educational landscape. We empower teachers to lead the charge in creating memorable annual programming.
             </p>
-            <Button className= "" variant="outline">
-              Learn More
+
+            <Button className="" variant="outline">
+              Try for Free
               <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
-

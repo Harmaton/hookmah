@@ -11,7 +11,7 @@ export default function ContactForm() {
   return (
     <Card className="space-y-4 ml-4 mr-4 mb-4 ">
       <CardHeader>
-        <h2 className="text-3xl font-bold">Contact Us</h2>
+        <h2 className="text-3xl font-bold m-auto">Contact Us</h2>
         <p className="text-gray-500 dark:text-gray-400">
           We would love to hear from you! Please fill out this form and we will get in touch with you shortly.
         </p>
