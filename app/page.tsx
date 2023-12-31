@@ -11,6 +11,7 @@ import About3 from "@/components/about3";
 import React from "react";
 import Header from "@/components/header";
 import Features from "@/components/features";
+import FAQ from "@/components/faq";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <About />
       <About2 />
       <About3 />
+      <FAQ />
       <Features />
       {/* <ContactForm /> */}
 
