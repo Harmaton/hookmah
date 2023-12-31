@@ -17,7 +17,7 @@ const Hero: FC = () => {
           Ignite <span className="text-red-300 m-2">AI-Powered</span>Evolution in <span className="text-red-300 m-2">Education</span>with Smart Empowerment
         </h1>
         <p className="text-lg ">
-        Step into a world where brilliance meets simplicity. Our cutting-edge AI isn't just a tool; it's the catalyst for a
+        Step into a world where brilliance meets simplicity. Our cutting-edge AI is not just a tool;  the catalyst for a
         revolution in teaching. Dive into the future as we redefine education, from crafting annual programming marvels to
         leading enlightening learning sessions. Our AI is the guide in this transformative journey.
         </p>

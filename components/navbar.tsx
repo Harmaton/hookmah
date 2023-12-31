@@ -17,9 +17,10 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button, buttonVariants } from "./ui/button";
-import { GraduationCap, Terminal, UserCircle } from "lucide-react";
+import { GraduationCap, HopOff, Terminal, UserCircle } from "lucide-react";
 import checkIsTeacher from "@/lib/isTeacher";
 import { LogIn } from "lucide-react";
+import { NavigationMenuDemo } from "./navigation-menu";
 
 const Navbar = () => {
   const user = useUser();
@@ -41,19 +42,28 @@ const Navbar = () => {
 
   return (
     <nav className="p-4 top-0 z-40 w-full m-0 md:pr-10 bg-transparent sticky">
-      
+
       <div className="px-4 sm:px-10 flex justify-between items-center">
         <div className="flex items-center space-x-2">
+        <HopOff className="h-6 w-6" />
           <Link href="/">
+          
             <div className="font-4xl font-bold">
               {/* <Image src="/logo-gash-1.png" height={50} width={100} alt="logo" /> */}
+
               <h1 className="text-2xl">
                 Hook <span className="text-red-500">mah</span>
               </h1>
             </div>
           </Link>
-
         </div>
+
+
+        <div className="flex-grow md:flex md:items-center md:justify-center hidden  space-x-4">
+             <NavigationMenuDemo />
+          </div>
+
+
         <div className="flex items-center space-x-4">
           <ModeToggle />
           {user?.isSignedIn ? (

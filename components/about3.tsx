@@ -25,7 +25,7 @@ export default function About3() {
         <li>Pioneering Predictive Learning for a Tapestry of Student Growth</li>
         </ul>
         <p className="mb-8">
-        Elevate your educational journey with Hookmah, our visionary AI. It's not just about repeated learning experiences; it's about a dynamic, ever-changing landscape of growth. Each encounter leaves an indelible mark on the pursuit of knowledge, inspiring students to flourish.
+        Elevate your educational journey with Hookmah, our visionary AI. Its not just about repeated learning experiences; its about a dynamic, ever-changing landscape of growth. Each encounter leaves an indelible mark on the pursuit of knowledge, inspiring students to flourish.
         </p>
 
             <Button className="" variant="outline">
