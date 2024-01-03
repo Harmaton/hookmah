@@ -3,19 +3,19 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CardContent, Card } from "@/components/ui/card";
-import { ArrowBigRight, Fingerprint, Group, TrendingUp } from "lucide-react";
+import { Fingerprint, TrendingUp } from "lucide-react";
 import React, { FC } from "react";
 
 const Hero: FC = () => {
   return (
-    <section className="container relative mt-4 p-3  bg-gradient-to-r from-orange-700 via-blue-500 to-green-400">
+    <section className="container relative mt-4 p-3  bg-gradient-to-r from-red-500 via-blue-500 to-green-500">
       <div className="max-w-2xl mx-auto space-y-6 text-center">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight relative">
-          {/* <Typewriter text="Empowering Teachers with AI" speed={100} />*/}
-          Ignite <span className="text-red-300 m-2">AI-Powered</span>Evolution in <span className="text-red-300 m-2">Education</span>with Smart Empowerment
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight relative">
+          
+        Revolucione su <span className="text-red-400 m-2">experiencia docente</span> con <span className="text-red-400 m-2">construcción de clases impulsada por IA</span>, optimizando cada lección con innovación y eficiencia
         </h1>
         <p className="text-lg ">
-        Step into a world where cutting-edge AI revolutionizes education. From annual programming marvels to enlightening learning sessions, our AI is the catalyst for a transformative journey, redefining teaching and simplicity.
+        Bienvenido a una plataforma exclusiva para educadores de educación básica. Superamos desafíos al usar IA para agilizar la creación de clases, ofreciendo material actualizado sin depender de libros obsoletos.
         </p>
         <Card className="flex flex-col items-center justify-center w-full p-6  rounded-lg shadow-lg">
           <CardContent className="flex flex-col items-center justify-center space-y-4">
@@ -36,7 +36,6 @@ const Hero: FC = () => {
                 <Fingerprint className="w-4 h-4" />
               </Button>
             </Link>
-
           </CardContent>
         </Card>
       </div>

@@ -15,14 +15,20 @@ import FAQ from "@/components/faq";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden">
+    <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden ">
       <Navbar />
       <Hero />
       <Header />
+      <div className="m-6">
       <About />
       <About2 />
-      <About3 />
+      
+      </div>
       <FAQ />
+      <div className="m-6">
+      <About3 />
+      </div>
+     
       <Features />
       {/* <ContactForm /> */}
 

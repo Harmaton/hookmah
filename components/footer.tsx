@@ -8,7 +8,7 @@ export default function Footer() {
     <section className="w-full m-2 py-12 border-t">
       <div className="container grid grid-cols-2 sm:grid-cols-3 gap-8 px-4 md:px-8">
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Follow us</h3>
+          <h3 className="text-lg font-semibold">Síganos</h3>
           <div className="flex space-x-4 m-auto">
             <FacebookIcon className="w-6 h-6 hover:text-blue-600" />
             <TwitterIcon className="w-6 h-6 hover:text-blue-400" />
@@ -17,10 +17,10 @@ export default function Footer() {
           </div>
         </div>
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Contact us</h3>
-          <p className="text-sm hover:text-gray-300 transition-colors">Phone: (123) 456-7890</p>
-          <p className="text-sm hover:text-gray-300 transition-colors">Email: info@company.com</p>
-          <p className="text-sm hover:text-gray-300 transition-colors">Address: 123 Main St, Anytown, USA</p>
+          <h3 className="text-lg font-semibold">Contacta con nosotras</h3>
+          <p className="text-sm hover:text-gray-300 transition-colors">El teléfono es: +54 9 3516 19-7304</p>
+          <p className="text-sm hover:text-gray-300 transition-colors">El mail es: hola@simplelifeofficial.com</p>
+          <p className="text-sm hover:text-gray-300 transition-colors">La dirección es: Marcelo T. de Alvear 628. Córdoba - Argentina.</p>
         </div>
         {/* <div className="space-y-4">
           <h3 className="text-lg font-semibold">Newsletter</h3>
@@ -35,23 +35,17 @@ export default function Footer() {
           </form>
         </div> */}
         <div className="space-y-4 flex flex-col">
-          <h3 className=" text-lg font-semibold">Quick Links</h3>
-          <Link className="text-sm hover:underline" href="#">
-            About Us
+          <h3 className=" text-lg font-semibold">Enlaces Rápidos</h3>
+          <Link className="text-sm hover:underline" href="/new">
+          Términos de servicio
           </Link>
-          <Link className="text-sm hover:underline" href="#">
-            FAQ
-          </Link>
-          <Link className="text-sm hover:underline" href="#">
-            Terms of Service
-          </Link>
-          <Link className="text-sm hover:underline" href="#">
-            Privacy Policy
+          <Link className="text-sm hover:underline" href="/new">
+          Política de Privacidad
           </Link>
         </div>
       </div>
       <div className="mt-12 text-center text-gray-400 text-sm">
-        <p className="animate-pulse">© 2024 Hookmah. All rights reserved.</p>
+        <p className="animate-pulse">© 2024 Hokmah. Reservados todos los derechos.</p>
       </div>
     </section>
   )

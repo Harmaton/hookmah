@@ -15,7 +15,7 @@ export default function FAQ() {
             <div className="flex items-center space-x-2">
               <MailQuestionIcon className="w-5 h-5 text-gray-400" />
               <span className="text-lg font-medium text-gray-600 dark:text-gray-400">
-                What is the cost of the service?
+              ¿Cómo me convierto en profesor?
               </span>
             </div>
             <Button size="sm" variant="ghost">
@@ -25,7 +25,7 @@ export default function FAQ() {
         </CollapsibleTrigger>
         <CollapsibleContent className="bg-gray-50 dark:bg-gray-800 px-4 py-3">
           <p className="text-gray-600 dark:text-gray-400">
-            Our service has different pricing tiers. Please visit our Pricing page for more information.
+          Contáctenos usando los enlaces a continuación para ser agregado a todas las funciones de la plataforma.
           </p>
         </CollapsibleContent>
       </Collapsible>
@@ -34,7 +34,7 @@ export default function FAQ() {
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center space-x-2">
               <MailQuestionIcon className="w-5 h-5 text-gray-400" />
-              <span className="text-lg font-medium text-gray-600 dark:text-gray-400">How secure is my data?</span>
+              <span className="text-lg font-medium text-gray-600 dark:text-gray-400">¿Cuál es el precio de la IA?</span>
             </div>
             <Button size="sm" variant="ghost">
             <MousePointerClick className="h-4 w-4 " />
@@ -43,8 +43,7 @@ export default function FAQ() {
         </CollapsibleTrigger>
         <CollapsibleContent className="bg-gray-50 dark:bg-gray-800 px-4 py-3">
           <p className="text-gray-600 dark:text-gray-400">
-            We take data security very seriously. Our infrastructure is designed with multiple layers of protection to
-            ensure the safety of your information.
+          Actualmente estamos otorgando acceso gratuito para probar las capacidades como versión beta privada.
           </p>
         </CollapsibleContent>
       </Collapsible>
@@ -54,7 +53,7 @@ export default function FAQ() {
             <div className="flex items-center space-x-2">
               <MailQuestionIcon className="w-5 h-5 text-gray-400" />
               <span className="text-lg font-medium text-gray-600 dark:text-gray-400">
-                What is the duration of the contract?
+              ¿Puedo descargar mi programación y sesiones generadas?
               </span>
             </div>
             <Button size="sm" variant="ghost">
@@ -64,7 +63,7 @@ export default function FAQ() {
         </CollapsibleTrigger>
         <CollapsibleContent className="bg-gray-50 dark:bg-gray-800 px-4 py-3">
           <p className="text-gray-600 dark:text-gray-400">
-            Contract durations vary depending on the service tier. Please contact our Sales team for more details.
+          Luego de una exitosa generación y firmas, tendrás la opción de descargar en pdf.
           </p>
         </CollapsibleContent>
       </Collapsible>

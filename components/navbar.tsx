@@ -46,10 +46,8 @@ const Navbar = () => {
         <div className="flex items-center space-x-2">
           <Link href="/">
             <div className="font-3xl font-bold">
-              {/* <Image src="/logo-gash-1.png" height={50} width={100} alt="logo" /> */}
-              <h1 className="">
-                Hook <span className="text-red-500">mah</span>
-              </h1>
+              <Image src="/logo/logo-hokmah.png" height={50} width={100} alt="logo" />
+             
             </div>
           </Link>
         </div>
