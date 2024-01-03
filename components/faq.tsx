@@ -7,7 +7,8 @@ import { JSX, SVGProps } from "react"
 
 export default function FAQ() {
   return (
-    <ScrollArea className="w-full max-w-3xl mx-auto space-y-8 p-4 md:p-8">
+    <div className="bg-gradient-to-r from-red-200 via-transparent to-green-200 w-full">
+    <ScrollArea className="w-full max-w-3xl mx-auto space-y-8 p-4 md:p-8 ">
       <h2 className="text-2xl mb-3 font-semibold text-center md:text-3xl lg:text-4xl">Frequently Asked Questions</h2>
       <Collapsible className="rounded-md shadow-sm divide-y divide-gray-200 dark:divide-gray-800">
         <CollapsibleTrigger asChild>
@@ -68,6 +69,7 @@ export default function FAQ() {
         </CollapsibleContent>
       </Collapsible>
     </ScrollArea>
+    </div>
   )
 }
 

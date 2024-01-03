@@ -41,7 +41,7 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <nav className="p-4 top-0 z-40 w-full m-0 md:pr-10 bg-transparent sticky">
+    <nav className="p-4 top-0 z-40 w-full m-0 md:pr-10 bg-transparent sticky ">
       <div className="px-4 sm:px-10 flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <Link href="/">

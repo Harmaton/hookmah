@@ -8,7 +8,7 @@ import React, { FC } from "react";
 
 const Hero: FC = () => {
   return (
-    <section className="container relative mt-4 p-3  bg-gradient-to-r from-red-500 via-blue-500 to-green-500">
+    <section className="container relative mt-4 p-3  bg-gradient-to-r from-red-200 via-transparent to-green-200">
       <div className="max-w-2xl mx-auto space-y-6 text-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight relative">
           

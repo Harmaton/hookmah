@@ -32,7 +32,7 @@ const features: Feature[] = [
 ];
 
 const Features: React.FC = () => (
-  <div className="container mx-auto p-4 rounded-md">
+  <div className="container mx-auto p-4 rounded-md bg-gradient-to-r from-red-200 via-transparent to-green-200">
     <section className="space-y-6 m-auto">
       <header className="text-2xl font-semibold text-center">
       Por qué Hokmah
