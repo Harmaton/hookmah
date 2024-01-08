@@ -8,14 +8,14 @@ import { JSX, SVGProps } from "react"
 export default function FAQ() {
   return (
     <div className="bg-gradient-to-r from-red-200 via-transparent to-green-200 w-full">
-    <ScrollArea className="w-full max-w-3xl mx-auto space-y-8 p-4 md:p-8 ">
+    <ScrollArea className="w-full max-w-6xl mx-auto space-y-8 p-4 md:p-8 ">
       <h2 className="text-2xl mb-3 font-semibold text-center md:text-3xl lg:text-4xl">Frequently Asked Questions</h2>
       <Collapsible className="rounded-md shadow-sm divide-y divide-gray-200 dark:divide-gray-800">
         <CollapsibleTrigger asChild>
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center space-x-2">
-              <MailQuestionIcon className="w-5 h-5 text-gray-400" />
-              <span className="text-lg font-medium text-gray-600 dark:text-gray-400">
+              <MailQuestionIcon className="w-5 h-5" />
+              <span className="text-lg font-medium">
               ¿Cómo me convierto en profesor?
               </span>
             </div>
@@ -25,7 +25,7 @@ export default function FAQ() {
           </div>
         </CollapsibleTrigger>
         <CollapsibleContent className="bg-gray-50 dark:bg-gray-800 px-4 py-3">
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="">
           Contáctenos usando los enlaces a continuación para ser agregado a todas las funciones de la plataforma.
           </p>
         </CollapsibleContent>
@@ -34,8 +34,8 @@ export default function FAQ() {
         <CollapsibleTrigger asChild>
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center space-x-2">
-              <MailQuestionIcon className="w-5 h-5 text-gray-400" />
-              <span className="text-lg font-medium text-gray-600 dark:text-gray-400">¿Cuál es el precio de la IA?</span>
+              <MailQuestionIcon className="w-5 h-5 " />
+              <span className="text-lg font-medium ">¿Cuál es el precio de la IA?</span>
             </div>
             <Button size="sm" variant="ghost">
             <MousePointerClick className="h-4 w-4 " />
@@ -43,7 +43,7 @@ export default function FAQ() {
           </div>
         </CollapsibleTrigger>
         <CollapsibleContent className="bg-gray-50 dark:bg-gray-800 px-4 py-3">
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="">
           Actualmente estamos otorgando acceso gratuito para probar las capacidades como versión beta privada.
           </p>
         </CollapsibleContent>
@@ -52,8 +52,8 @@ export default function FAQ() {
         <CollapsibleTrigger asChild>
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center space-x-2">
-              <MailQuestionIcon className="w-5 h-5 text-gray-400" />
-              <span className="text-lg font-medium text-gray-600 dark:text-gray-400">
+              <MailQuestionIcon className="w-5 h-5" />
+              <span className="text-lg font-medium ">
               ¿Puedo descargar mi programación y sesiones generadas?
               </span>
             </div>
@@ -63,7 +63,7 @@ export default function FAQ() {
           </div>
         </CollapsibleTrigger>
         <CollapsibleContent className="bg-gray-50 dark:bg-gray-800 px-4 py-3">
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="">
           Luego de una exitosa generación y firmas, tendrás la opción de descargar en pdf.
           </p>
         </CollapsibleContent>

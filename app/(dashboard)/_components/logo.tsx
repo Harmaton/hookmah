@@ -9,7 +9,7 @@ export const Logo = () => {
       height={130}
       width={130}
       alt="logo"
-      src="/logo-1.png"
+      src="/logo/logo-hokmah.png"
     />
     </Link>
   )

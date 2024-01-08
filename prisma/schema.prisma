@@ -32,13 +32,79 @@ model User {
   whatsapp String?
   instagram String?
   mail String?
-  
-//   taughtCourses Course[] @relation("teacher")
+}
 
-//   comments Comment[] @relation("user") 
-//   ratings Rating[] @relation("user") 
-  
-//   points Int?    
-//   subscription Subscription[]
-//   calendarevent CalendarEvent[] 
+
+model GAP {
+  id           String         @id @default(uuid())
+  userid      String         @unique
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  title String
+  companyLogo String? @db.Text 
+  year String?
+  institutionName String?
+  proffesorName String?
+  city String?
+  district String?
+
+  regulatoryBasis String? @db.Text
+  graduateProfile String? @db.Text
+
+  departmentId String?
+  department Department? @relation(fields: [departmentId], references: [id])
+
+  ageid String?
+  averageAge AverageAge? @relation(fields: [ageid], references: [id])
+
+  academyid String?
+  academyLevel Academy? @relation(fields: [academyid], references: [id])
+
+  courseid String?
+  courseName Course? @relation(fields: [courseid], references: [id])
+
+  educationid String?
+  educationLevel EducationLevel? @relation(fields: [educationid], references: [id])
+
+  isSigned Boolean @default(false)
+  isDownloaded Boolean @default(false)
+  isPublished Boolean @default(false)
+
+  @@index([educationid])
+  @@index([courseid])
+  @@index([ageid])
+  @@index([departmentId])
+  @@index([academyid])
+} 
+
+model EducationLevel{
+  id String @id @default(uuid())
+  name String
+  gaps GAP[]
+}
+
+
+model Course {
+  id String @id @default(uuid())
+  name String
+  gaps GAP[]
+}
+
+model AverageAge {
+  id String @id @default(uuid())
+  name String
+  gaps GAP[]
+}
+
+model Academy {
+  id String @id @default(uuid())
+  name String
+  gaps GAP[]
+}
+
+model Department {
+  id String @id @default(uuid())
+  name String
+  gaps GAP[]
 }
