@@ -115,7 +115,50 @@ async function addAverageAges() {
 //   }
 // }
 
-addEducationLevels()
-addAverageAges()
-addAcademyLevels();
-addCourses();
+
+async function addDepatments() {
+  try {
+    await database.department.createMany({
+      data : [
+        {"name": "Amazon"},
+         {"name": "Ancash"},
+        {"name": "Apurimac"},
+         {"name": "Arequipa"},
+        {"name": "Ayacucho"},
+         {"name": "Cajamarca"},
+       {"name": "Callao"},
+        {"name": "Cusco"},
+        {"name": "Huancavelica"},
+         {"name": "Huanuco"},
+        {"name": "Ica"},
+        {"name": "Junin"},
+        {"name": "Freedom"},
+        {"name": "Lambayeque"},
+        {"name": "Lime"},
+         {"name": "Loreto"},
+         {"name": "Mother of God"},
+         {"name": "Moquegua"},
+        {"name": "Pasco"},
+        {"name": "Piura"},
+        {"name": "Fist"},
+        {"name": "San Martin"},
+        {"name": "Tacna"},
+        {"name": "Tumbes"},
+        {"name": "Ucayali"}
+      ]
+    })
+    
+  } catch (error) {
+    console.log("An Error occured while adding departments")
+  } finally{
+    database.$disconnect()
+  }
+}
+
+// addEducationLevels()
+// addAverageAges()
+// addAcademyLevels();
+// addCourses();
+addDepatments()
+
+

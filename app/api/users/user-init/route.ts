@@ -11,7 +11,6 @@ export async function POST(req: Request) {
     let user = await db.user.findUnique({
       where: { clerkId },
     });
-
     // If the user exists, return a JSON response
     if (user) {
       return new NextResponse(JSON.stringify({ isRegistered: true, user }), {
@@ -21,9 +20,6 @@ export async function POST(req: Request) {
         },
       });
     }
-
-    
-
     // If the user does not exist, create a new user
     user = await db.user.create({
       data: {

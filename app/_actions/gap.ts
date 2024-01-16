@@ -1,4 +1,4 @@
-import { GAP } from "@prisma/client";
+import { GAP, Prisma } from "@prisma/client";
 
 import { db } from "@/lib/db";
 
@@ -17,6 +17,7 @@ export const getGap = async ({
             }
         })
         return {gap}
+
     } catch (error) {
         console.log("Error Getting Programming")
         return{gap: null}

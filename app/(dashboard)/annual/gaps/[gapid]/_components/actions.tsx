@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { Trash } from "lucide-react";
+import { BookOpenCheckIcon, Trash } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -70,11 +70,11 @@ export const Actions = ({
         variant="outline"
         size="sm"
        >
-        {isPublished ? "Despublicar" : "Publicar"}
+        {isPublished ? "Despublicar to Word" : "Publicar to Word"}
       </Button>
       <ConfirmModal onConfirm={onDelete}>
-        <Button size="sm" disabled={isLoading}>
-          <Trash className="h-4 w-4" />
+        <Button size="sm" disabled={isLoading} className="bg-blue-500 hover:bg-blue-700 ">
+          <BookOpenCheckIcon className="h-4 w-4 " />
         </Button>
       </ConfirmModal>
     </div>

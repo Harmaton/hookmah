@@ -1,10 +1,8 @@
 import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
-import { TimerIcon, File, Clock10Icon,LayoutDashboard, ListChecks, CheckSquareIcon, CircleDollarSign, CalendarCheck, BookAIcon } from "lucide-react";
+import { redirect, useRouter } from "next/navigation";
+import { BookAIcon } from "lucide-react";
 
 import { db } from "@/lib/db";
-import { IconBadge } from "@/components/icon-badge";
-import { Banner } from "@/components/banner";
 
 import { YearForm } from "./_components/year";
 import { ProffForm } from "./_components/prof-name";
@@ -19,6 +17,8 @@ import { AcademyForm } from "./_components/academy";
 import { AgeForm } from "./_components/age";
 import { EducationLevelForm } from "./_components/education-level";
 import { Actions } from "./_components/actions";
+import { CourseForm } from "./_components/course-name";
+
 
 
 
@@ -46,11 +46,6 @@ const GapIdPage = async ({
     },
   });
 
-  const courses = await db.course.findMany({
-    orderBy: {
-      name: "asc",
-    },
-  })
 
   const levels = await db.educationLevel.findMany({
     orderBy: {
@@ -59,6 +54,12 @@ const GapIdPage = async ({
   })
 
   const academies = await db.academy.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  })
+
+  const courses = await db.course.findMany({
     orderBy: {
       name: "asc",
     },
@@ -74,30 +75,33 @@ const GapIdPage = async ({
     return redirect("/");
   }
 
-  // const requiredFields = [
-  //   course.title,
-  //   course.description,
-  //   course.imageUrl,
-  //   course.price,
-  //   course.departmentsId,
-  //   course.chapters.some(chapter => chapter.isPublished),
-  // ];
+  const requiredFields = [
+    gap.title,
+    gap.departmentId,
+    gap.proffesorName,
+    gap.institutionName,
+    gap.year,
+    gap.city,
+    gap.academyid,
+    gap.district,
+    gap.educationid,
+    gap.companyLogo,
+    gap.ageid,
+    gap.courseid
+  ];
 
-  // const totalFields = requiredFields.length;
-  // const completedFields = requiredFields.filter(Boolean).length;
+  const allFields = requiredFields.length;
 
-  // const completionText = `(${completedFields}/${totalFields})`;
+  const completedFields = requiredFields.filter(Boolean).length;
 
-  // const isComplete = requiredFields.every(Boolean);
+  const completionText = `(${completedFields}/${allFields})`;
+
+  const isComplete = requiredFields.every(Boolean);
+
+
 
   return (
     <>
-      {/* {!course.isPublished && (
-        <Banner
-          label="Este curso es inédito. No será visible para los estudiantes."
-        />
-      )} */}
-     
       <div className="p-6 border">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
@@ -106,10 +110,18 @@ const GapIdPage = async ({
             <BookAIcon className="h-4 w-4 flex ml-3" />
             </h1>
             <span className="text-sm text-slate-700">
-            {/* Completa todos los campos {completionText} */}
+            Reuired Fields : {completionText}
             </span>
+            <span className="text-sm text-red-300">Fill in all the fields to access your Word Document</span>
           </div>
-          <Actions disabled={false} gapid={gap.id} isPublished={gap.isPublished} /> 
+          {
+            isComplete && (
+              <>
+              <Actions disabled={false} gapid={gap.id} isPublished={gap.isPublished} />    
+              </>
+            )
+          }
+         
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
@@ -147,11 +159,16 @@ const GapIdPage = async ({
                 value: departments.id,
               }))} />
               
-             
+              <CourseForm  initialData={gap} gapid={gap.id} options={courses.map((courses) => ({
+                label: courses.name,
+                value: courses.id,
+              }))}  />
+                       
               </div>
-              {/* Generate AI Content form */}
-              {/* Sign Form */}
-              {/* download Form */}
+
+              {/* Generate AI Content for form */}
+
+              {/* Create and Download Form */}
 
             </div>
           </div>
