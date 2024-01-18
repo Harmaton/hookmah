@@ -37,10 +37,15 @@ export const CharacteristicsForm = ({
 const genAI = new GoogleGenerativeAI("AIzaSyDiUlIA-d2x8TpBbPZN1gNOHFCj1eYcZhw");
 const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
+const toggleEdit = () => setisLoading((current) => !current);
+
+const router = useRouter();
+
   async function aiRun() {
+    
     setisLoading(true);
 
-    const prompt =   `Generate the general characterization table of students Based on the student's location in the department of ${departmentRecord}, district of ${district}, and city of ${city}, considering their age of ${ageRecord} and enrolled course of ${courseRecord}, the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru outlines the following student characterization:
+    const prompt =   `Generate the general characterization table of students Based on the student's location in the department of ${departmentRecord?.name}, district of ${district}, and city of ${city}, considering their age of ${ageRecord?.name} and enrolled course of ${courseRecord?.name}, the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru outlines the following student characterization:
     - Describe the student's physical characteristics.
     - Outline their psychological traits and characteristics.
     - Identify the student's interests and curiosities.
@@ -48,51 +53,30 @@ const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     - Highlight the student's cognitive academic needs.
     `;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-    setisLoading(false);
-    setResponse(text);
-    console.log(text)
-  }
+    try{
+      const result = await model.generateContent(prompt);
+      const response = result.response;
+      const text = response.text();
+      setisLoading(false);
+      setResponse(text);
 
-  const toggleEdit = () => setisLoading((current) => !current);
+      const res = await axios.patch(`/api/gaps/${gapid}/characteristics`, { text: JSON.stringify(text) });
 
-  const router = useRouter();
+      console.log(res)
 
-  async function getCx() {
-    try {
-      setisLoading(true);
-
-      const response = await generateCharacteristics(
-        initialData.ageid,
-        initialData.courseid,
-        initialData.departmentId,
-        initialData.city,
-        initialData.district
-      );
-
-    //  Assuming your server action returns an object with a 'response' property
-      const values = {
-        characteristics: response,
-      };
-
-      console.log('Response Content:', values);
-
-      await axios.patch(`/api/gaps/${gapid}`, values );
-
-     
-        setisLoading(false);
-    
-      toast.success("Ano actualizado");
-
-
+      toast.success("Characteristics actualizado");
+      
       toggleEdit();
       router.refresh();
-    } catch {
-      toast.error("Algo salió mal");
-    } 
+    } catch(error){
+      console.log(error)
+    }
+   
   }
+
+
+
+  
 
   return (
     <div className="rounded-md p-4 border-red-200">
