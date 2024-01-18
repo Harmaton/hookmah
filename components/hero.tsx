@@ -5,11 +5,13 @@ import Link from "next/link";
 import { CardContent, Card } from "@/components/ui/card";
 import { Fingerprint, TrendingUp } from "lucide-react";
 import React, { FC } from "react";
+import Spotlight from "./ui/SpotLight";
 
 const Hero: FC = () => {
   return (
-    <section className="container relative mt-4 p-3  bg-gradient-to-r from-red-200 via-transparent to-green-200 animate-gradient">
-      <div className="max-w-4xl mx-auto space-y-6 text-center">
+    <section className="container relative mt-4 p-3   animate-gradient h-[40rem] w-full dark:bg-black bg-white  dark:bg-dot-white/[0.2] bg-dot-black/[0.2]  flex items-center justify-center">
+      <Spotlight />
+      <div className="max-w-4xl mx-auto space-y-6 text-center ">
       <h1 className="text-5xl font-fancy font-extrabold m-3">
     Revolucione su <span className="text-red-400 m-2 ">experiencia docente</span> con{" "}
     <span className="text-red-400 m-2">construcción de clases impulsada por IA</span>,

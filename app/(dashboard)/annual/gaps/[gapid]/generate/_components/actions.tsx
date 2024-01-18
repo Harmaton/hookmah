@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { BookOpenCheckIcon, SprayCan, Trash } from "lucide-react";
+import { BookCheck, BookOpenCheckIcon, SprayCan, Trash } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -24,7 +24,7 @@ export const Actions = ({
 
   const onClick = async () => {
     try {
-        router.push(`/annual/gaps/${gapid}/generate`)
+        router.push(`/annual/gaps/${gapid}/word`)
 
     } catch {
       toast.error("Algo salió mal");
@@ -54,8 +54,8 @@ export const Actions = ({
         size="sm"
         className="border-blue-500"
        >
-       Generate Rest of the Document
-       <SprayCan className="h-4 w-4" />
+       Print Document
+       <BookCheck className="h-4 w-4" />
       </Button>
       <ConfirmModal onConfirm={onDelete}>
         <Button size="sm" disabled={isLoading} className=" ">

@@ -37,7 +37,7 @@ model User {
 
 model GAP {
   id           String         @id @default(uuid())
-  userid      String         @unique
+  userid      String         
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
 
@@ -51,6 +51,7 @@ model GAP {
 
   regulatoryBasis String? @db.Text
   graduateProfile String? @db.Text
+  crosscuttingApproach String? @db.Text
 
   departmentId String?
   department Department? @relation(fields: [departmentId], references: [id])
@@ -67,10 +68,22 @@ model GAP {
   educationid String?
   educationLevel EducationLevel? @relation(fields: [educationid], references: [id])
 
+  characteristics String? @db.Text
+  recommendations String? @db.Text
+  values String? @db.Text
+  attitudes String? @db.Text
+  acdescription String? @db.Text
+  learningPurposes String? @db.Text
+  methodsStrategies String? @db.Text
+  materials String? @db.Text
+  resources String? @db.Text
+  bibliography String? @db.Text
+
   isSigned Boolean @default(false)
   isDownloaded Boolean @default(false)
   isPublished Boolean @default(false)
-
+  isConverted Boolean @default(false)
+  
   @@index([educationid])
   @@index([courseid])
   @@index([ageid])

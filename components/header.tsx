@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="p-6 flex items-center">
+    <header className="p-10  items-center sm:hidden">
       <div className="flex ml-4 space-x-10">
       <Badge variant="outline">Enseñanza por competencia <Lightbulb className="w-3 h-3 ml-2 text-red-500" /> </Badge>
        <Badge variant="outline">Rápido y confiable<Lightbulb className="w-3 h-3 ml-2 " /> </Badge>

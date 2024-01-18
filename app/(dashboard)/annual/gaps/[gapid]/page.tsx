@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
 import { redirect, useRouter } from "next/navigation";
-import { BookAIcon } from "lucide-react";
+import { BookAIcon, CheckCheck } from "lucide-react";
 
 import { db } from "@/lib/db";
 
@@ -18,6 +18,7 @@ import { AgeForm } from "./_components/age";
 import { EducationLevelForm } from "./_components/education-level";
 import { Actions } from "./_components/actions";
 import { CourseForm } from "./_components/course-name";
+import { Progress } from "@/components/ui/progress";
 
 
 
@@ -112,12 +113,18 @@ const GapIdPage = async ({
             <span className="text-sm text-slate-700">
             Reuired Fields : {completionText}
             </span>
-            <span className="text-sm text-red-300">Fill in all the fields to access your Word Document</span>
+            {!isComplete && <Progress value={completedFields} /> }
+          {isComplete && 
+          <div className="h-10 w-10 rounded-full bg-green-200 flex">
+             <CheckCheck className="text-green-500 mx-auto my-auto" /> 
+             </div>
+         }
+          { !isComplete && <span className="text-sm text-red-300">Fill in all the fields to access your Word Document</span>}
           </div>
           {
             isComplete && (
               <>
-              <Actions disabled={false} gapid={gap.id} isPublished={gap.isPublished} />    
+              <Actions disabled={false} gapid={gap.id}  />    
               </>
             )
           }
@@ -165,10 +172,6 @@ const GapIdPage = async ({
               }))}  />
                        
               </div>
-
-              {/* Generate AI Content for form */}
-
-              {/* Create and Download Form */}
 
             </div>
           </div>
