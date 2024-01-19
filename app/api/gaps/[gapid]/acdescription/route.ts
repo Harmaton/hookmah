@@ -23,7 +23,7 @@ export async function PATCH(
           userid: userId
         },
         data: {
-          characteristics: text
+          acdescription: text
         }
       });
   

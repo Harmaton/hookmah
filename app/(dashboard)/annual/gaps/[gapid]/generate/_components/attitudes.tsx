@@ -9,28 +9,19 @@ import { useRouter } from "next/navigation";
 import { GAP } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { generateCharacteristics } from "@/app/_actions/characteristics-ai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-interface CharacteristicsFormProps {
+interface AttitudesFormProps {
   initialData: GAP;
-  departmentRecord: {name: string }| null; 
-  district: string | null;
-  city: string | null;
-  courseRecord: {name: string } | null;
   ageRecord: {name: string } | null;
   gapid: string;
 }
 
-export const CharacteristicsForm = ({
+export const AttitudesForm = ({
   initialData,
   gapid,
-  departmentRecord,
-  district,
-  city,
-  courseRecord,
   ageRecord
-}: CharacteristicsFormProps) => {
+}: AttitudesFormProps) => {
   const [isLoading, setisLoading] = useState(false);
 
 const genAI = new GoogleGenerativeAI("AIzaSyDiUlIA-d2x8TpBbPZN1gNOHFCj1eYcZhw");
@@ -45,12 +36,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Generate the general characterization table of students Based on the student's location in the department of ${departmentRecord?.name}, district of ${district}, and city of ${city}, considering their age of ${ageRecord?.name} and enrolled course of ${courseRecord?.name}. Use and refer to the the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru which outlines the following student characterization:
-    - Describe the student's physical characteristics.
-    - Outline their psychological traits and characteristics.
-    - Identify the student's interests and curiosities.
-    - Analyze any social challenges the student may be facing.
-    - Highlight the student's cognitive academic needs.
+    const prompt =   `Depending on the ${ageRecord} age Record of the child, buiild a table of attitudes with one-by-one defination that the child must develop at this stage. Build a table with ideas and activities that must be developed during the year and also build a measurement system to evaluate whether the attitudes have been emphasized in the person.
     `;
 
     try{
@@ -60,10 +46,10 @@ const router = useRouter();
 
       setisLoading(false);
 
-      const res = await axios.patch(`/api/gaps/${gapid}/characteristics`, { text: JSON.stringify(text) });
+      const res = await axios.patch(`/api/gaps/${gapid}/attitudes`, { text: JSON.stringify(text) });
 
       console.log(res)
-      toast.success("Characteristics actualizado");
+      toast.success("Values updated");
       toggleEdit();
       router.refresh();
 
@@ -77,7 +63,7 @@ const router = useRouter();
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Characterization of Students
+      Traversal Approach (ATTITUDES)
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
             <>Continue in BackGround</>
@@ -93,10 +79,10 @@ const router = useRouter();
         <p
           className={cn(
             "text-sm mt-2 text-ellipsis",
-            !initialData.characteristics && "text-slate-500 italic"
+            !initialData.attitudes && "text-slate-500 italic"
           )}
         >
-          {initialData.characteristics || "Sin characteristics"}
+          {initialData.attitudes || "Sin attitudes"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

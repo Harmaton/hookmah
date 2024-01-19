@@ -12,25 +12,17 @@ import { cn } from "@/lib/utils";
 import { generateCharacteristics } from "@/app/_actions/characteristics-ai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-interface CharacteristicsFormProps {
+interface AcDescriptionProps {
   initialData: GAP;
-  departmentRecord: {name: string }| null; 
-  district: string | null;
-  city: string | null;
-  courseRecord: {name: string } | null;
   ageRecord: {name: string } | null;
   gapid: string;
 }
 
-export const CharacteristicsForm = ({
+export const AcDescriptionForm = ({
   initialData,
   gapid,
-  departmentRecord,
-  district,
-  city,
-  courseRecord,
   ageRecord
-}: CharacteristicsFormProps) => {
+}: AcDescriptionProps) => {
   const [isLoading, setisLoading] = useState(false);
 
 const genAI = new GoogleGenerativeAI("AIzaSyDiUlIA-d2x8TpBbPZN1gNOHFCj1eYcZhw");
@@ -45,12 +37,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Generate the general characterization table of students Based on the student's location in the department of ${departmentRecord?.name}, district of ${district}, and city of ${city}, considering their age of ${ageRecord?.name} and enrolled course of ${courseRecord?.name}. Use and refer to the the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru which outlines the following student characterization:
-    - Describe the student's physical characteristics.
-    - Outline their psychological traits and characteristics.
-    - Identify the student's interests and curiosities.
-    - Analyze any social challenges the student may be facing.
-    - Highlight the student's cognitive academic needs.
+    const prompt =   `According to the National curriculum of the regular basic education (DCN-EBR) of the ministry of Education of Peru, .......
     `;
 
     try{
@@ -60,10 +47,10 @@ const router = useRouter();
 
       setisLoading(false);
 
-      const res = await axios.patch(`/api/gaps/${gapid}/characteristics`, { text: JSON.stringify(text) });
+      const res = await axios.patch(`/api/gaps/${gapid}/acdescription`, { text: JSON.stringify(text) });
 
       console.log(res)
-      toast.success("Characteristics actualizado");
+      toast.success("Values updated");
       toggleEdit();
       router.refresh();
 
@@ -77,7 +64,7 @@ const router = useRouter();
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Characterization of Students
+      Description of the Area and Competencies
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
             <>Continue in BackGround</>
@@ -93,10 +80,10 @@ const router = useRouter();
         <p
           className={cn(
             "text-sm mt-2 text-ellipsis",
-            !initialData.characteristics && "text-slate-500 italic"
+            !initialData.acdescription && "text-slate-500 italic"
           )}
         >
-          {initialData.characteristics || "Sin characteristics"}
+          {initialData.acdescription || "Sin description"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

@@ -1,15 +1,9 @@
 import About from "@/components/about-us";
-import { CarouselFeatures } from "@/components/carousel-features";
-import ContactForm from "@/components/contact-form";
 import Footer from "@/components/footer";
-import Hero from "@/components/hero";
 import Navbar from "@/components/navbar";
-import { ThemeProvider } from "next-themes";
-import OurProjects from "@/components/our-projects";
 import About2 from "@/components/about2";
 import About3 from "@/components/about3";
 import React from "react";
-import Header from "@/components/header";
 import Features from "@/components/features";
 import FAQ from "@/components/faq";
 import { NewHero } from "@/components/new-hero";
@@ -36,7 +30,6 @@ export default function Home() {
       </div>
      
       <Features />
-      {/* <ContactForm /> */}
 
       <Footer />
     </main>

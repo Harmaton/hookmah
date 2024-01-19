@@ -11,6 +11,14 @@ import { extractRouterConfig } from "uploadthing/server";
 
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import { cn } from "@/lib/utils";
+import {
+  fontMono,
+  fontSans,
+  fontPoppins,
+  fontLato,
+  fontManrope,
+  fontCaveat,
+} from '@/lib/fonts';
 
 export const metadata: Metadata = {
   icons: {
@@ -31,7 +39,13 @@ export default function RootLayout({
         <html lang="en">
           <body
             className={cn(
-              "min-h-screen bg-background antialiased scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-800 scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+              "min-h-screen bg-background antialiased scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-800 scrollbar-thumb-rounded-full scrollbar-track-rounded-full",
+              fontSans.variable,
+              fontMono.variable,
+              fontPoppins.variable,
+              fontLato.variable,
+              fontManrope.className,
+              fontCaveat.variable
             )}
           >
             <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />

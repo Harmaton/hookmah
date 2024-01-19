@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { BookAIcon, CheckCheck } from "lucide-react";
 
 import { db } from "@/lib/db";
@@ -19,8 +19,6 @@ import { EducationLevelForm } from "./_components/education-level";
 import { Actions } from "./_components/actions";
 import { CourseForm } from "./_components/course-name";
 import { Progress } from "@/components/ui/progress";
-
-
 
 
 const GapIdPage = async ({
