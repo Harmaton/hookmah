@@ -70,14 +70,14 @@ export const AgeForm = ({
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Average Age
+      Edad promedio
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
-            <>Minimize</>
+            <>Minimizar</>
           ) : (
             <>
               <ListPlus className="h-4 w-4 mr-2 text-red-500" />
-              Editar Age
+              Editar promedio
             </>
           )}
         </Button>
@@ -87,7 +87,7 @@ export const AgeForm = ({
           "text-sm mt-2",
           !initialData.ageid && "text-slate-500 italic"
         )}>
-          {selectedOption?.label || "Ninguna age"}
+          {selectedOption?.label || "Ninguna promedio"}
         </p>
       )}
       {isEditing && (

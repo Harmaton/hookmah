@@ -73,7 +73,7 @@ export const ProfileForm = ({ initialData, gapid }: regProps) => {
     return (
       <div className="mt-6 rounded-md p-4">
         <div className="font-medium flex items-center justify-between">
-          Graduate Profile
+        Perfil de egresado
           <Button onClick={toggleEdit} variant="ghost">
             {isEditing ? (
               <>
@@ -82,7 +82,7 @@ export const ProfileForm = ({ initialData, gapid }: regProps) => {
             ) : (
               <>
                 <Eye className="h-4 w-4 mr-2 text-green-500" />
-                see graduate profile
+                ver perfil de egresado
               </>
             )}
           </Button>
@@ -96,7 +96,6 @@ export const ProfileForm = ({ initialData, gapid }: regProps) => {
                 </label>
                 <p className="text-sm mt-1">{predefinedData}</p>
               </div>
-  
               <div className="flex items-center gap-x-2">
                 <Button onClick={onSubmit} disabled={isSubmitting} type="button">
                   Ahorrar

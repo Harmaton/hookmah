@@ -65,14 +65,14 @@ export const CityForm = ({
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      City Name
+      Ciudad Relevante
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing ? (
-            <>Minimize</>
+        {isEditing ? (
+            <>Minimizar</>
           ) : (
             <>
               <PenBox className="h-4 w-4 mr-2 text-blue-500" />
-              Editar name
+              Editar nombre
             </>
           )}
         </Button>
@@ -82,7 +82,7 @@ export const CityForm = ({
           "text-sm mt-2",
           !initialData.city && "text-slate-500 italic"
         )}>
-          {initialData.city || "Sin city"}
+          {initialData.city || "Sin Ciudad"}
         </p>
       )}
       {isEditing && (
@@ -99,7 +99,7 @@ export const CityForm = ({
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}
-                      placeholder="What city are you located?"
+                      placeholder="¿Cuál es la ciudad relevante para esto?"
                       {...field}
                     />
                   </FormControl>

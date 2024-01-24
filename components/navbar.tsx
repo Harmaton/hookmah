@@ -63,7 +63,7 @@ const Navbar = () => {
              <div className="flex mr-2 ">
               <Link href='/annual'>
               <Button>
-                Dashboard
+              Panel
               </Button>
               </Link>
               </div>

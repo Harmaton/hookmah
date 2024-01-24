@@ -70,14 +70,14 @@ export const AcademyForm = ({
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Academy
+      Academia
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimize</>
           ) : (
             <>
               <ListPlus className="h-4 w-4 mr-2 text-red-500" /> 
-              Editar Academyo
+              Editar Academia
             </>
           )}
         </Button>

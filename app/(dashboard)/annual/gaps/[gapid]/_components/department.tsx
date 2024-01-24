@@ -70,10 +70,10 @@ export const DepartmentForm = ({
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Department
+      Departamento
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
-            <>Minimize</>
+            <>Minimizar</>
           ) : (
             <>
               <ListPlus className="h-4 w-4 mr-2 text-red-500" /> 

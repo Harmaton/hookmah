@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { BookCheck, BookOpenCheckIcon, SprayCan, Trash, TrendingUp } from "lucide-react";
+import { BookCheck, BookOpenCheckIcon, SkipBack, SprayCan, Trash } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -17,34 +17,20 @@ interface ActionsProps {
 
 export const Actions = ({
   disabled,
-  gapid,
+  gapid
 }: ActionsProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const onClick = async () => {
     try {
-        router.push(`/annual/gaps/${gapid}/word`)
+        router.push(`/annual/gaps/${gapid}/generate`)
 
     } catch {
       toast.error("Algo salió mal");
     } 
   }
   
-  const onDelete = async () => {
-    try {
-      setIsLoading(true);
-      await axios.delete(`/api/gaps/${gapid}`);
-      toast.success("Document");
-      router.refresh();
-      router.push(`/gaps/${gapid}/word`);
-    } catch {
-      toast.error("Algo salió mal");
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
   return (
     <div className="flex items-center gap-x-2">
       <Button
@@ -52,16 +38,11 @@ export const Actions = ({
         disabled={disabled || isLoading}
         variant="outline"
         size="sm"
-        className="border-blue-500"
+        className="border-blue-500 space-x-2"
        >
-       Finalizar el documento
-       <TrendingUp className="h-4 w-4 ml-2" />
+      Volver al paso 2
+       <SkipBack className="h-4 w-4 ml-2" />
       </Button>
-      <ConfirmModal onConfirm={onDelete}>
-        <Button size="sm" disabled={isLoading} className=" ">
-          <Trash className="h-4 w-4" />
-        </Button>
-      </ConfirmModal>
     </div>
   )
 }

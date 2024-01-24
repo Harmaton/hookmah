@@ -36,7 +36,7 @@ export const ImageForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/gaps/${gapid}`, values);
-      toast.success("Your Logo actualizado");
+      toast.success("Actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -47,7 +47,7 @@ export const ImageForm = ({
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Your Company Logo
+      Logotipo de su empresa
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && (
             <>Cancelar</>

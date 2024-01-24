@@ -44,12 +44,8 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Generate the general characterization table of students Based on the student's location in the department of ${departmentRecord?.name}, district of ${district}, and city of ${city}, considering their age of ${ageRecord?.name} and enrolled course of ${courseRecord?.name}. Use and refer to the the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru which outlines the following student characterization:
-    - Describe the student's physical Recommendations.
-    - Outline their psychological traits and Recommendations.
-    - Identify the student's interests and curiosities.
-    - Analyze any social challenges the student may be facing.
-    - Highlight the student's cognitive academic needs.
+    const prompt =   `recommend favorable environmental and educational situations for the development of all these learning situations which are 
+    ${ageRecord}, ${courseRecord}, ${departmentRecord} while in the city of ${city} and the district ${district}. Generate everything in Spanish.
     `;
 
     try{
@@ -76,14 +72,14 @@ const router = useRouter();
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Recommendations
+      Recomendaciones
         <Button onClick={aiRun} variant="ghost">
-          {isLoading ? (
-            <>Generating ...</>
+        {isLoading ? (
+            <>Generando..</>
           ) : (
             <>
               <SprayCan className="h-4 w-4 mr-2 text-blue-500" />
-             AI  Generate
+              IA Generar
             </>
           )}
         </Button>
@@ -95,7 +91,7 @@ const router = useRouter();
             !initialData.recommendations && "text-slate-500 italic"
           )}
         >
-          {initialData.recommendations || "Sin Recommendations"}
+          {initialData.recommendations || "Sin Recomendaciones"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

@@ -36,7 +36,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Depending on the ${ageRecord} age Record of the child, buiild a table of attitudes with one-by-one defination that the child must develop at this stage. Build a table with ideas and activities that must be developed during the year and also build a measurement system to evaluate whether the attitudes have been emphasized in the person.
+    const prompt =   `Depending on the ${ageRecord} age Record of the child, buiild a table of attitudes with one-by-one defination that the child must develop at this stage. Build a table with ideas and activities that must be developed during the year and also build a measurement system to evaluate whether the attitudes have been emphasized in the person. Generate Everything in Spanish.
     `;
 
     try{
@@ -63,14 +63,14 @@ const router = useRouter();
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Traversal Approach (ATTITUDES)
+      Enfoque transversal (ACTITUDES)
         <Button onClick={aiRun} variant="ghost">
-          {isLoading ? (
-            <>Continue in BackGround</>
+        {isLoading ? (
+            <>Generando..</>
           ) : (
             <>
               <SprayCan className="h-4 w-4 mr-2 text-blue-500" />
-             AI  Generate
+              IA Generar
             </>
           )}
         </Button>
@@ -82,7 +82,7 @@ const router = useRouter();
             !initialData.attitudes && "text-slate-500 italic"
           )}
         >
-          {initialData.attitudes || "Sin attitudes"}
+          {initialData.attitudes || "Sin actitudes"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

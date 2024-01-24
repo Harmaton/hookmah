@@ -65,14 +65,14 @@ export const ProffForm = ({
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Proffesor Name
+      Nombre de la profesora
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
-            <>Minimize</>
+            <>Minimizar</>
           ) : (
             <>
               <PenBox className="h-4 w-4 mr-2 text-blue-500" />
-              Editar name
+              Editar nombre
             </>
           )}
         </Button>
@@ -82,7 +82,7 @@ export const ProffForm = ({
           "text-sm mt-2",
           !initialData.proffesorName && "text-slate-500 italic"
         )}>
-          {initialData.proffesorName || "Sin name"}
+          {initialData.proffesorName || "Sin profesora"}
         </p>
       )}
       {isEditing && (
@@ -99,7 +99,7 @@ export const ProffForm = ({
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}
-                      placeholder="What is your Proffersor name tag"
+                      placeholder="Nombre de la profesora"
                       {...field}
                     />
                   </FormControl>

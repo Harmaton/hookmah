@@ -37,7 +37,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Depending on the ${ageRecord} age Record of the child, buiild a table of values with one-by-one defination that the child must develop at this stage. Build a table with ideas and activities that must be developed during the year and also build a measurement system to evaluate whether the values have been emphasized in the person.
+    const prompt =   `Depending on the ${ageRecord} age Record of the child, buiild a table of values with one-by-one defination that the child must develop at this stage. Build a table with ideas and activities that must be developed during the year and also build a measurement system to evaluate whether the values have been emphasized in the person. Generae everything in Spanish.
     `;
 
     try{
@@ -64,7 +64,7 @@ const router = useRouter();
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Traversal Approach (VALUES)
+      Enfoque transversal (VALORES)
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
             <>Continue in BackGround</>

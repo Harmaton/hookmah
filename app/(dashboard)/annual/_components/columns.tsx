@@ -2,7 +2,7 @@
 
 import {  GAP } from "@prisma/client"
 import { ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, BadgeCheck, Check, Download, MoreHorizontal, Pencil, UploadCloud } from "lucide-react"
+import { ArrowUpDown, BadgeCheck, MoreHorizontal, Pencil } from "lucide-react"
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -30,33 +30,6 @@ export const columns: ColumnDef<GAP>[] = [
       )
     },
   },
-
-  {
-    accessorKey: "isDownloaded",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Downloads
-          <Download className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => {
-      const isDownloaded = row.getValue("isDownloaded") || false;
-
-      return (
-        <Badge className={cn(
-          "bg-slate-500",
-          isDownloaded && "bg-pink-700"
-        )}>
-          {isDownloaded ? "Downloaded" : "Not Downloaded"}
-        </Badge>
-      )
-    }
-  },
   {
     accessorKey: "isSigned",
     header: ({ column }) => {
@@ -79,32 +52,6 @@ export const columns: ColumnDef<GAP>[] = [
           isSigned && "bg-pink-700"
         )}>
           {isSigned ? "Signed" : "Not Signed"}
-        </Badge>
-      )
-    }
-  },
-  {
-    accessorKey: "isPublished",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Publicada
-          <UploadCloud className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => {
-      const isPublished = row.getValue("isPublished") || false;
-
-      return (
-        <Badge className={cn(
-          "bg-slate-500",
-          isPublished && "bg-sky-700"
-        )}>
-          {isPublished ? "Publicada" : "Borrador"}
         </Badge>
       )
     }

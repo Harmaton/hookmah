@@ -1,50 +1,41 @@
 "use client";
 
 import axios from "axios";
-import { BookCheck, BookOpenCheckIcon, SprayCan, Trash, TrendingUp } from "lucide-react";
-import { useState } from "react";
+import { BookA, BookCheckIcon, BookKeyIcon, BookOpenCheckIcon, BookText, SprayCan, Trash } from "lucide-react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { ConfirmModal } from "@/components/modals/confirm-modal";
 import { useConfettiStore } from "@/hooks/use-confetti";
+import { GAP } from "@prisma/client";
+import { generateWordDocument } from "@/utils/document-genarator";
 
 interface ActionsProps {
   disabled: boolean;
   gapid: string;
-};
+  gapData: GAP;
+}
 
-export const Actions = ({
+export const WordAction = ({
   disabled,
   gapid,
+  gapData,
 }: ActionsProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  
 
   const onClick = async () => {
     try {
-        router.push(`/annual/gaps/${gapid}/word`)
-
+      await generateWordDocument(gapData);
+      router.refresh();
     } catch {
       toast.error("Algo salió mal");
     } 
-  }
+  };
   
-  const onDelete = async () => {
-    try {
-      setIsLoading(true);
-      await axios.delete(`/api/gaps/${gapid}`);
-      toast.success("Document");
-      router.refresh();
-      router.push(`/gaps/${gapid}/word`);
-    } catch {
-      toast.error("Algo salió mal");
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
   return (
     <div className="flex items-center gap-x-2">
       <Button
@@ -54,14 +45,9 @@ export const Actions = ({
         size="sm"
         className="border-blue-500"
        >
-       Finalizar el documento
-       <TrendingUp className="h-4 w-4 ml-2" />
+       Generar documento de Word
+       <BookText className="h-4 w-4 ml-4" />
       </Button>
-      <ConfirmModal onConfirm={onDelete}>
-        <Button size="sm" disabled={isLoading} className=" ">
-          <Trash className="h-4 w-4" />
-        </Button>
-      </ConfirmModal>
     </div>
-  )
-}
+  );
+};

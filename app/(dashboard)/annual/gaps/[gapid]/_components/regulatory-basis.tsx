@@ -77,14 +77,14 @@ export const RegForm = ({ initialData, gapid }: regProps) => {
     return (
       <div className="mt-6 rounded-md p-4">
         <div className="font-medium flex items-center justify-between">
-          Regulatory Basis
+        Base regulatoria
           <Button onClick={toggleEdit} variant="ghost">
             {isEditing ? (
               <><EyeOff className="h-4 w-4 mr-2 " /></>
             ) : (
               <>
                 <Eye className="h-4 w-4 mr-2 text-green-500" />
-                See Regulatory basis
+                Ver base regulatoria
               </>
             )}
           </Button>
@@ -94,7 +94,7 @@ export const RegForm = ({ initialData, gapid }: regProps) => {
             <form className="space-y-4 mt-4">
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
-                  Regulatory basis
+                Base regulatoria
                 </label>
                 <p className="text-sm mt-1">{predefinedData}</p>
               </div>

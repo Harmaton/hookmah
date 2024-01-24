@@ -65,14 +65,14 @@ export const InstitutionForm = ({
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Institution Name
+      Nombre de la Institución
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing ? (
-            <>Minimize</>
+        {isEditing ? (
+            <>Minimizar</>
           ) : (
             <>
               <PenBox className="h-4 w-4 mr-2 text-blue-500" />
-              Editar name
+              Editar nombre
             </>
           )}
         </Button>
@@ -82,7 +82,7 @@ export const InstitutionForm = ({
           "text-sm mt-2",
           !initialData.institutionName && "text-slate-500 italic"
         )}>
-          {initialData.institutionName || "Sin name"}
+          {initialData.institutionName || "Sin Institución"}
         </p>
       )}
       {isEditing && (
@@ -99,7 +99,7 @@ export const InstitutionForm = ({
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}
-                      placeholder="What is your Proffersor name tag"
+                      placeholder="Nombre de la institución relevante"
                       {...field}
                     />
                   </FormControl>

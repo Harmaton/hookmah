@@ -11,17 +11,17 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-interface BibliographyFormProps {
+interface ResourcesFormProps {
   initialData: GAP;
   ageRecord: {name: string } | null;
   gapid: string;
 }
 
-export const BibliographyForm = ({
+export const ResourcesForm = ({
   initialData,
   gapid,
   ageRecord
-}: BibliographyFormProps) => {
+}: ResourcesFormProps) => {
   const [isLoading, setisLoading] = useState(false);
 
 const genAI = new GoogleGenerativeAI("AIzaSyDiUlIA-d2x8TpBbPZN1gNOHFCj1eYcZhw");
@@ -36,7 +36,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Depending on the ${ageRecord} age Record of the child, buiild a table of values with one-by-one defination that the child must develop at this stage. Build a table with ideas and activities that must be developed during the year and also build a measurement system to evaluate whether the values have been emphasized in the person.
+    const prompt =   ` Propose me 10 resources that already exist and that I can use, be they platforms, virtual games, materials already prepared by other teachers throughout the network. Generate everything in spanish.
     `;
 
     try{
@@ -63,14 +63,14 @@ const router = useRouter();
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-     Resources (Education Media)
+      Recursos (medios educativos)
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
-            <>Generating ...</>
+            <>Generando...</>
           ) : (
             <>
               <SprayCan className="h-4 w-4 mr-2 text-blue-500" />
-             AI  Generate
+              IA generada
             </>
           )}
         </Button>
@@ -79,10 +79,10 @@ const router = useRouter();
         <p
           className={cn(
             "text-sm mt-2 text-ellipsis",
-            !initialData.bibliography && "text-slate-500 italic"
+            !initialData.resources && "text-slate-500 italic"
           )}
         >
-          {initialData.bibliography || "Sin valores"}
+          {initialData.resources || "Sin Recursos"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

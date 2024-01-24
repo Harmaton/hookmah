@@ -54,7 +54,7 @@ export const DistrictForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/gaps/${gapid}`, values);
-      toast.success("Ano actualizado");
+      toast.success("Actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -65,14 +65,14 @@ export const DistrictForm = ({
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      District Name
+      Nombre del distrito
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing ? (
-            <>Minimize</>
+        {isEditing ? (
+            <>Minimizar</>
           ) : (
             <>
               <PenBox className="h-4 w-4 mr-2 text-blue-500" />
-              Editar district
+              Editar nombre
             </>
           )}
         </Button>
@@ -99,7 +99,7 @@ export const DistrictForm = ({
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}
-                      placeholder="Add your district here"
+                      placeholder="AAñade el distrito aquí"
                       {...field}
                     />
                   </FormControl>

@@ -67,8 +67,8 @@ export const YearForm = ({
       <div className="font-medium flex items-center justify-between">
       Ano
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing ? (
-            <>Minimize</>
+        {isEditing ? (
+            <>Minimizar</>
           ) : (
             <>
               <PenBox className="h-4 w-4 mr-2 text-blue-500" />
@@ -82,7 +82,7 @@ export const YearForm = ({
           "text-sm mt-2",
           !initialData.year && "text-slate-500 italic"
         )}>
-          {initialData.year || "Sin descripción"}
+          {initialData.year || "Sin ano"}
         </p>
       )}
       {isEditing && (
@@ -99,7 +99,7 @@ export const YearForm = ({
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}
-                      placeholder="p.ej. 'Este curso trata sobre...'"
+                      placeholder="Año del Bicentenario, de la consolidación de nuestra Independencia, y de la conmemoración de las heroicas batallas de Junín y Ayacucho"
                       {...field}
                     />
                   </FormControl>

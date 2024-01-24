@@ -70,14 +70,14 @@ export const CourseForm = ({
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Course
+      Curso
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimize</>
           ) : (
             <>
               <ListPlus className="h-4 w-4 mr-2 text-red-500" />
-              Editar Departmento
+              Editar Curso
             </>
           )}
         </Button>
@@ -87,7 +87,7 @@ export const CourseForm = ({
           "text-sm mt-2",
           !initialData.departmentId && "text-slate-500 italic"
         )}>
-          {selectedOption?.label || "Ninguna course"}
+          {selectedOption?.label || "sin curso"}
         </p>
       )}
       {isEditing && (

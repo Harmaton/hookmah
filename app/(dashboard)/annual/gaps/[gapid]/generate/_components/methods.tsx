@@ -37,7 +37,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Taking as an example of the (DCN-EBR)  of the ministry of education of Peru, decsribe to me the method and strategy that should be implemented for the development of the empathy built so far. I want a method and a strategy for an educational model based on competencies. I want another model and strategy for an educational model.
+    const prompt =  `Taking as an example the National Curriculum for Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, describe to me the method and strategy that should be implemented for the development of everything built so far which includes,characterization of students{}. I want a method and a strategy for an educational model based on competencies, I want another method and strategy for an educational model based on problem-based learning, another method and strategy for an educational learning model that guides spiritual development, emotional well-being and Mental health. Generate everything is spanish.
     `;
 
     try{
@@ -64,14 +64,14 @@ const router = useRouter();
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Methods and Strategies
+      Métodos y estrategias
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
-            <>Continue in BackGround</>
+            <>generando ...</>
           ) : (
             <>
               <SprayCan className="h-4 w-4 mr-2 text-blue-500" />
-             AI  Generate
+              IA generada
             </>
           )}
         </Button>
@@ -83,7 +83,7 @@ const router = useRouter();
             !initialData.methodsStrategies && "text-slate-500 italic"
           )}
         >
-          {initialData.methodsStrategies || "Sin valores"}
+          {initialData.methodsStrategies || "sin Métodos"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

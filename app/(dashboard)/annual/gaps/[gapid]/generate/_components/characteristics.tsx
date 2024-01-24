@@ -1,15 +1,13 @@
 'use client'
 
-import * as z from "zod";
 import axios from "axios";
-import { Loader2, SprayCan, Stars } from "lucide-react";
+import { SprayCan, Stars } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { GAP } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { generateCharacteristics } from "@/app/_actions/characteristics-ai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 interface CharacteristicsFormProps {
@@ -31,7 +29,8 @@ export const CharacteristicsForm = ({
   courseRecord,
   ageRecord
 }: CharacteristicsFormProps) => {
-  const [isLoading, setisLoading] = useState(false);
+
+const [isLoading, setisLoading] = useState(false);
 
 const genAI = new GoogleGenerativeAI("AIzaSyDiUlIA-d2x8TpBbPZN1gNOHFCj1eYcZhw");
 
@@ -41,16 +40,16 @@ const toggleEdit = () => setisLoading((current) => !current);
 
 const router = useRouter();
 
-  async function aiRun() {
-    
+  async function aiRun() {  
     setisLoading(true);
 
-    const prompt =   `Generate the general characterization table of students Based on the student's location in the department of ${departmentRecord?.name}, district of ${district}, and city of ${city}, considering their age of ${ageRecord?.name} and enrolled course of ${courseRecord?.name}. Use and refer to the the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru which outlines the following student characterization:
+    const prompt =   `Generate the general characterization table of students in Spanish Based on the student's location in the department of ${departmentRecord?.name}, district of ${district}, and city of ${city}, considering their age of ${ageRecord?.name} and enrolled course of ${courseRecord?.name}. Use and refer to the the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru which outlines the following student characterization:
     - Describe the student's physical characteristics.
     - Outline their psychological traits and characteristics.
     - Identify the student's interests and curiosities.
     - Analyze any social challenges the student may be facing.
     - Highlight the student's cognitive academic needs.
+     Generate evrything in Spanish.
     `;
 
     try{
@@ -72,19 +71,17 @@ const router = useRouter();
     }
    
   }
-
-
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Characterization of Students
+      Caracterización de los estudiantes
         <Button onClick={aiRun} variant="ghost">
-          {isLoading ? (
-            <>Continue in BackGround</>
+        {isLoading ? (
+            <>Generando..</>
           ) : (
             <>
               <SprayCan className="h-4 w-4 mr-2 text-blue-500" />
-             AI  Generate
+              IA Generar
             </>
           )}
         </Button>
@@ -92,13 +89,14 @@ const router = useRouter();
       {!isLoading && (
         <p
           className={cn(
-            "text-sm mt-2 text-ellipsis",
+            "text-sm mt-2 text-ellipsis ",
             !initialData.characteristics && "text-slate-500 italic"
           )}
         >
-          {initialData.characteristics || "Sin characteristics"}
+          {initialData.characteristics || "Sin Caracterización"}
         </p>
       )}
+     
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}
     </div>
   );
