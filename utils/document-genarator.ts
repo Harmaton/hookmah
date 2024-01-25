@@ -2,6 +2,7 @@ import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 import { GAP } from "@prisma/client";
+import { db } from "@/lib/db";
 
 let PizZipUtils: any = null;
 if (typeof window !== "undefined") {
@@ -10,13 +11,16 @@ if (typeof window !== "undefined") {
   });
 }
 
-export const loadFile = (url: string, callback: (error: any, content: any) => void) => {
+export const loadFile = (
+  url: string,
+  callback: (error: any, content: any) => void
+) => {
   PizZipUtils.getBinaryContent(url, callback);
 };
 
 export const generateWordDocument = async (gapData: GAP) => {
   try {
-    const templateUrl = "/path/to/your/template.docx";
+    const templateUrl = "/templates/annual-template.docx";
 
     loadFile(templateUrl, async (error: any, content: any) => {
       if (error) throw error;
@@ -26,9 +30,17 @@ export const generateWordDocument = async (gapData: GAP) => {
 
       // Bind your GAP model data to the template
       doc.setData({
-        id: gapData.id,
-        userid: gapData.userid,
-        // ... (add other properties from your model)
+        institutionName: gapData.institutionName,
+        proffesorName: gapData.proffesorName,
+        characteristics: gapData.characteristics,
+        values: gapData.values,
+        resources: gapData.resources,
+        acdescription: gapData.acdescription,
+        learningPurposes: gapData.learningPurposes,
+        methodStrategies: gapData.methodsStrategies,
+        materials: gapData.materials,
+        attitudes: gapData.attitudes,
+        bibliography: gapData.bibliography,
       });
 
       // Perform the templating process

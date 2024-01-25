@@ -12,10 +12,19 @@ export async function POST(req: Request) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
+    const baseLegal = `
+    `
+    const graduateProfile= `
+    `
+    const crosscuttingApproach = ``
+
     const gap = await db.gAP.create({
       data: {
        userid: userId,
-        title,
+        title: title,
+        // regulatoryBasis: baseLegal,
+        // graduateProfile: graduateProfile,
+        // crosscuttingApproach: crosscuttingApproach
       },
     });
 
