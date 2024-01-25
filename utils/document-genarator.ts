@@ -18,9 +18,15 @@ export const loadFile = (
   PizZipUtils.getBinaryContent(url, callback);
 };
 
-export const generateWordDocument = async (gapData: GAP) => {
+export const generateWordDocument = async (
+  gapData: GAP,
+  academyLevel: { name: string } | null,
+  averageAge: { name: string } | null,
+  educationLevel: { name: string } | null,
+  department: { name: string } | null
+) => {
   try {
-    const templateUrl = "/templates/annual-template.docx";
+    const templateUrl = "/templates/template-1.docx";
 
     loadFile(templateUrl, async (error: any, content: any) => {
       if (error) throw error;
@@ -41,6 +47,11 @@ export const generateWordDocument = async (gapData: GAP) => {
         materials: gapData.materials,
         attitudes: gapData.attitudes,
         bibliography: gapData.bibliography,
+        city: gapData.city,
+        academyLevel: academyLevel,
+        averageAge: averageAge,
+        educationLevel: educationLevel,
+        department: department,
       });
 
       // Perform the templating process

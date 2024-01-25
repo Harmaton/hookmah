@@ -7,11 +7,14 @@ import { Fingerprint, TrendingUp } from "lucide-react";
 import React, { FC } from "react";
 import Spotlight from "./ui/SpotLight";
 import SVGOverlay from "./svg-overlay";
+import { GridBackgroundDemo } from "./grid-background";
 
 const Hero: FC = () => {
   return (
-    <section className="container relative mt-4 p-3   animate-gradient w-full   flex items-center justify-center ">
-      <Spotlight />
+    <>
+   
+    <section className="container relative mt-4 p-3   animate-gradient w-full   flex items-center justify-center pointer-events-none inset-0 dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black) ">
+      
       <div className="max-w-4xl mx-auto space-y-6 text-center ">
         <h1 className="text-3xl sm:text-5xl font-fancy font-extrabold m-3">
           Abrace el futuro de la educación con{" "}
@@ -52,6 +55,7 @@ const Hero: FC = () => {
         </Card>
       </div>
     </section>
+    </>
   );
 };
 

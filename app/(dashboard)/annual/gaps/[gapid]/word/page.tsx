@@ -42,7 +42,8 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
     !gap?.departmentId ||
     !gap?.ageid ||
     !gap?.courseid ||
-    !gap?.educationid
+    !gap?.educationid || 
+    !gap.academyid
   ) {
     return redirect("/");
   }
@@ -51,6 +52,22 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
     where: { id: gap.ageid },
     select: { name: true },
   });
+
+  const educationLevel = await db.educationLevel.findUnique({
+    where: { id: gap.educationid },
+    select: { name: true },
+  })
+
+  const department = await db.department.findUnique({
+    where: { id: gap.departmentId },
+    select: { name: true },
+  })
+
+  const academyLevel = await db.academy.findUnique({
+    where: { id: gap.academyid },
+    select: { name: true },
+  })
+
 
   const requiredFields = [gap.methodsStrategies, gap.resources, gap.materials];
 
@@ -92,7 +109,7 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
         <ChevronDownCircle className="animate animate-bounce m-4" />
       </div>
       <div className="flex justify-center items-center rounded-full p-2 mt-2 bg-red-200">
-        <WordAction gapData={gap} disabled={false} gapid={gap.id} />
+        <WordAction gapData={gap} disabled={false} gapid={gap.id} academyLevel={academyLevel} averageAge={ageRecord} educationLevel={educationLevel} department={department} />
       </div>
     </>
       )}

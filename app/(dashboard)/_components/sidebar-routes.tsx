@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart,  Webhook, GalleryHorizontal, GalleryVerticalEnd, Library, List, FolderKanban, PenLine } from "lucide-react";
+import { BarChart,  Webhook, GalleryHorizontal, GalleryVerticalEnd, Library, List, FolderKanban, PenLine, ScrollText } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { SidebarItem } from "./sidebar-item";
@@ -8,8 +8,8 @@ import { SidebarItem } from "./sidebar-item";
 
 const guestRoutes = [
   {
-    icon: GalleryVerticalEnd,
-    label: "Annual Programming",
+    icon: ScrollText,
+    label: "PROGRAMACIÓN CURRICULAR ANUAL",
     href: "/annual",
   },
   {
