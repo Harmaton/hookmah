@@ -155,10 +155,10 @@ async function addDepatments() {
   }
 }
 
-// addEducationLevels()
-// addAverageAges()
-// addAcademyLevels();
-// addCourses();
+addEducationLevels()
+addAverageAges()
+addAcademyLevels();
+addCourses();
 addDepatments()
 
 

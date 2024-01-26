@@ -1,6 +1,9 @@
 {
   "name": "hookmah",
   "version": "0.1.0",
+  "prisma": {
+    "seed": "ts-node scripts/seed.ts"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",

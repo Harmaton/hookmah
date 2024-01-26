@@ -2,7 +2,6 @@ import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 import { GAP } from "@prisma/client";
-import { db } from "@/lib/db";
 
 let PizZipUtils: any = null;
 if (typeof window !== "undefined") {
