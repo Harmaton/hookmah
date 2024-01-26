@@ -7,7 +7,6 @@ import { Fingerprint, TrendingUp } from "lucide-react";
 import React, { FC } from "react";
 import Spotlight from "./ui/SpotLight";
 import SVGOverlay from "./svg-overlay";
-import { GridBackgroundDemo } from "./grid-background";
 
 const Hero: FC = () => {
   return (

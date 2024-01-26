@@ -7,6 +7,8 @@ import React from "react";
 import Features from "@/components/features";
 import FAQ from "@/components/faq";
 import Hero from "@/components/hero";
+import { GridBackground } from "@/components/grid-background";
+import { TypewriterEffectSmoothDemo } from "@/components/typewriter";
 
 export default function Home() {
 
@@ -14,7 +16,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden ">
       
       <Navbar />
-      <Hero />
+      <TypewriterEffectSmoothDemo  />
       <div className="p-10">
 
       </div>
