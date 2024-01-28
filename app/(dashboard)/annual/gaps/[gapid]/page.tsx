@@ -160,8 +160,8 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
           <div className="space-y-6">
             <div className="border rounded-md">
               <ImageForm initialData={gap} gapid={gap.id} />
-              <RegForm initialData={gap} gapid={gap.id} />
-              <ProfileForm initialData={gap} gapid={gap.id} />
+              {/* <RegForm initialData={gap} gapid={gap.id} />
+              <ProfileForm initialData={gap} gapid={gap.id} /> */}
               <div className="border">
                 <DepartmentForm
                   initialData={gap}
