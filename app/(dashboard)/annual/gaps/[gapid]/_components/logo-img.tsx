@@ -92,9 +92,6 @@ export const ImageForm = ({
               }
             }}
           />
-          <div className="text-xs foreground mt-4">
-          Se recomienda una relación de aspecto de 16:9
-          </div>
         </div>
       )}
     </div>

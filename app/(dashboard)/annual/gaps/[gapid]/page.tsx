@@ -70,7 +70,6 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
   }
 
   const requiredFields = [
-    gap.title,
     gap.departmentId,
     gap.proffesorName,
     gap.institutionName,
