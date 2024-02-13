@@ -59,7 +59,7 @@ export function DataTable<TData, TValue>({
         <Link href="/annual/create">
           <Button>
             <PlusCircle className="h-4 w-4 mr-2" />
-            Create 2024 General Annual Programming
+            Crear Programación General Anual 2024
           </Button>
         </Link>
       </div>

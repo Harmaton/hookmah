@@ -58,7 +58,7 @@ const Navbar = () => {
 
         <div className="flex items-center space-x-4">
           <ModeToggle />
-          {user?.isSignedIn ? (
+          { isTeacher ? (
             <>
              <div className="flex mr-2 ">
               <Link href='/annual'>
@@ -71,31 +71,49 @@ const Navbar = () => {
             </>
           ) : (
             <div className="flex mr-2 ">
-              <div className="mr-2">
-                <Link href="/new">
-                  <div
-                    className={buttonVariants({
-                      size: "sm",
-                    })}
-                  >
-                    Sign up
-                  </div>
-                </Link>
-              </div>
 
-              <div>
-                <Link href="/new">
-                  <div
-                    className={buttonVariants({
-                      size: "sm",
-                    })}
-                  >
-                    Sign In
-                  </div>
-                </Link>
-              </div>
+            <div>
+              <Link href="/contact">
+                <div
+                  className={buttonVariants({
+                    size: "sm",
+                  })}
+                >
+                  Contacto Ventas
+                </div>
+              </Link>
             </div>
+            <UserButton afterSignOutUrl="/" />
+          </div>
           )}
+          {!user?.isSignedIn && (
+             <div className="flex mr-2 ">
+             <div className="mr-2">
+               <Link href="/new">
+                 <div
+                   className={buttonVariants({
+                     size: "sm",
+                   })}
+                 >
+                   Sign up
+                 </div>
+               </Link>
+             </div>
+
+             <div>
+               <Link href="/new">
+                 <div
+                   className={buttonVariants({
+                     size: "sm",
+                   })}
+                 >
+                   Sign In
+                 </div>
+               </Link>
+             </div>
+           </div>
+          )}
+
         </div>
       </div>
     </nav>

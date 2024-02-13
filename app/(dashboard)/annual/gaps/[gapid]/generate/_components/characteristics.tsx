@@ -3,7 +3,7 @@
 import axios from "axios";
 import { SprayCan, Stars } from "lucide-react";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import {toast} from "sonner";
 import { useRouter } from "next/navigation";
 import { GAP } from "@prisma/client";
 import { Button } from "@/components/ui/button";

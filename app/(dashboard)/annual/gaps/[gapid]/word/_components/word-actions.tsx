@@ -11,7 +11,7 @@ import {
   Trash,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import {toast} from "sonner";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,7 @@ export const WordAction = ({
         educationLevel,
         department
       );
+      toast.success("Descargado exitosamente")
       router.refresh();
     } catch {
       toast.error("Algo salió mal");
@@ -58,16 +59,16 @@ export const WordAction = ({
   };
 
   return (
-    <div className="flex items-center gap-x-2">
+    <div className="flex items-center gap-x-2 ">
       <Button
         onClick={onClick}
         disabled={disabled || isLoading}
         variant="outline"
         size="sm"
-        className="border-blue-500"
+        className="bg-blue-500 text-white"
       >
         Generar documento de Word
-        <BookText className="h-4 w-4 ml-4" />
+        <BookText className="h-4 w-4 ml-4 text-white" />
       </Button>
     </div>
   );

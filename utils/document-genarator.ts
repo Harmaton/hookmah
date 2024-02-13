@@ -3,6 +3,7 @@ import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 import { GAP } from "@prisma/client";
 
+
 let PizZipUtils: any = null;
 if (typeof window !== "undefined") {
   import("pizzip/utils/index.js").then(function (r) {
@@ -25,7 +26,8 @@ export const generateWordDocument = async (
   department: { name: string } | null
 ) => {
   try {
-    const templateUrl = "/templates/template-1.docx";
+    
+    const templateUrl = "/templates/temp-test.docx";
 
     loadFile(templateUrl, async (error: any, content: any) => {
       if (error) throw error;
@@ -33,7 +35,6 @@ export const generateWordDocument = async (
       const zip = new PizZip(content);
       const doc = new Docxtemplater(zip, { modules: [] });
 
-      // Bind your GAP model data to the template
       doc.setData({
         institutionName: gapData.institutionName,
         proffesorName: gapData.proffesorName,
@@ -47,10 +48,11 @@ export const generateWordDocument = async (
         attitudes: gapData.attitudes,
         bibliography: gapData.bibliography,
         city: gapData.city,
-        academyLevel: academyLevel,
-        averageAge: averageAge,
-        educationLevel: educationLevel,
-        department: department,
+        academyLevel: academyLevel?.name,
+        averageAge: averageAge?.name,
+        educationLevel: educationLevel?.name,
+        department: department?.name,
+        // gapimage: gapData.companyLogo
       });
 
       // Perform the templating process

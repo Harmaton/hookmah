@@ -3,7 +3,7 @@
 import axios from "axios";
 import { BookCheck, BookOpenCheckIcon, SprayCan, Trash, TrendingUp } from "lucide-react";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import {toast} from "sonner";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";

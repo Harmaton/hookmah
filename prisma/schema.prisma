@@ -37,7 +37,7 @@ model User {
 
 model GAP {
   id           String         @id @default(uuid())
-  userid      String         
+  userid      String         @unique
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
 
@@ -121,4 +121,91 @@ model Department {
   name String
   gaps GAP[]
   
+}
+
+model Experience {
+  id String @id @default(uuid())
+
+  userid      String         
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  //Input
+  title String
+  prof_name String?
+  date String?
+  characterization String?
+
+  //dropdown
+  academicid String?
+  academic_level  AcademicLevel_experience? @relation(fields: [academicid], references: [id])
+
+  ageid String?
+  averageAge AverageAge_experience? @relation(fields: [ageid], references: [id])
+
+  courseid String?
+  course_name Course_experience? @relation(fields: [courseid], references: [id]) 
+
+  educationid String?
+  education_level EducationLevel__experience? @relation(fields: [educationid], references: [id])
+
+  //AI
+  reality_context String? @db.Text
+  question_ai String? @db.Text
+  skills String? @db.Text
+  evaluation_criteria String? @db.Text
+  thematic_fields String? @db.Text
+  product String? @db.Text
+  eval_instrument String? @db.Text
+  sequence_activities String? @db.Text
+  methods_strategies String? @db.Text
+  materials String? @db.Text
+  resources String? @db.Text
+  bibliography String? @db.Text
+
+  @@index([ageid])
+  @@index([academicid])
+  @@index([courseid])
+  @@index([educationid])
+
+}
+
+
+model Course_experience {
+   id String @id @default(uuid())
+  name String
+  experience Experience[]
+}
+
+model AverageAge_experience {
+  id String @id @default(uuid())
+  name String
+  experience Experience[]
+}
+
+model EducationLevel__experience {
+  id String @id @default(uuid())
+  name String
+  experience Experience[]
+}
+model AcademicLevel_experience {
+  id String @id @default(uuid())
+  name String
+  experience Experience[]
+}
+
+model Session {
+  id String @id @default(uuid())
+  company_logo String?
+  year String?
+  institution_name String?
+  course_name String?
+  academic_level String?
+  education_Level String?
+  prof_name String?
+  date String?
+  competence String?
+  ability String?
+  perfomance String?
+  assesment String?
 }

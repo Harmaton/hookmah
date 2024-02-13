@@ -67,8 +67,8 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
     gap.acdescription,
     gap.characteristics,
     gap.learningPurposes,
-    gap.attitudes,
-    gap.values,
+    // gap.attitudes,
+    // gap.values,
     gap.recommendations,
   ];
 
@@ -84,8 +84,8 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
     <>
       <div className="p-6 border">
         <div className='flex space-x-5 items-center p-2 border rounded-md mb-2'>
-          <CheckCircle className="h-4 w-4 text-red-300" />
-          <h1 className="text-2xl text-red-300"> Paso 2/3</h1>
+          <CheckCircle className="h-4 w-4 text-red-500" />
+          <h1 className="text-2xl text-red-500"> Paso 2/3</h1>
           <BackActions disabled={false} gapid={gap.id} />
         </div>
         <div className="flex items-center justify-between flex-col md:flex-row">
@@ -137,25 +137,27 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
               ageRecord={ageRecord}
             />
 
-            <AttitudesForm
-              initialData={gap}
-              gapid={gap.id}
-              ageRecord={ageRecord}
-            />
-            <ValuesForm
-              initialData={gap}
-              gapid={gap.id}
-              ageRecord={ageRecord}
-            />
-          </div>
-
-          <div className="space-y-6">
-            <div className="border rounded-md">
-              <MethodsForm
+            <MethodsForm
                 initialData={gap}
                 gapid={gap.id}
                 ageRecord={ageRecord}
               />
+
+            {/* <AttitudesForm
+              initialData={gap}
+              gapid={gap.id}
+              ageRecord={ageRecord}
+            /> */}
+            {/* <ValuesForm
+              initialData={gap}
+              gapid={gap.id}
+              ageRecord={ageRecord}
+            /> */}
+          </div>
+
+          <div className="space-y-6">
+            <div className="border rounded-md">
+             
               <LearningfORM
                 initialData={gap}
                 gapid={gap.id}

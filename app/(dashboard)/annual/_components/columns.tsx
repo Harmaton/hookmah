@@ -30,32 +30,7 @@ export const columns: ColumnDef<GAP>[] = [
       )
     },
   },
-  {
-    accessorKey: "isSigned",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Signed
-          <BadgeCheck className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => {
-      const isSigned = row.getValue("isSigned") || false;
-
-      return (
-        <Badge className={cn(
-          "bg-slate-500",
-          isSigned && "bg-pink-700"
-        )}>
-          {isSigned ? "Signed" : "Not Signed"}
-        </Badge>
-      )
-    }
-  },
+  
   {
     id: "actions",
     cell: ({ row }) => {
@@ -73,7 +48,7 @@ export const columns: ColumnDef<GAP>[] = [
             <Link href={`/annual/gaps/${id}`}>
               <DropdownMenuItem>
                 <Pencil className="h-4 w-4 mr-2" />
-                Editar General Annual Programming
+                Editar Sesión
               </DropdownMenuItem>
             </Link>
           </DropdownMenuContent>

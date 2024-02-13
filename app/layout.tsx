@@ -19,10 +19,11 @@ import {
   fontManrope,
   fontCaveat,
 } from '@/lib/fonts';
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/logo/logo-hokmah.png",
+    icon: "/logo.png",
   },
   title: "Hokmah ",
   description: "Curated Education Document Content Detailing with AI",
@@ -37,6 +38,7 @@ export default function RootLayout({
     <>
       <ClerkProvider>
         <html lang="en">
+        <link rel="icon" href="/icon.png" />
           <body
             className={cn(
               "min-h-screen bg-background antialiased scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-800 scrollbar-thumb-rounded-full scrollbar-track-rounded-full",
@@ -52,6 +54,7 @@ export default function RootLayout({
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
               {children}
             </ThemeProvider>
+            <Toaster position="top-left" richColors />
           </body>
         </html>
       </ClerkProvider>

@@ -1,7 +1,7 @@
 "use client";
 
 import { UserButton, useAuth, useUser } from "@clerk/nextjs";
-import { LogOut, PlusIcon, SkipBack, Undo2 } from "lucide-react";
+import { ArrowBigLeftIcon, LogOut, PlusIcon, SkipBack, Undo2 } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -36,11 +36,10 @@ export const NavbarRoutes = () => {
        
           <Link href="/">
             <Button size="sm" variant="ghost">
-              <Undo2 className="h-4 w-4 mr-2" />
+              <ArrowBigLeftIcon className="h-4 w-4 mr-2 text-red-500" />
               Atrás
             </Button>
           </Link>
-          
         <UserButton afterSignOutUrl="/" />
       </div>
     </>

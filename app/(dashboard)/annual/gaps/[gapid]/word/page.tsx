@@ -68,7 +68,6 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
     select: { name: true },
   })
 
-
   const requiredFields = [gap.methodsStrategies, gap.resources, gap.materials];
 
   const allFields = requiredFields.length;
@@ -82,8 +81,8 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
   return (
     <div className="p-6 border">
        <div className='flex space-x-5 items-center p-2 border mb-2'>
-      <CheckCircle className="h-4 w-4 text-red-300" />
-      <h1 className="text-2xl text-red-300"> Paso 3/3</h1>
+      <CheckCircle className="h-4 w-4 text-red-500" />
+      <h1 className="text-2xl text-red-500"> Paso 3/3</h1>
       <Actions disabled={false} gapid={gap.id} />
       </div>
       <div className="flex space-x-5 flex-row p-2 ">
@@ -91,9 +90,7 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
         Genera los detalles finales y accede al botón para convertir todo a Word.
         </h1>
       </div>
-
       <MethodsForm initialData={gap} gapid={gap.id} ageRecord={ageRecord} />
-
       <MaterialsForm initialData={gap} gapid={gap.id} ageRecord={ageRecord} />
       <ResourcesForm initialData={gap} gapid={gap.id} ageRecord={ageRecord} />
       <BibliographyForm
@@ -101,14 +98,13 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
         gapid={gap.id}
         ageRecord={ageRecord}
       />
-
       <Separator className="m-2" />
       {isComplete && (
       <>
       <div className="flex justify-center items-center">
         <ChevronDownCircle className="animate animate-bounce m-4" />
       </div>
-      <div className="flex justify-center items-center rounded-full p-2 mt-2 bg-red-200">
+      <div className="flex justify-center items-center rounded-full p-2 mt-2 bg-red-500">
         <WordAction gapData={gap} disabled={false} gapid={gap.id} academyLevel={academyLevel} averageAge={ageRecord} educationLevel={educationLevel} department={department} />
       </div>
     </>

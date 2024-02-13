@@ -95,8 +95,8 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
     <>
       <div className="p-6 border">
       <div className='flex space-x-5 items-center p-2 border mb-2'>
-      <CheckCircle className="h-4 w-4 text-red-300" />
-      <h1 className="text-2xl text-red-300"> Paso 1/3 </h1>
+      <CheckCircle className="h-4 w-4 text-red-500" />
+      <h1 className="text-2xl text-red-500"> Paso 1/3 </h1>
       
       </div>
         <div className="flex items-center justify-between">
@@ -110,8 +110,8 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
             </span>
             {!isComplete && <Progress value={completedFields} />}
             {isComplete && (
-              <div className="h-10 w-10 rounded-full bg-green-200 flex">
-                <CheckCheck className="text-green-500 mx-auto my-auto" />
+              <div className="h-10 w-10 rounded-full bg-green-500 flex">
+                <CheckCheck className="text-white mx-auto my-auto" />
               </div>
             )}
             {!isComplete && (
