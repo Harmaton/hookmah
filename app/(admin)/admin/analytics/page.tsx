@@ -11,26 +11,26 @@ const page = async () => {
       {/* Three cards in the first row */}
       <div className="flex flex-col lg:flex-row lg:flex-grow lg:space-x-4">
         <Card className="flex-grow">
-          <CardHeader className="font-bold text-3xl ">Total de usuarias</CardHeader>
+          <CardHeader className="font-bold text-2xl ">Total de usuarias</CardHeader>
           <CardContent className="text-2xl m-auto">{total_users}</CardContent>
         </Card>
         <Card className="flex-grow">
-          <CardHeader className="font-bold text-3xl ">Profesores totales</CardHeader>
+          <CardHeader className="font-bold text-2xl ">Profesores totales</CardHeader>
           <CardContent className="text-2xl m-auto">{total_teachers}</CardContent>
         </Card>
         <Card className="flex-grow">
-          <CardHeader className="font-bold text-3xl ">Programación Curricular Anual Total Creada</CardHeader>
+          <CardHeader className="font-bold text-2xl ">Programación Curricular Anual Total Creada</CardHeader>
           <CardContent className="text-2xl m-auto">{total_gaps_created}</CardContent>
         </Card>
       </div>
 
       <div className="flex flex-col space-y-4 m-auto lg:flex-row lg:flex-grow space-x-4">
         <Card className="lg:flex-grow">
-          <CardHeader className="font-bold text-3xl ">Sesiones totales</CardHeader>
+          <CardHeader className="font-bold text-2xl ">Sesiones totales</CardHeader>
           <CardContent className="text-2xl m-auto">{total_sessions}</CardContent>
         </Card>
         <Card className="lg:flex-grow">
-          <CardHeader className="font-bold text-3xl ">Experiencias Totales</CardHeader>
+          <CardHeader className="font-bold text-2xl ">Experiencias Totales</CardHeader>
           <CardContent className="text-2xl m-auto">{total_experiences}</CardContent>
         </Card>
       </div>
