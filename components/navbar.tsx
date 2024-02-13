@@ -72,8 +72,8 @@ const Navbar = () => {
           ) : (
             <div className="flex mr-2 ">
 
-            <div>
-              <Link href="/contact">
+            <div className="mr-2">
+              <Link href="/contact" >
                 <div
                   className={buttonVariants({
                     size: "sm",
