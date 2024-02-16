@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import {  Trash, TrendingUp } from "lucide-react";
+import { BookCheck, BookOpenCheckIcon, SkipBack, SprayCan, Trash } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -17,30 +17,21 @@ interface ActionsProps {
 
 export const Actions = ({
   disabled,
-  experienceid,
+  experienceid
 }: ActionsProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const onClick = async () => {
     try {
+        
         router.push(`/experience/experiences/${experienceid}/generate`)
+
     } catch {
       toast.error("Algo salió mal");
     } 
   }
   
-  const onDelete = async () => {
-    try {
-    await axios.delete(`/api/experience/${experienceid}`)
-      router.push(`/annual`);
-    } catch {
-      toast.error("Algo salió mal");
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
   return (
     <div className="flex items-center gap-x-2">
       <Button
@@ -48,16 +39,11 @@ export const Actions = ({
         disabled={disabled || isLoading}
         variant="outline"
         size="sm"
-        className="border-blue-500"
+        className="border-blue-500 space-x-2"
        >
-       Usa Hokmah ai para el resto
-       <TrendingUp className="h-4 w-4 ml-2" />
+      Volver al paso 2
+       <SkipBack className="h-4 w-4 ml-2" />
       </Button>
-      <ConfirmModal onConfirm={onDelete}>
-        <Button size="sm" disabled={isLoading} className=" ">
-          <Trash className="h-4 w-4 " />
-        </Button>
-      </ConfirmModal>
     </div>
   )
 }

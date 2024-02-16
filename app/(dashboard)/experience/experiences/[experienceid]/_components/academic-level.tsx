@@ -28,7 +28,7 @@ interface EducationLevelProps {
 };
 
 const formSchema = z.object({
-  educationid: z.string().min(1),
+  academicid: z.string().min(1),
 });
 
 
@@ -46,7 +46,7 @@ export const AcademicLevelForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      educationid: initialData?.educationid || "",
+      academicid: initialData?.academicid || "",
     },
   });
 
@@ -63,7 +63,7 @@ export const AcademicLevelForm = ({
     }
   };
 
-  const selectedOption = options ? options.find((option) => option.value === initialData.educationid) : null;
+  const selectedOption = options ? options.find((option) => option.value === initialData.academicid) : null;
 
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
@@ -83,7 +83,7 @@ export const AcademicLevelForm = ({
       {!isEditing && (
         <p className={cn(
           "text-sm mt-2",
-          !initialData.educationid && "text-slate-500 italic"
+          !initialData.academicid && "text-slate-500 italic"
         )}>
           {selectedOption?.label || "Nivel de académico"}
         </p>
@@ -96,7 +96,7 @@ export const AcademicLevelForm = ({
           >
             <FormField
               control={form.control}
-              name="educationid"
+              name="academicid"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>

@@ -8,7 +8,7 @@ import { PenBox } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import {Experience} from "@prisma/client";
+import { Experience } from "@prisma/client";
 
 import {
   Form,
@@ -24,17 +24,17 @@ import { Textarea } from "@/components/ui/textarea";
 interface profnameFormProps {
   initialData: Experience;
   experienceid: string;
-};
+}
 
 const formSchema = z.object({
-  profname: z.string().min(1, {
+  prof_name: z.string().min(1, {
     message: "Se requiere descripción",
   }),
 });
 
 export const ProfnameForm = ({
   initialData,
-  experienceid
+  experienceid,
 }: profnameFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -45,7 +45,7 @@ export const ProfnameForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      profname: initialData?.prof_name || ""
+      prof_name: initialData?.prof_name || "",
     },
   });
 
@@ -53,21 +53,21 @@ export const ProfnameForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/experirnce/${experienceid}`, values);
+      await axios.patch(`/api/experience/${experienceid}`, values);
       toast.success("profname actualizado");
       toggleEdit();
       router.refresh();
     } catch {
       toast.error("Algo salió mal");
     }
-  }
+  };
 
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Nombre de la profesora
+        Nombre de la profesora
         <Button onClick={toggleEdit} variant="ghost">
-        {isEditing ? (
+          {isEditing ? (
             <>Minimizar</>
           ) : (
             <>
@@ -78,10 +78,12 @@ export const ProfnameForm = ({
         </Button>
       </div>
       {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.prof_name && "text-slate-500 italic"
-        )}>
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.prof_name && "text-slate-500 italic"
+          )}
+        >
           {initialData.prof_name || "Sin nombre"}
         </p>
       )}
@@ -93,7 +95,7 @@ export const ProfnameForm = ({
           >
             <FormField
               control={form.control}
-              name="profname"
+              name="prof_name"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -108,10 +110,7 @@ export const ProfnameForm = ({
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button
-                disabled={!isValid || isSubmitting}
-                type="submit"
-              >
+              <Button disabled={!isValid || isSubmitting} type="submit">
                 Ahorrar
               </Button>
             </div>
@@ -119,5 +118,5 @@ export const ProfnameForm = ({
         </Form>
       )}
     </div>
-  )
-}
+  );
+};

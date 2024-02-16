@@ -6,22 +6,26 @@ import { Loader2, SprayCan, Stars } from "lucide-react";
 import { useState } from "react";
 import {toast} from "sonner";
 import { useRouter } from "next/navigation";
-import { GAP } from "@prisma/client";
+import { Experience, GAP } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-interface BibliographyFormProps {
-  initialData: GAP;
-  ageRecord: {name: string } | null;
-  gapid: string;
+interface SkillsFormProps {
+  initialData: Experience;
+  psecharacteristics: string | null;
+  piccharacteristics: string | null;
+  pnpcharacteristics: string | null;
+  experienceid: string;
 }
 
-export const BibliographyForm = ({
+export const SkillsForm = ({
   initialData,
-  gapid,
-  ageRecord
-}: BibliographyFormProps) => {
+  experienceid,
+  psecharacteristics,
+  piccharacteristics,
+  pnpcharacteristics
+}: SkillsFormProps) => {
   const [isLoading, setisLoading] = useState(false);
 
 const genAI = new GoogleGenerativeAI("AIzaSyDiUlIA-d2x8TpBbPZN1gNOHFCj1eYcZhw");
@@ -36,20 +40,17 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Design me a complete bibliography of all the places you have gone to to obtain the constructed information. Generate everything in Spanish.
+    const prompt =   `Taking into account the description made previously about the global and Peruvian context of the characterization described as physical, social, cognitive and emotional which are as follows ${psecharacteristics}, as well as interests and curiosities which are as followsm${piccharacteristics}, as well as needs and problems which are as follows ${pnpcharacteristics}. And taking into account that what we are building a "Learning Experience" according to the National Curriculum of Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, literally places here the Competencies of the area that will be required for such Learning Experience built so far. Generate everything in Spanish.
     `;
 
     try{
       const result = await model.generateContent(prompt);
       const response = result.response;
       const text = response.text();
-
+      const res = await axios.patch(`/api/experience/${experienceid}/skills`, { text: JSON.stringify(text) });
       setisLoading(false);
-
-      const res = await axios.patch(`/api/gaps/${gapid}/bibliography`, { text: JSON.stringify(text) });
-
       console.log(res)
-      toast.success("Values updated");
+      toast.success("valores actualizados");
       toggleEdit();
       router.refresh();
 
@@ -58,12 +59,10 @@ const router = useRouter();
     }
    
   }
-
-
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Bibliografía
+      Destrezas y competencias
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
             <>generando ...</>
@@ -79,10 +78,10 @@ const router = useRouter();
         <p
           className={cn(
             "text-sm mt-2 text-ellipsis",
-            !initialData.bibliography && "text-slate-500 italic"
+            !initialData.skills && "text-slate-500 italic"
           )}
         >
-          {initialData.bibliography || "Sin Bibliografía"}
+          {initialData.skills || "SiDestrezas y competenciasn Bibliografía"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

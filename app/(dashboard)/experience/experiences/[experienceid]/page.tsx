@@ -11,6 +11,9 @@ import { AverageAgeForm } from "./_components/average-age";
 import { CharacterizationForm } from "./_components/characterization";
 import { EducationLevelForm } from "./_components/education_level";
 import { AcademicLevelForm } from "./_components/academic-level";
+import { PSEcharacteristicsForm } from "./_components/psecharacteristics";
+import { PiccharacteristicsForm } from "./_components/piccharacteristics";
+import { PnpcharacteristicsForm } from "./_components/pnpcharacteristics";
 
 
 const ExprienceIDPage = async ({ params }: { params: { experienceid: string } }) => {
@@ -33,10 +36,13 @@ if (!experience) {
   const requiredFields = [
     experience.academicid,
     experience.educationid,
-    experience.eval_instrument,
-    experience.ageid,
     experience.prof_name,
-    experience.product
+    experience.ageid,
+    experience.psecharacteristics,
+    experience.date,
+    experience.courseid,
+    experience.piccharacteristics,
+    experience.pnpcharacteristics
   ];
 
   const allFields = requiredFields.length;
@@ -46,6 +52,31 @@ if (!experience) {
   const completionText = `(${completedFields}/${allFields})`;
 
   const isComplete = requiredFields.every(Boolean)
+
+  const courses = await db.course_experience.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+
+
+  const ages = await db.averageAge_experience.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+
+  const educationlevels = await db.educationLevel__experience.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+
+  const academiclevels = await db.academicLevel_experience.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
 
 return (
     <>
@@ -86,26 +117,41 @@ return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           <div className="border rounded-md ">
            <ProfnameForm initialData={experience} experienceid={experience.id} />
-            <CourseNameForm initialData={experience} experienceid={experience.id} options={[]}   />
+            <CourseNameForm initialData={experience} experienceid={experience.id} options={courses.map((courses) => ({
+                    label: courses.name,
+                    value: courses.id,
+                  }))}   />
 
             <div className="border">
              <DateForm initialData={experience} experienceid={experience.id} />
-             <AverageAgeForm initialData={experience} experienceid={experience.id} options={[]}  />
+             <AverageAgeForm initialData={experience} experienceid={experience.id} options={ages.map((courses) => ({
+                    label: courses.name,
+                    value: courses.id,
+                  }))}   />
+
+<AcademicLevelForm initialData={experience} experienceid={experience.id} options={academiclevels.map((courses) => ({
+                    label: courses.name,
+                    value: courses.id,
+                  }))}  />   
+
+<EducationLevelForm initialData={experience} educationid={experience.id} options={educationlevels.map((courses) => ({
+                    label: courses.name,
+                    value: courses.id,
+                  }))}  />
             </div>
           </div>
 
           <div className="space-y-6">
             <div className="border rounded-md">
-             <CharacterizationForm initialData={experience} experienceid={experience.id} />
-
-
-             <EducationLevelForm initialData={experience} educationid={experience.id} options={[]} />
-
+             
+                  <PSEcharacteristicsForm initialData={experience} experienceid={experience.id} />
+                  <PiccharacteristicsForm initialData={experience} experienceid={experience.id} />
+                  <PnpcharacteristicsForm initialData={experience} experienceid={experience.id} />
              
               <div className="border">
 
                  
-               <AcademicLevelForm initialData={experience} experienceid={experience.id} options={[]} />   
+              
                
               </div>
             </div>

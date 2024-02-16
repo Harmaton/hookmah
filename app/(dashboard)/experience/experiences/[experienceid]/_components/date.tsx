@@ -53,7 +53,7 @@ export const DateForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/experirnce/${experienceid}`, values);
+      await axios.patch(`/api/experience/${experienceid}`, values);
       toast.success("Date actualizado");
       toggleEdit();
       router.refresh();

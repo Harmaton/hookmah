@@ -136,6 +136,10 @@ model Experience {
   date String?
   characterization String?
 
+  psecharacteristics String?
+  piccharacteristics String?
+  pnpcharacteristics String?
+
   //dropdown
   academicid String?
   academic_level  AcademicLevel_experience? @relation(fields: [academicid], references: [id])

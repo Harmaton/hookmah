@@ -4,12 +4,12 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ListPlus, Pencil } from "lucide-react";
+import { PenBox, Pencil } from "lucide-react";
 import { useState } from "react";
-import {toast} from "sonner";
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import {  Experience } from "@prisma/client";
- 
+import { Course, Experience, GAP } from "@prisma/client";
+
 import {
   Form,
   FormControl,
@@ -20,25 +20,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
-import { Combobox } from "@/components/ui/combobox";
 
-interface AgeFormProps {
+interface pnpcharacteristicsFormProps {
   initialData: Experience;
   experienceid: string;
-  options: { label: string; value: string; }[];
-};
+}
 
 const formSchema = z.object({
-  ageid: z.string().min(1),
+  pnpcharacteristics: z.string().min(1, {
+    message: "Se requiere descripción",
+  }),
 });
 
-
-
-export const AverageAgeForm = ({
+export const PnpcharacteristicsForm = ({
   initialData,
   experienceid,
-  options,
-}: AgeFormProps) => {
+}: pnpcharacteristicsFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -48,7 +45,7 @@ export const AverageAgeForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      ageid: initialData?.ageid || "",
+      pnpcharacteristics: initialData?.pnpcharacteristics || "",
     },
   });
 
@@ -57,7 +54,7 @@ export const AverageAgeForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/experience/${experienceid}`, values);
-      toast.success("Age actualizado");
+      toast.success(" pnpcharacteristics actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -65,29 +62,29 @@ export const AverageAgeForm = ({
     }
   };
 
-  const selectedOption = options ? options.find((option) => option.value === initialData.ageid) : null;
-
   return (
-    <div className="mt-6 bg-transparent rounded-md p-4">
+    <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Edad promedio
+      colocar intereses y curiosidades
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimizar</>
           ) : (
             <>
-              <ListPlus className="h-4 w-4 mr-2 text-red-500" />
-              Editar promedio
+              <PenBox className="h-4 w-4 mr-2 text-blue-500" />
+              Editar Caracterización
             </>
           )}
         </Button>
       </div>
       {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.ageid && "text-slate-500 italic"
-        )}>
-          {selectedOption?.label || "Ninguna promedio"}
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.pnpcharacteristics && "text-slate-500 italic"
+          )}
+        >
+          {initialData.pnpcharacteristics || "Sin Caracterización"}
         </p>
       )}
       {isEditing && (
@@ -98,12 +95,13 @@ export const AverageAgeForm = ({
           >
             <FormField
               control={form.control}
-              name="ageid"
+              name="pnpcharacteristics"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox
-                      options={options || []}
+                    <Textarea
+                      disabled={isSubmitting}
+                      placeholder="Anota la caracterización"
                       {...field}
                     />
                   </FormControl>
@@ -111,11 +109,8 @@ export const AverageAgeForm = ({
                 </FormItem>
               )}
             />
-            <div className="flex items-center Experience-x-2">
-              <Button
-                disabled={!isValid || isSubmitting}
-                type="submit"
-              >
+            <div className="flex items-center gap-x-2">
+              <Button disabled={!isValid || isSubmitting} type="submit">
                 Ahorrar
               </Button>
             </div>

@@ -48,7 +48,7 @@ export const CourseNameForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      courseid: initialData?.educationid || "",
+      courseid: initialData?.courseid || "",
     },
   });
 
@@ -56,7 +56,7 @@ export const CourseNameForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/experirnce/${experienceid}`, values);
+      await axios.patch(`/api/experience/${experienceid}`, values);
       toast.success("Curso actualizado");
       toggleEdit();
       router.refresh();
@@ -65,7 +65,7 @@ export const CourseNameForm = ({
     }
   };
 
-  const selectedOption = options ? options.find((option) => option.value === initialData.educationid) : null;
+  const selectedOption = options ? options.find((option) => option.value === initialData.courseid) : null;
 
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
@@ -85,7 +85,7 @@ export const CourseNameForm = ({
       {!isEditing && (
         <p className={cn(
           "text-sm mt-2",
-          !initialData.educationid && "text-slate-500 italic"
+          !initialData.courseid && "text-slate-500 italic"
         )}>
           {selectedOption?.label || "sin nombre"}
         </p>

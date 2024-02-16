@@ -6,21 +6,19 @@ import { Loader2, SprayCan, Stars } from "lucide-react";
 import { useState } from "react";
 import {toast} from "sonner";
 import { useRouter } from "next/navigation";
-import { GAP } from "@prisma/client";
+import { Experience, GAP } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 interface BibliographyFormProps {
-  initialData: GAP;
-  ageRecord: {name: string } | null;
-  gapid: string;
+  initialData: Experience;
+  experienceid: string;
 }
 
 export const BibliographyForm = ({
   initialData,
-  gapid,
-  ageRecord
+  experienceid
 }: BibliographyFormProps) => {
   const [isLoading, setisLoading] = useState(false);
 
@@ -36,7 +34,8 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Design me a complete bibliography of all the places you have gone to to obtain the constructed information. Generate everything in Spanish.
+    const prompt =   `Design me a complete bibliography of all the places you have gone to to obtain the constructed information.
+     Generate everything in Spanish.
     `;
 
     try{
@@ -44,12 +43,10 @@ const router = useRouter();
       const response = result.response;
       const text = response.text();
 
+      const res = await axios.patch(`/api/experience/${experienceid}/bibliography`, { text: JSON.stringify(text) });
       setisLoading(false);
-
-      const res = await axios.patch(`/api/gaps/${gapid}/bibliography`, { text: JSON.stringify(text) });
-
       console.log(res)
-      toast.success("Values updated");
+      toast.success("valores actualizados");
       toggleEdit();
       router.refresh();
 

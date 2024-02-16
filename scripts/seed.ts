@@ -277,3 +277,7 @@ async function deleteAllGaps() {
 
 //EXPERIENCE
 
+addExperienceCourseName()
+addExperienceAcademicLevel()
+addExperienceAverageAge()
+addExperienceEducationLevels()

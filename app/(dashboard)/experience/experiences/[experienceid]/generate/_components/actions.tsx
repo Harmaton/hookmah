@@ -1,9 +1,9 @@
 "use client";
 
 import axios from "axios";
-import {  Trash, TrendingUp } from "lucide-react";
+import { BookCheck, BookOpenCheckIcon, SprayCan, Trash, TrendingUp } from "lucide-react";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import {toast} from "sonner";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,8 @@ export const Actions = ({
 
   const onClick = async () => {
     try {
-        router.push(`/experience/experiences/${experienceid}/generate`)
+        router.push(`/experience/experiences/${experienceid}/word`)
+
     } catch {
       toast.error("Algo salió mal");
     } 
@@ -32,8 +33,11 @@ export const Actions = ({
   
   const onDelete = async () => {
     try {
-    await axios.delete(`/api/experience/${experienceid}`)
-      router.push(`/annual`);
+      setIsLoading(true);
+      await axios.delete(`/api/experience/${experienceid}`);
+      toast.success("Document Deleted");
+      router.refresh();
+      router.push(`/experirience`);
     } catch {
       toast.error("Algo salió mal");
     } finally {
@@ -50,12 +54,12 @@ export const Actions = ({
         size="sm"
         className="border-blue-500"
        >
-       Usa Hokmah ai para el resto
+       Finalizar el documento
        <TrendingUp className="h-4 w-4 ml-2" />
       </Button>
       <ConfirmModal onConfirm={onDelete}>
         <Button size="sm" disabled={isLoading} className=" ">
-          <Trash className="h-4 w-4 " />
+          <Trash className="h-4 w-4" />
         </Button>
       </ConfirmModal>
     </div>

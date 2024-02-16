@@ -2,27 +2,34 @@
 
 import * as z from "zod";
 import axios from "axios";
-import { Loader2, SprayCan, Stars } from "lucide-react";
+import { SprayCan, Stars } from "lucide-react";
 import { useState } from "react";
 import {toast} from "sonner";
 import { useRouter } from "next/navigation";
-import { GAP } from "@prisma/client";
+import { Experience } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-interface BibliographyFormProps {
-  initialData: GAP;
-  ageRecord: {name: string } | null;
-  gapid: string;
+interface resourcesFormProps {
+  initialData: Experience;
+  evaluationcriteria: string | null;
+  thematicfields: string | null;
+  product: string | null;
+  age: {name: string } | null;
+  skills: string | null;
+  grade:{name: string } | null;
+  experienceid: string;
 }
 
-export const BibliographyForm = ({
+export const ResourcesForm = ({
   initialData,
-  gapid,
-  ageRecord
-}: BibliographyFormProps) => {
-  const [isLoading, setisLoading] = useState(false);
+  experienceid,
+  evaluationcriteria,
+  thematicfields,
+  skills, product
+}: resourcesFormProps) => {
+const [isLoading, setisLoading] = useState(false);
 
 const genAI = new GoogleGenerativeAI("AIzaSyDiUlIA-d2x8TpBbPZN1gNOHFCj1eYcZhw");
 
@@ -36,20 +43,18 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Design me a complete bibliography of all the places you have gone to to obtain the constructed information. Generate everything in Spanish.
+    const prompt =   `Propose me 10 resources that already exist and that I can take, be they platforms, virtual games, materials already prepared by other teachers throughout the network, and taking into account everything built in this "Learning Experience" according to the National Curriculum of Basic Education Regular (DCN-EBR) of the Ministry of Education of Peru. Everything includes the evaluation criteria ${evaluationcriteria}, the thematic fields ${thematicfields}, the product ${product}, the skills ${skills}
+    Generate everything in Spanish.
     `;
 
     try{
       const result = await model.generateContent(prompt);
       const response = result.response;
       const text = response.text();
-
+      const res = await axios.patch(`/api/experience/${experienceid}/resources`, { text: JSON.stringify(text) });
       setisLoading(false);
-
-      const res = await axios.patch(`/api/gaps/${gapid}/bibliography`, { text: JSON.stringify(text) });
-
       console.log(res)
-      toast.success("Values updated");
+      toast.success("valores actualizados");
       toggleEdit();
       router.refresh();
 
@@ -58,12 +63,10 @@ const router = useRouter();
     }
    
   }
-
-
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Bibliografía
+      Recursos
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
             <>generando ...</>
@@ -79,10 +82,10 @@ const router = useRouter();
         <p
           className={cn(
             "text-sm mt-2 text-ellipsis",
-            !initialData.bibliography && "text-slate-500 italic"
+            !initialData.resources && "text-slate-500 italic"
           )}
         >
-          {initialData.bibliography || "Sin Bibliografía"}
+          {initialData.resources || "Sin Recursos"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}
