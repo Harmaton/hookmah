@@ -120,7 +120,7 @@ const AddTeacherFormForm = () => {
       </div>
       <Button
         type="submit"
-        className="px-4 py-2 text-white bg-purple-500 rounded-md"
+        className="px-4 py-2 text-white bg-red-500 rounded-md"
       >
         Enviar correos electrónicos
       </Button>
