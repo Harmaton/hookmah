@@ -27,8 +27,10 @@ const GapPage = async () => {
     {
     return(
         <div className="p-6 justify-center">
-         <h1 className="text-3xl m-2 p-4 fomt-bold ">Su plan de estudios de programación anual de 2024</h1>
-         <Card className="border-red-500 hover:bg-red-50 shadow">
+         <h1 className="text-3xl m-2 p-4 font-bold ">Su plan de estudios de programación anual de 2024</h1>
+         <Link href={`/annual/gaps/${gap.id}`}>
+         <Card className="border-black shadow  hover:bg-rose-50"
+          data-aos="fade-up">
           <CardHeader className="font-bold capitalize text-3xl ">
             {gap.title}
           </CardHeader>
@@ -41,12 +43,13 @@ const GapPage = async () => {
          
           <CardFooter className="flex flex-col items-end justify-center">
             <Link href={`/annual/gaps/${gap.id}`}>
-            <Button>
+            <Button   className="bg-black">
               Editar
             </Button>
             </Link>  
           </CardFooter>
          </Card>
+         </Link>
         </div>
     )}
 

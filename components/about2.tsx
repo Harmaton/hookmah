@@ -4,7 +4,9 @@ import Image from "next/image";
 
 export default function AcercaDe2() {
   return (
-    <div className="m-auto">
+    <div className="m-auto" 
+    data-aos="fade-up"
+    >
       <div className="container mx-auto px-6 py-12 m-auto">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 lg:pr-24 lg:order-1">

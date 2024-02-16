@@ -34,6 +34,7 @@
     "@signnow/api-client": "^1.8.2",
     "@tanstack/react-table": "^8.11.3",
     "@uploadthing/react": "^6.1.0",
+    "aos": "^2.3.4",
     "axios": "^1.6.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -71,6 +72,7 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/docusign-esign": "^5.19.5",
     "@types/file-saver": "^2.0.7",
     "@types/fs-extra": "^11.0.4",

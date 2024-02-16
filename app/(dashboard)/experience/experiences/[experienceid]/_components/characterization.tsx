@@ -4,12 +4,12 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ListPlus, Pencil } from "lucide-react";
+import { PenBox, Pencil } from "lucide-react";
 import { useState } from "react";
-import {toast} from "sonner";
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Course, GAP } from "@prisma/client";
- 
+import { Course, Experience, GAP } from "@prisma/client";
+
 import {
   Form,
   FormControl,
@@ -20,25 +20,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
-import { Combobox } from "@/components/ui/combobox";
 
-interface AgeFormProps {
-  initialData: GAP;
-  gapid: string;
-  options: { label: string; value: string; }[];
+interface CharacterizationFormProps {
+  initialData: Experience;
+  experienceid: string;
 };
 
 const formSchema = z.object({
-  ageid: z.string().min(1),
+  characterization: z.string().min(1, {
+    message: "Se requiere descripción",
+  }),
 });
 
-
-
-export const AgeForm = ({
+export const CharacterizationForm = ({
   initialData,
-  gapid,
-  options,
-}: AgeFormProps) => {
+  experienceid
+}: CharacterizationFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -48,7 +45,7 @@ export const AgeForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      ageid: initialData?.ageid || "",
+      characterization: initialData?.characterization || ""
     },
   });
 
@@ -56,28 +53,26 @@ export const AgeForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/gaps/${gapid}`, values);
-      toast.success("Age actualizado");
+      await axios.patch(`/api/experience/${experienceid}`, values);
+      toast.success("Characterization actualizado");
       toggleEdit();
       router.refresh();
     } catch {
       toast.error("Algo salió mal");
     }
-  };
-
-  const selectedOption = options ? options.find((option) => option.value === initialData.ageid) : null;
+  }
 
   return (
-    <div className="mt-6 bg-transparent rounded-md p-4">
+    <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Edad promedio
+      Caracterización
         <Button onClick={toggleEdit} variant="ghost">
-          {isEditing ? (
+        {isEditing ? (
             <>Minimizar</>
           ) : (
             <>
-              <ListPlus className="h-4 w-4 mr-2 text-red-500" />
-              Editar promedio
+              <PenBox className="h-4 w-4 mr-2 text-blue-500" />
+              Editar Caracterización
             </>
           )}
         </Button>
@@ -85,9 +80,9 @@ export const AgeForm = ({
       {!isEditing && (
         <p className={cn(
           "text-sm mt-2",
-          !initialData.ageid && "text-slate-500 italic"
+          !initialData.characterization && "text-slate-500 italic"
         )}>
-          {selectedOption?.label || "Ninguna promedio"}
+          {initialData.characterization || "Sin Caracterización"}
         </p>
       )}
       {isEditing && (
@@ -98,12 +93,13 @@ export const AgeForm = ({
           >
             <FormField
               control={form.control}
-              name="ageid"
+              name="characterization"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox
-                      options={options || []}
+                    <Textarea
+                      disabled={isSubmitting}
+                      placeholder="Anota la caracterización"
                       {...field}
                     />
                   </FormControl>
@@ -123,5 +119,5 @@ export const AgeForm = ({
         </Form>
       )}
     </div>
-  );
-};
+  )
+}

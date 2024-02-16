@@ -54,10 +54,10 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div>
+    <div  data-aos="fade-up" >
       <div className="flex items-center py-4 justify-between">
         <Link href="/experience/create">
-          <Button>
+          <Button className="bg-black">
             <PlusCircle className="h-4 w-4 mr-2" />
             Crear experiencia de aprendizaje
           </Button>

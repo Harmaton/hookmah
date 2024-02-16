@@ -20,6 +20,7 @@ import {
   fontCaveat,
 } from '@/lib/fonts';
 import { Toaster } from "sonner";
+import { AOSInit } from "@/components/aos";
 
 export const metadata: Metadata = {
   icons: {
@@ -38,6 +39,7 @@ export default function RootLayout({
     <>
       <ClerkProvider>
         <html lang="en">
+        <AOSInit />
         <link rel="icon" href="/icon.png" />
           <body
             className={cn(

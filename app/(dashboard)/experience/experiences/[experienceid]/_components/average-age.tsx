@@ -8,7 +8,7 @@ import { ListPlus, Pencil } from "lucide-react";
 import { useState } from "react";
 import {toast} from "sonner";
 import { useRouter } from "next/navigation";
-import { Course, GAP } from "@prisma/client";
+import {  Experience } from "@prisma/client";
  
 import {
   Form,
@@ -23,8 +23,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Combobox } from "@/components/ui/combobox";
 
 interface AgeFormProps {
-  initialData: GAP;
-  gapid: string;
+  initialData: Experience;
+  experienceid: string;
   options: { label: string; value: string; }[];
 };
 
@@ -34,9 +34,9 @@ const formSchema = z.object({
 
 
 
-export const AgeForm = ({
+export const AverageAgeForm = ({
   initialData,
-  gapid,
+  experienceid,
   options,
 }: AgeFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -56,7 +56,7 @@ export const AgeForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/gaps/${gapid}`, values);
+      await axios.patch(`/api/Experience/${experienceid}`, values);
       toast.success("Age actualizado");
       toggleEdit();
       router.refresh();
@@ -111,7 +111,7 @@ export const AgeForm = ({
                 </FormItem>
               )}
             />
-            <div className="flex items-center gap-x-2">
+            <div className="flex items-center Experience-x-2">
               <Button
                 disabled={!isValid || isSubmitting}
                 type="submit"

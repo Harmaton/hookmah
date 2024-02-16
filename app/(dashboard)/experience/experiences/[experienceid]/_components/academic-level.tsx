@@ -6,10 +6,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { ListPlus, Pencil } from "lucide-react";
 import { useState } from "react";
-import {toast} from "sonner";
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Course, GAP } from "@prisma/client";
- 
+import { Experience } from "@prisma/client";
+
 import {
   Form,
   FormControl,
@@ -19,26 +19,24 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
 import { Combobox } from "@/components/ui/combobox";
 
-interface AgeFormProps {
-  initialData: GAP;
-  gapid: string;
+interface EducationLevelProps {
+  initialData: Experience;
+  experienceid: string;
   options: { label: string; value: string; }[];
 };
 
 const formSchema = z.object({
-  ageid: z.string().min(1),
+  educationid: z.string().min(1),
 });
 
 
-
-export const AgeForm = ({
+export const AcademicLevelForm = ({
   initialData,
-  gapid,
+  experienceid,
   options,
-}: AgeFormProps) => {
+}: EducationLevelProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -48,7 +46,7 @@ export const AgeForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      ageid: initialData?.ageid || "",
+      educationid: initialData?.educationid || "",
     },
   });
 
@@ -56,8 +54,8 @@ export const AgeForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/gaps/${gapid}`, values);
-      toast.success("Age actualizado");
+      await axios.patch(`/api/experience/${experienceid}`, values);
+      toast.success("Level actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -65,19 +63,19 @@ export const AgeForm = ({
     }
   };
 
-  const selectedOption = options ? options.find((option) => option.value === initialData.ageid) : null;
+  const selectedOption = options ? options.find((option) => option.value === initialData.educationid) : null;
 
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Edad promedio
+      Nivel académico
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimizar</>
           ) : (
             <>
               <ListPlus className="h-4 w-4 mr-2 text-red-500" />
-              Editar promedio
+              Editar nivel
             </>
           )}
         </Button>
@@ -85,9 +83,9 @@ export const AgeForm = ({
       {!isEditing && (
         <p className={cn(
           "text-sm mt-2",
-          !initialData.ageid && "text-slate-500 italic"
+          !initialData.educationid && "text-slate-500 italic"
         )}>
-          {selectedOption?.label || "Ninguna promedio"}
+          {selectedOption?.label || "Nivel de académico"}
         </p>
       )}
       {isEditing && (
@@ -98,7 +96,7 @@ export const AgeForm = ({
           >
             <FormField
               control={form.control}
-              name="ageid"
+              name="educationid"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
