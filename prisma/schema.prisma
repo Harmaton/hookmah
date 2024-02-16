@@ -192,6 +192,7 @@ model EducationLevel__experience {
   name String
   experience Experience[]
 }
+
 model AcademicLevel_experience {
   id String @id @default(uuid())
   name String
@@ -200,7 +201,10 @@ model AcademicLevel_experience {
 
 model Session {
   id String @id @default(uuid())
+  
   company_logo String?
+  userid      String 
+  title String
   year String?
   institution_name String?
   course_name String?

@@ -40,9 +40,9 @@ const CreatePage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post("/api/experience", values);
-      router.push(`/experience/experiences/${response.data.id}`);
-      toast.success("experiencia de aprendizaje creadado");
+      const response = await axios.post("/api/session", values);
+      router.push(`/sessions/session/${response.data.id}`);
+      toast.success("Sesion creado");
     } catch {
       toast.error("Algo salió mal");
     }
@@ -52,7 +52,7 @@ const CreatePage = () => {
     <div className=" mx-auto my-auto flex md:items-end md:justify-center h-full p-6">
       <div>
         <h1 className="text-3xl mb-6">
-        experiencia de aprendizaje
+        Comience a crear su sesión
         </h1>
        <Separator /> 
         <Form {...form}>
@@ -66,7 +66,7 @@ const CreatePage = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                  Título del experiencia de aprendizaje
+                  Título del sesión
                   </FormLabel>
                   <FormControl>
                     <Input

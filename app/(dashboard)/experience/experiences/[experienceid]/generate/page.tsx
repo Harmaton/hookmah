@@ -1,8 +1,6 @@
 import { auth } from "@clerk/nextjs";
 import { redirect, useRouter } from "next/navigation";
 import {
-  ArrowLeftCircleIcon,
-  BookAIcon,
   CheckCheck,
   CheckCircle,
   SprayCan,
