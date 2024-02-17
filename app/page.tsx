@@ -13,7 +13,7 @@ import { DocumentTypes } from "@/components/three-cards";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between overflow-x-hidden  ">
+    <main className="flex min-h-screen flex-col items-center justify-between p-1">
       <Navbar />
       <TypewriterEffectSmoothDemo />
       <div className="p-2" data-aos="fade-up">

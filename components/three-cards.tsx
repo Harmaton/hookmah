@@ -55,18 +55,18 @@ export const DocumentTypes = () => {
                 />
               )}
             </AnimatePresence>
-            <div className=" rounded-2xl h-full w-full p-4 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900/[0.2] border border-transparent group-hover:border-slate-700 relative z-50">
-              <div className="relative z-50">
-                <div className="p-4">
-                  <h4 className="text-zinc-100 font-bold tracking-wide mt-4">
-                    {project.title}
-                  </h4>
-                  <p className="mt-8 tracking-wide leading-relaxed text-sm">
-                    {project.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-gradient-to-br from-red-800 to-black/[0.2] border border-transparent group-hover:border-red-700 relative z-50">
+  <div className="relative z-50">
+    <div className="p-4">
+      <h4 className="text-red-100 font-bold tracking-wide mt-4">
+        {project.title}
+      </h4>
+      <p className="mt-8 tracking-wide leading-relaxed text-sm text-red-200">
+        {project.description}
+      </p>
+    </div>
+  </div>
+</div>
           </div>
         ))}
       </div>

@@ -16,6 +16,7 @@ export default authMiddleware({
     "/pricing",
     "/contact",
   ],
+
   // async afterAuth(auth, req) {
   //     if (auth.isPublicRoute) {
   //       //  For public routes, we don't need to do anything
@@ -47,6 +48,7 @@ export default authMiddleware({
   //   })
   // }
   //}
+  
 });
 
 export const config = {

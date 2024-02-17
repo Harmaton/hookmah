@@ -5,8 +5,7 @@ import { JSX, SVGProps } from "react"
 
 export default function Footer() {
   return (
-    <section className="w-full m-2 py-12 border-t"  
-    data-aos="fade-up"
+    <section className="w-full m-2 py-12 border-t" 
     >
       <div className="container grid grid-cols-2 sm:grid-cols-3 gap-8 px-4 md:px-8">
         <div className="space-y-4">
