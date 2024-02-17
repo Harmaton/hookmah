@@ -52,13 +52,13 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex-grow md:flex md:items-center md:justify-center hidden  space-x-4">
+        {/* <div className="flex-grow md:flex md:items-center md:justify-center hidden  space-x-4">
           <NavigationMenuDemo />
-        </div>
+        </div> */}
 
         <div className="flex items-center space-x-4">
           <ModeToggle />
-          { isTeacher ? (
+          { isTeacher &&
             <>
              <div className="flex mr-2 ">
               <Link href='/annual'>
@@ -69,23 +69,7 @@ const Navbar = () => {
               </div>
             <UserButton afterSignOutUrl="/" />
             </>
-          ) : (
-            <div className="flex mr-2 ">
-
-            <div className="mr-2">
-              <Link href="/contact" >
-                <div
-                  className={buttonVariants({
-                    size: "sm",
-                  })}
-                >
-                  Contacto Ventas
-                </div>
-              </Link>
-            </div>
-            <UserButton afterSignOutUrl="/" />
-          </div>
-          )}
+         }
           {!user?.isSignedIn && (
              <div className="flex mr-2 ">
              <div className="mr-2">
