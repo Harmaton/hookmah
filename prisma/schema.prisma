@@ -9,131 +9,128 @@ generator client {
 }
 
 model User {
-  id           String         @id @default(uuid())
-  clerkId      String         @unique
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  email        String         @unique
-  
+  id        String   @id @default(uuid())
+  clerkId   String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+
   isadmin   Boolean @default(false)
   isTeacher Boolean @default(false)
   isStudent Boolean @default(false)
 
   studentStatusExpiresAt DateTime?
 
-  image String?   @db.Text
-  nickname String? @unique
-  country String?
-  description String?  @db.Text
-  linkedIn String? @db.Text
-  facebook String? @db.Text
-  youtube String? @db.Text
-  twitter String? @db.Text
-  whatsapp String?
-  instagram String?
-  mail String?
+  image       String? @db.Text
+  nickname    String? @unique
+  country     String?
+  description String? @db.Text
+  linkedIn    String? @db.Text
+  facebook    String? @db.Text
+  youtube     String? @db.Text
+  twitter     String? @db.Text
+  whatsapp    String?
+  instagram   String?
+  mail        String?
 }
 
-
 model GAP {
-  id           String         @id @default(uuid())
-  userid      String         @unique
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
+  id        String   @id @default(uuid())
+  userid    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  title String
-  companyLogo String? @db.Text 
-  year String?
+  title           String
+  companyLogo     String? @db.Text
+  year            String?
   institutionName String?
-  proffesorName String?
-  city String?
-  district String?
+  proffesorName   String?
+  city            String?
+  district        String?
 
-  regulatoryBasis String? @db.Text
-  graduateProfile String? @db.Text
+  regulatoryBasis      String? @db.Text
+  graduateProfile      String? @db.Text
   crosscuttingApproach String? @db.Text
 
   departmentId String?
-  department Department? @relation(fields: [departmentId], references: [id])
+  department   Department? @relation(fields: [departmentId], references: [id])
 
-  ageid String?
+  ageid      String?
   averageAge AverageAge? @relation(fields: [ageid], references: [id])
 
-  academyid String?
+  academyid    String?
   academyLevel Academy? @relation(fields: [academyid], references: [id])
 
-  courseid String?
+  courseid   String?
   courseName Course? @relation(fields: [courseid], references: [id])
 
-  educationid String?
+  educationid    String?
   educationLevel EducationLevel? @relation(fields: [educationid], references: [id])
 
-  characteristics String? @db.Text
-  recommendations String? @db.Text
-  values String? @db.Text
-  attitudes String? @db.Text
-  acdescription String? @db.Text
-  learningPurposes String? @db.Text
+  characteristics   String? @db.Text
+  recommendations   String? @db.Text
+  values            String? @db.Text
+  attitudes         String? @db.Text
+  acdescription     String? @db.Text
+  learningPurposes  String? @db.Text
   methodsStrategies String? @db.Text
-  materials String? @db.Text
-  resources String? @db.Text
-  bibliography String? @db.Text
+  materials         String? @db.Text
+  resources         String? @db.Text
+  bibliography      String? @db.Text
 
-  isSigned Boolean @default(false)
+  isSigned     Boolean @default(false)
   isDownloaded Boolean @default(false)
-  isPublished Boolean @default(false)
-  isConverted Boolean @default(false)
-  
+  isPublished  Boolean @default(false)
+  isConverted  Boolean @default(false)
+
   @@index([educationid])
   @@index([courseid])
   @@index([ageid])
   @@index([departmentId])
   @@index([academyid])
-} 
+}
 
-model EducationLevel{
-  id String @id @default(uuid())
+model EducationLevel {
+  id   String @id @default(uuid())
   name String
   gaps GAP[]
 }
 
-
 model Course {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String
   gaps GAP[]
 }
 
 model AverageAge {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String
   gaps GAP[]
 }
 
 model Academy {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String
   gaps GAP[]
 }
 
 model Department {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String
   gaps GAP[]
-  
 }
 
 model Experience {
   id String @id @default(uuid())
 
-  userid      String         
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
+  userid    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   //Input
-  title String
-  prof_name String?
-  date String?
+  title            String
+  prof_name        String?
+  date             String?
   characterization String?
 
   psecharacteristics String?
@@ -141,79 +138,77 @@ model Experience {
   pnpcharacteristics String?
 
   //dropdown
-  academicid String?
-  academic_level  AcademicLevel_experience? @relation(fields: [academicid], references: [id])
+  academicid     String?
+  academic_level AcademicLevel_experience? @relation(fields: [academicid], references: [id])
 
-  ageid String?
+  ageid      String?
   averageAge AverageAge_experience? @relation(fields: [ageid], references: [id])
 
-  courseid String?
-  course_name Course_experience? @relation(fields: [courseid], references: [id]) 
+  courseid    String?
+  course_name Course_experience? @relation(fields: [courseid], references: [id])
 
-  educationid String?
+  educationid     String?
   education_level EducationLevel__experience? @relation(fields: [educationid], references: [id])
 
   //AI
-  reality_context String? @db.Text
-  question_ai String? @db.Text
-  skills String? @db.Text
+  reality_context     String? @db.Text
+  question_ai         String? @db.Text
+  skills              String? @db.Text
   evaluation_criteria String? @db.Text
-  thematic_fields String? @db.Text
-  product String? @db.Text
-  eval_instrument String? @db.Text
+  thematic_fields     String? @db.Text
+  product             String? @db.Text
+  eval_instrument     String? @db.Text
   sequence_activities String? @db.Text
-  methods_strategies String? @db.Text
-  materials String? @db.Text
-  resources String? @db.Text
-  bibliography String? @db.Text
+  methods_strategies  String? @db.Text
+  materials           String? @db.Text
+  resources           String? @db.Text
+  bibliography        String? @db.Text
 
   @@index([ageid])
   @@index([academicid])
   @@index([courseid])
   @@index([educationid])
-
 }
 
-
 model Course_experience {
-   id String @id @default(uuid())
-  name String
+  id         String       @id @default(uuid())
+  name       String
   experience Experience[]
 }
 
 model AverageAge_experience {
-  id String @id @default(uuid())
-  name String
+  id         String       @id @default(uuid())
+  name       String
   experience Experience[]
 }
 
 model EducationLevel__experience {
-  id String @id @default(uuid())
-  name String
+  id         String       @id @default(uuid())
+  name       String
   experience Experience[]
 }
 
 model AcademicLevel_experience {
-  id String @id @default(uuid())
-  name String
+  id         String       @id @default(uuid())
+  name       String
   experience Experience[]
 }
 
 model Session {
   id String @id @default(uuid())
-  
-  company_logo String?
-  userid      String 
-  title String
-  year String?
+
+  company_logo     String?
+  userid           String 
+  title            String
+  year             String?
   institution_name String?
-  course_name String?
-  academic_level String?
-  education_Level String?
-  prof_name String?
-  date String?
-  competence String?
-  ability String?
-  perfomance String?
-  assesment String?
+  course_name      String?
+  academic_level   String?
+  education_Level  String?
+  prof_name        String?
+  date             String?
+  competence       String?
+  ability          String?
+  perfomance       String?
+  assesment        String?
 }

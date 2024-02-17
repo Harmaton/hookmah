@@ -31,7 +31,6 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
   const gap = await db.gAP.findUnique({
     where: {
       id: params.gapid,
-      userid: userId,
     },
   });
 

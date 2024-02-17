@@ -7,19 +7,19 @@ export const projects = [
     title: "Complete los detalles",
     description:
       "ingrese información básica como el título del curso, los objetivos y las metodologías en la aplicación web",
-    link: "https://www.editorialdocente.online/",
+    id: "1",
   },
   {
     title: "Mejora de la IA",
     description:
       "ingrese información básica como el título del curso, los objetivos y las metodologías en la aplicación web.",
-    link: "https://www.editorialdocente.online/",
+    id: "2",
   },
   {
     title: "Exportar y editar",
     description:
       "exporta el documento a formato Word. Revise y edite el contenido según sea necesario para garantizar la precisión y coherencia antes de finalizar el documento",
-    link: "https://www.editorialdocente.online/",
+    id: "3",
   },
 ];
 
@@ -33,7 +33,7 @@ export const DocumentTypes = () => {
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10">
         {projects.map((project, idx) => (
           <div
-            key={project?.link}
+            key={project.id}
             className="relative group  block p-2 h-full w-full "
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
