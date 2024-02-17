@@ -13,7 +13,6 @@ export default authMiddleware({
     "/sign-up(.*)",
     "/api(.*)",
     "/api/webhook/clerk",
-    "/pricing",
     "/contact",
   ],
 
@@ -48,7 +47,7 @@ export default authMiddleware({
   //   })
   // }
   //}
-  
+
 });
 
 export const config = {
