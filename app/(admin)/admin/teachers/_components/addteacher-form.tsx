@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Trash2 } from 'lucide-react';
 import addTeachers from '@/lib/addTeacher';
 import getAllTeachers from '@/lib/getAllTeachers';
-import { useRouter } from 'next/navigation';
+
 
 type Teacher = {
   email: string;
@@ -71,10 +71,10 @@ const AddTeacherFormForm = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const router =  useRouter()
+    
     // Call the addTeacher function to handle input
     addTeachers(emailList)
-    router.refresh()
+    
     console.log('Teachers submitted:', emailList);
     setEmailList([]); // Clear the list after submission
   };
