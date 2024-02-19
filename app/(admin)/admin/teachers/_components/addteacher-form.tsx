@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Trash2 } from 'lucide-react';
 import addTeachers from '@/lib/addTeacher';
 import getAllTeachers from '@/lib/getAllTeachers';
+import { useRouter } from 'next/navigation';
 
 type Teacher = {
   email: string;
@@ -70,8 +71,10 @@ const AddTeacherFormForm = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    const router =  useRouter()
     // Call the addTeacher function to handle input
     addTeachers(emailList)
+    router.refresh()
     console.log('Teachers submitted:', emailList);
     setEmailList([]); // Clear the list after submission
   };
@@ -90,7 +93,7 @@ const AddTeacherFormForm = () => {
 
   return (
     <>
-    <h2 className='p-4 m-2 text-blue-500 font-bold text-4xl'>Administrar maestros de vida simple</h2>
+    <h2 className='p-4 m-2 text-red-500 font-bold text-4xl'>Administrar maestros </h2>
     <p className='p-4 font-italic m-2'>presione ENTER para agregar otro correo electrónico</p>
     <form onSubmit={handleSubmit} className="space-y-4 p-4 m-2">
       <div>

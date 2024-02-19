@@ -1,26 +1,12 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ModeToggle } from "./mode-toggle";
-import { Avatar } from "@/components/ui/avatar";
 import { UserButton, useUser } from "@clerk/nextjs";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
 import { Button, buttonVariants } from "./ui/button";
-import { GraduationCap, HopOff, Terminal, UserCircle } from "lucide-react";
 import checkIsTeacher from "@/lib/isTeacher";
-import { LogIn } from "lucide-react";
-import { NavigationMenuDemo } from "./navigation-menu";
+
 
 const Navbar = () => {
   const user = useUser();
@@ -51,10 +37,6 @@ const Navbar = () => {
             </div>
           </Link>
         </div>
-
-        {/* <div className="flex-grow md:flex md:items-center md:justify-center hidden  space-x-4">
-          <NavigationMenuDemo />
-        </div> */}
 
         <div className="flex items-center space-x-4">
           <ModeToggle />

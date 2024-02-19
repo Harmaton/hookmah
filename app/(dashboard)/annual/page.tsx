@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import { auth } from "@clerk/nextjs"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const GapPage = async () => {
     const { userId } = auth();
@@ -49,7 +50,8 @@ const GapPage = async () => {
     } else {
         return (
             <div className="p-6 justify-center">
-                <h1 className="text-3xl m-2 p-4 fomt-bold">Empezar</h1>
+                 <h1 className="text-3xl m-2 p-2 font-bold ">Bienvenido, comienza a crear tus documentos aquí</h1>
+                
                 <Link href='/annual/create'>
                     <Card className="rounded-ml ">
                         <CardHeader className="font-bold ">
@@ -57,6 +59,13 @@ const GapPage = async () => {
                         </CardHeader>
                         <CardContent className="font-bold">
                             ¡Empiece hoy!
+                            <Image 
+      src='/empty-red.svg'
+      alt='undraw create image'
+      width={150}
+      height={150}
+      className='m-auto'
+      />
                         </CardContent>
                         <CardFooter>
                             {currentTime}
