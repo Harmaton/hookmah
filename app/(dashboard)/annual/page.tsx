@@ -4,7 +4,6 @@ import { redirect } from "next/navigation"
 import { auth } from "@clerk/nextjs"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import Header from "@/components/header"
 
 const GapPage = async () => {
     const { userId } = auth();

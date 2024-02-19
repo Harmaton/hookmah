@@ -67,9 +67,14 @@ const Navbar = () => {
               </Button>
               </Link>
               </div>
-            <UserButton afterSignOutUrl="/" />
+           
             </>
          }
+    {user?.isSignedIn && (
+      <>
+      <UserButton afterSignOutUrl="/" />
+      </>
+    )}
           {!user?.isSignedIn && (
              <div className="flex mr-2 ">
              <div className="mr-2">
