@@ -8,7 +8,7 @@ import { ListPlus, Pencil } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Course, GAP } from "@prisma/client";
+import { Session } from "@prisma/client";
 
 import {
   Form,
@@ -21,23 +21,21 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Combobox } from "@/components/ui/combobox";
 
-interface DepartmentFormProps {
-  initialData: GAP;
-  gapid: string;
-  options: { label: string; value: string; }[];
-};
+interface EducationLevelProps {
+  initialData: Session;
+  sessionid: string;
+  options: { label: string; value: string }[];
+}
 
 const formSchema = z.object({
-  courseid: z.string().min(1),
+  academicid: z.string().min(1),
 });
 
-
-
-export const CourseForm = ({
+export const AcademicLevelForm = ({
   initialData,
-  gapid,
+  sessionid,
   options,
-}: DepartmentFormProps) => {
+}: EducationLevelProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -47,7 +45,7 @@ export const CourseForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-        courseid: initialData?.courseid|| "",
+      academicid: initialData?.academicid || "",
     },
   });
 
@@ -55,8 +53,8 @@ export const CourseForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/gaps/${gapid}`, values);
-      toast.success("Course actualizado");
+      await axios.patch(`/api/session/${sessionid}`, values);
+      toast.success("Level actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -64,29 +62,33 @@ export const CourseForm = ({
     }
   };
 
-  const selectedOption = options ? options.find((option) => option.value === initialData.courseid) : null;
+  const selectedOption = options
+    ? options.find((option) => option.value === initialData.academicid)
+    : null;
 
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Curso
+        Nivel académico
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
-            <>Minimize</>
+            <>Minimizar</>
           ) : (
             <>
               <ListPlus className="h-4 w-4 mr-2 text-red-500" />
-              Editar Curso
+              Editar nivel
             </>
           )}
         </Button>
       </div>
       {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.departmentId && "text-slate-500 italic"
-        )}>
-          {selectedOption?.label || "sin curso"}
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.academicid && "text-slate-500 italic"
+          )}
+        >
+          {selectedOption?.label || "Nivel de académico"}
         </p>
       )}
       {isEditing && (
@@ -97,24 +99,18 @@ export const CourseForm = ({
           >
             <FormField
               control={form.control}
-              name="courseid"
+              name="academicid"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox
-                      options={options || []}
-                      {...field}
-                    />
+                    <Combobox options={options || []} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button
-                disabled={!isValid || isSubmitting}
-                type="submit"
-              >
+              <Button disabled={!isValid || isSubmitting} type="submit">
                 Ahorrar
               </Button>
             </div>

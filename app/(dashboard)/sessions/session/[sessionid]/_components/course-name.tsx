@@ -8,7 +8,7 @@ import { ListPlus, Pencil } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Course, GAP } from "@prisma/client";
+import { Course, GAP, Session } from "@prisma/client";
 
 import {
   Form,
@@ -22,8 +22,8 @@ import { cn } from "@/lib/utils";
 import { Combobox } from "@/components/ui/combobox";
 
 interface DepartmentFormProps {
-  initialData: GAP;
-  gapid: string;
+  initialData: Session;
+  sessionid: string;
   options: { label: string; value: string; }[];
 };
 
@@ -35,7 +35,7 @@ const formSchema = z.object({
 
 export const CourseForm = ({
   initialData,
-  gapid,
+  sessionid,
   options,
 }: DepartmentFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -55,7 +55,7 @@ export const CourseForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/gaps/${gapid}`, values);
+      await axios.patch(`/api/session/${sessionid}`, values);
       toast.success("Course actualizado");
       toggleEdit();
       router.refresh();
@@ -84,7 +84,7 @@ export const CourseForm = ({
       {!isEditing && (
         <p className={cn(
           "text-sm mt-2",
-          !initialData.departmentId && "text-slate-500 italic"
+          !initialData.courseid && "text-slate-500 italic"
         )}>
           {selectedOption?.label || "sin curso"}
         </p>

@@ -10,8 +10,6 @@ import { InstitutionForm } from "./_components/institution-name";
 import { ImageForm } from "./_components/logo-img";
 import { CityForm } from "./_components/city";
 import { DistrictForm } from "./_components/district";
-import { RegForm } from "./_components/regulatory-basis";
-import { ProfileForm } from "./_components/graduate-profile";
 import { DepartmentForm } from "./_components/department";
 import { AcademyForm } from "./_components/academy";
 import { AgeForm } from "./_components/age";

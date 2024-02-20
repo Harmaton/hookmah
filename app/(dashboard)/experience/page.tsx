@@ -22,7 +22,6 @@ const Experiencepage = async () => {
     }
   })
 
-
   const gaps = await db.gAP.findMany({
     where: {
       userid: userId
@@ -51,7 +50,6 @@ const Experiencepage = async () => {
     </Card>
     </Link>
     </div>
-    
     </>
   }
 

@@ -34,7 +34,7 @@ const Sessionpage = async () => {
 <Link href='/experience'>
     <Card className='border-red-500'>
       <CardHeader className='text-center font-bold'>
-        Create your First Learning Experience 
+      Crear al menos una experiencia de aprendizaje
       </CardHeader>
       <CardContent>
       <Image 

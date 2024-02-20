@@ -8,8 +8,7 @@ import { ListPlus, Pencil } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Course, GAP } from "@prisma/client";
-
+import { Session } from "@prisma/client";
 import {
   Form,
   FormControl,
@@ -21,23 +20,23 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Combobox } from "@/components/ui/combobox";
 
-interface DepartmentFormProps {
-  initialData: GAP;
-  gapid: string;
+interface ExperienceProps {
+  initialData: Session;
+  sessionid: string;
   options: { label: string; value: string; }[];
 };
 
 const formSchema = z.object({
-  courseid: z.string().min(1),
+    experienceid: z.string().min(1),
 });
 
 
 
-export const CourseForm = ({
+export const ExperienceForm = ({
   initialData,
-  gapid,
+  sessionid,
   options,
-}: DepartmentFormProps) => {
+}: ExperienceProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -47,7 +46,7 @@ export const CourseForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-        courseid: initialData?.courseid|| "",
+        experienceid: initialData?.experienceid|| "",
     },
   });
 
@@ -55,8 +54,8 @@ export const CourseForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/gaps/${gapid}`, values);
-      toast.success("Course actualizado");
+      await axios.patch(`/api/session/${sessionid}`, values);
+      toast.success("sesion actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -64,19 +63,19 @@ export const CourseForm = ({
     }
   };
 
-  const selectedOption = options ? options.find((option) => option.value === initialData.courseid) : null;
+  const selectedOption = options ? options.find((option) => option.value === initialData.experienceid) : null;
 
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Curso
+      Choose one experience
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimize</>
           ) : (
             <>
               <ListPlus className="h-4 w-4 mr-2 text-red-500" />
-              Editar Curso
+              Editar 
             </>
           )}
         </Button>
@@ -84,9 +83,9 @@ export const CourseForm = ({
       {!isEditing && (
         <p className={cn(
           "text-sm mt-2",
-          !initialData.departmentId && "text-slate-500 italic"
+          !initialData.experienceid && "text-slate-500 italic"
         )}>
-          {selectedOption?.label || "sin curso"}
+          {selectedOption?.label || "sin experiencia de aprendizaje"}
         </p>
       )}
       {isEditing && (
@@ -97,7 +96,7 @@ export const CourseForm = ({
           >
             <FormField
               control={form.control}
-              name="courseid"
+              name="experienceid"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>

@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import {toast} from "sonner";
+import { toast } from "sonner";
 
 import {
   Form,
@@ -29,12 +29,16 @@ const formSchema = z.object({
 
 const CreatePage = () => {
   const router = useRouter();
+
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: ""
+      title: "",
     },
   });
+
+
 
   const { isSubmitting, isValid } = form.formState;
 
@@ -46,28 +50,21 @@ const CreatePage = () => {
     } catch {
       toast.error("Algo salió mal");
     }
-  }
+  };
 
-  return ( 
+  return (
     <div className=" mx-auto my-auto flex md:items-end md:justify-center h-full p-6">
       <div>
-        <h1 className="text-3xl mb-6">
-        Comience a crear su sesión
-        </h1>
-       <Separator /> 
+        <h1 className="text-3xl mb-6">Comience a crear su sesión</h1>
+        <Separator />
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                  Título del sesión
-                  </FormLabel>
+                  <FormLabel>Título del sesión</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
@@ -80,18 +77,12 @@ const CreatePage = () => {
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Link href="/experience">
-                <Button
-                  type="button"
-                  variant="ghost"
-                >
-                 Cancelar
+              <Link href="/sessions">
+                <Button type="button" variant="ghost">
+                  Cancelar
                 </Button>
               </Link>
-              <Button
-                type="submit"
-                disabled={!isValid || isSubmitting}
-              >
+              <Button type="submit" disabled={!isValid || isSubmitting}>
                 Continuar
               </Button>
             </div>
@@ -99,7 +90,7 @@ const CreatePage = () => {
         </Form>
       </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default CreatePage;

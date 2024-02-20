@@ -129,6 +129,7 @@ model Experience {
 
   //Input
   title            String
+  trimester String?
   prof_name        String?
   date             String?
   characterization String?
@@ -146,7 +147,7 @@ model Experience {
 
   courseid    String?
   course_name Course_experience? @relation(fields: [courseid], references: [id])
-
+  
   educationid     String?
   education_level EducationLevel__experience? @relation(fields: [educationid], references: [id])
 
@@ -163,6 +164,8 @@ model Experience {
   materials           String? @db.Text
   resources           String? @db.Text
   bibliography        String? @db.Text
+
+  sessions Session[]
 
   @@index([ageid])
   @@index([academicid])
@@ -196,19 +199,75 @@ model AcademicLevel_experience {
 
 model Session {
   id String @id @default(uuid())
-
-  company_logo     String?
   userid           String 
   title            String
+
+  experienceid     String?
+  experience Experience? @relation(fields: [experienceid ], references: [id])
+
+
+  logo     String?
   year             String?
   institution_name String?
-  course_name      String?
-  academic_level   String?
-  education_Level  String?
-  prof_name        String?
   date             String?
+
+  courseid      String?
+  course_name SessionCourse? @relation(fields: [courseid], references: [id])
+  prof_name     String?
+ 
+
+  academicid   String?
+  academy AcademicLevel_Session? @relation(fields: [academicid], references: [id])
+
+  educationid  String?
+  education_level EducationLevel_Session? @relation(fields: [educationid], references: [id])
+
   competence       String?
-  ability          String?
   perfomance       String?
-  assesment        String?
+  product           String?
+  instrument String?
+  him String?
+
+
+//didactic sequence
+//inicio
+time String?
+motivation String?
+knowinadvance String?
+cognitiveconflict String?
+learningpurpose String?
+
+//process
+theoreticalcontent String?
+practicalcontent String?
+complimentaryactivities String?
+
+
+//closing
+ assesment        String?
+
+  createdAt DateTime @default(now())
+  @@index([experienceid ])
+  @@index([academicid])
+  @@index([courseid])
+  @@index([educationid])
+}
+
+model AcademicLevel_Session{
+  id String @id @default(uuid())
+  name String
+  session Session[]
+}
+
+model EducationLevel_Session{
+  id String @id @default(uuid())
+  name String
+  session Session[]
+}
+
+model SessionCourse {
+  id String @id @default(uuid())
+  name String
+  session Session[]
+
 }

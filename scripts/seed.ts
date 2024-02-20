@@ -239,21 +239,81 @@ async function addExperienceAcademicLevel() {
   }
 }
 
-async function deleteAllGaps() {
-  try {
-    const userId = "user_2aJRcHa8NsD7BrNqzjq6yWiKxbi";
-    // Delete all gaps
-    await database.gAP.deleteMany({ where: { userid: userId } });
 
-    console.log("All gaps deleted successfully");
+async function addSessionAcademicLevel() {
+  try {
+    await database.AcademicLevel_Session.createMany({
+      data: [
+        { name: "Initial Education" },
+        { name: "Primary Education" },
+        { name: "Secondary Education" },
+      ],
+    });
+
+    console.log("Success");
   } catch (error) {
-    console.error("Error deleting gaps:", error);
+    console.log("Error seeding the database academy Levels", error);
   } finally {
     await database.$disconnect();
   }
 }
 
-deleteAllGaps();
+
+async function addSessionCourseName() {
+  try {
+    await database.SessionCourse.createMany({
+      data: [
+        { name: "Personal Development, Citizenship and Civics" },
+        { name: "Communication" },
+        { name: "Art" },
+        { name: "English" },
+        { name: "Technology and Projects" },
+        { name: "Religious Education" },
+        { name: "Physical Education" },
+        { name: "Math" },
+        { name: "Science and Environment" },
+        { name: "philosophy" },
+        { name: "Accounting" },
+        { name: "Geographic and Economic History" },
+        { name: "Citizenship and Civic Education" },
+        { name: "Physical Education and Health" },
+        { name: "Economy" },
+        { name: "Consumer Rights" },
+        { name: "Education for Work Financial and Tax Education" },
+      ],
+    });
+
+    console.log("Success");
+  } catch (error) {
+    console.log("Error seeding the database courses", error);
+  } finally {
+    await database.$disconnect();
+  }
+}
+
+async function addSessionEducationLevels() {
+  try {
+    await database.educationLevel_Session.createMany({
+      data: [
+        { name: "Initial (3,4,5 years)" },
+        { name: "Primary(1st - 6th grades)" },
+        { name: "Secondary (1st - 5th grades)" },
+      ],
+    });
+
+    console.log("Success");
+  } catch (error) {
+    console.log("Error seeding the database education Levels", error);
+  } finally {
+    await database.$disconnect();
+  }
+}
+  
+
+// addSessionAcademicLevel()
+// addSessionCourseName()
+addSessionEducationLevels()
+// deleteAllGaps();
 
 //GAPS
 // addEducationLevels()
@@ -268,3 +328,4 @@ deleteAllGaps();
 // addExperienceAcademicLevel()
 // addExperienceAverageAge()
 // addExperienceEducationLevels()
+

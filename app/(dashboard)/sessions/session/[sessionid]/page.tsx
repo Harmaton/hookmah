@@ -3,6 +3,16 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { CheckCheck, CheckCircle } from "lucide-react";
 import { redirect } from "next/navigation";
+import { ExperienceForm } from "./_components/experience-options";
+import { CourseForm } from "./_components/course-name";
+import { AcademicLevelForm } from "./_components/academy";
+import { Actions } from "./_components/actions";
+import { ProfnameForm } from "./_components/prof-name";
+import { DateForm } from "./_components/date";
+import { YearForm } from "./_components/year";
+import { InstitutionForm } from "./_components/inst";
+import { ImageForm } from "./_components/logo";
+import { EducationForm } from "./_components/education";
 
 
 
@@ -24,15 +34,42 @@ if (!session) {
   }
 
 
+  const userexperienceoptions = await db.experience.findMany({
+    where:{
+      userid: userId
+    }
+  })
+
+  const courses = await db.sessionCourse.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+
+  const educations = await db.educationLevel_Session.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  })
+
+  const academics = await db.academicLevel_Session.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  })
+
+
+
 const requiredFields = [
-    session.company_logo,
+    session.logo,
     session.prof_name,
     session.institution_name,
     session.date,
     session.year,
-    session.education_Level,
-    session.ability,
-    session.assesment
+    session.educationid,
+    session.year,
+    session.courseid,
+    session.academicid
 ]
 
   const allFields = requiredFields.length;
@@ -54,7 +91,7 @@ return (
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-medium flex">
               
-            Configuración de experiencias de aprendizaje.
+            Configure esta sesión a continuación
             </h1>
             <span className="text-sm text-slate-700">
             Campos requeridos : {completionText}
@@ -72,7 +109,7 @@ return (
             )}
              {isComplete && (
             <>
-              {/* <Actions disabled={false} experienceid={experience.id}  /> */}
+              <Actions disabled={false} sessionid={session.id}  />
             </>
           )}
           </div>
@@ -81,45 +118,66 @@ return (
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           <div className="border rounded-md ">
-           {/* <ProfnameForm initialData={experience} experienceid={experience.id} />
-            <CourseNameForm initialData={experience} experienceid={experience.id} options={courses.map((courses) => ({
-                    label: courses.name,
-                    value: courses.id,
-                  }))}   />
+         
+              <ExperienceForm initialData={session}
+                  sessionid={session.id}
+                  options={userexperienceoptions.map((exp) => ({
+                    label: exp.title,
+                    value: exp.id,
+                  }))} />
 
-            <div className="border">
-             <DateForm initialData={experience} experienceid={experience.id} />
-             <AverageAgeForm initialData={experience} experienceid={experience.id} options={ages.map((courses) => ({
+              <CourseForm
+                  initialData={session}
+                  sessionid={session.id}
+                  options={courses.map((courses) => ({
                     label: courses.name,
                     value: courses.id,
-                  }))}   />
+                  }))}
+                />
 
-<AcademicLevelForm initialData={experience} experienceid={experience.id} options={academiclevels.map((courses) => ({
+                <AcademicLevelForm  initialData={session}
+                  sessionid={session.id}
+                  options={academics.map((courses) => ({
                     label: courses.name,
                     value: courses.id,
-                  }))}  />   
+                  }))} />
 
-<EducationLevelForm initialData={experience} educationid={experience.id} options={educationlevels.map((courses) => ({
+                <EducationForm initialData={session}
+                  sessionid={session.id}
+                  options={educations.map((courses) => ({
                     label: courses.name,
                     value: courses.id,
-                  }))}  /> */}
+                  }))} />
+
+                  <InstitutionForm  initialData={session}
+                  sessionid={session.id} />
+
             </div>
-          </div>
+         
 
           <div className="space-y-6">
             <div className="border rounded-md">
-{/*              
-                  <PSEcharacteristicsForm initialData={experience} experienceid={experience.id} />
-                  <PiccharacteristicsForm initialData={experience} experienceid={experience.id} />
-                  <PnpcharacteristicsForm initialData={experience} experienceid={experience.id} /> */}
+
+              <ImageForm initialData={session}
+                  sessionid={session.id} />
+
+            <ProfnameForm initialData={session}
+                  sessionid={session.id} />
+
+                  <DateForm initialData={session}
+                  sessionid={session.id} />
+
+                  <YearForm initialData={session}
+                  sessionid={session.id} />
+
              
               <div className="border">
-
-                 
+            
               
                
               </div>
             </div>
+          </div>
           </div>
         </div>
       {/* </div> */}

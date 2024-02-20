@@ -4,11 +4,11 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ListPlus, Pencil } from "lucide-react";
+import { PenBox } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Course, GAP } from "@prisma/client";
+import { Experience, Session } from "@prisma/client";
 
 import {
   Form,
@@ -19,25 +19,23 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Combobox } from "@/components/ui/combobox";
+import { Textarea } from "@/components/ui/textarea";
 
-interface DepartmentFormProps {
-  initialData: GAP;
-  gapid: string;
-  options: { label: string; value: string; }[];
-};
+interface profnameFormProps {
+  initialData: Session;
+  sessionid: string;
+}
 
 const formSchema = z.object({
-  courseid: z.string().min(1),
+  prof_name: z.string().min(1, {
+    message: "Se requiere descripción",
+  }),
 });
 
-
-
-export const CourseForm = ({
+export const ProfnameForm = ({
   initialData,
-  gapid,
-  options,
-}: DepartmentFormProps) => {
+  sessionid,
+}: profnameFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -47,7 +45,7 @@ export const CourseForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-        courseid: initialData?.courseid|| "",
+      prof_name: initialData?.prof_name || "",
     },
   });
 
@@ -55,8 +53,8 @@ export const CourseForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/gaps/${gapid}`, values);
-      toast.success("Course actualizado");
+      await axios.patch(`/api/session/${sessionid}`, values);
+      toast.success("proffesor name actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -64,29 +62,29 @@ export const CourseForm = ({
     }
   };
 
-  const selectedOption = options ? options.find((option) => option.value === initialData.courseid) : null;
-
   return (
-    <div className="mt-6 bg-transparent rounded-md p-4">
+    <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Curso
+        Nombre de la profesora
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
-            <>Minimize</>
+            <>Minimizar</>
           ) : (
             <>
-              <ListPlus className="h-4 w-4 mr-2 text-red-500" />
-              Editar Curso
+              <PenBox className="h-4 w-4 mr-2 text-blue-500" />
+              Editar nombre
             </>
           )}
         </Button>
       </div>
       {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.departmentId && "text-slate-500 italic"
-        )}>
-          {selectedOption?.label || "sin curso"}
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.prof_name && "text-slate-500 italic"
+          )}
+        >
+          {initialData.prof_name || "Sin nombre"}
         </p>
       )}
       {isEditing && (
@@ -97,12 +95,13 @@ export const CourseForm = ({
           >
             <FormField
               control={form.control}
-              name="courseid"
+              name="prof_name"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox
-                      options={options || []}
+                    <Textarea
+                      disabled={isSubmitting}
+                      placeholder="Escribe el nombre de la profesora"
                       {...field}
                     />
                   </FormControl>
@@ -111,10 +110,7 @@ export const CourseForm = ({
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button
-                disabled={!isValid || isSubmitting}
-                type="submit"
-              >
+              <Button disabled={!isValid || isSubmitting} type="submit">
                 Ahorrar
               </Button>
             </div>
