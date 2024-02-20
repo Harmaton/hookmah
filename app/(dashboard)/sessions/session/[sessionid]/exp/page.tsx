@@ -1,4 +1,4 @@
-const ExperirnceGeneratePage = async ({
+const ExperienceGeneratePage = async ({
     params,
   }: {
     params: { sessionid: string };
@@ -6,6 +6,8 @@ const ExperirnceGeneratePage = async ({
 
 
     return(
-        <div>extract expression items</div>
+        <div>extract experience items</div>
     )
   }
+
+  export default ExperienceGeneratePage
