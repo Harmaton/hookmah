@@ -127,6 +127,23 @@ const ExperirnceGeneratePage = async ({
               pnpcharacteristics={experience.pnpcharacteristics}
               experienceid={experience.id}
             />
+             {experience.thematic_fields && (
+                <ProductForm
+                  initialData={experience}
+                  experienceid={experience.id}
+                  evaluationcriteria={experience.evaluation_criteria}
+                  thematicfields={experience.thematic_fields}
+                />
+              )}
+
+              {experience.thematic_fields && (
+                <EvalInstrument
+                  initialData={experience}
+                  experienceid={experience.id}
+                  evaluationcriteria={experience.evaluation_criteria}
+                  thematicfields={experience.thematic_fields}
+                />
+              )}
           </div>
 
           <div className="space-y-6">
@@ -154,23 +171,7 @@ const ExperirnceGeneratePage = async ({
                   evaluationcriteria={experience.evaluation_criteria}
                 />
               )}
-              {experience.thematic_fields && (
-                <ProductForm
-                  initialData={experience}
-                  experienceid={experience.id}
-                  evaluationcriteria={experience.evaluation_criteria}
-                  thematicfields={experience.thematic_fields}
-                />
-              )}
-
-              {experience.thematic_fields && (
-                <EvalInstrument
-                  initialData={experience}
-                  experienceid={experience.id}
-                  evaluationcriteria={experience.evaluation_criteria}
-                  thematicfields={experience.thematic_fields}
-                />
-              )}
+             
               {experience.product && (
                 <SEQForm
                   initialData={experience}

@@ -40,8 +40,6 @@ const SessionExperienceGeneratePage = async ({
     },
   });
 
-  console.log(experience?.skills);
-
   const requiredfields = [
     session.him,
     session.competence,
@@ -71,12 +69,12 @@ const SessionExperienceGeneratePage = async ({
             {!isComplete && <Progress value={completedFields} />}
 
       {isComplete &&
-       <>
+       <div className="items-center justify-center m-auto">
        <Actions disabled={false} sessionid={session.id}  /> 
         <div className="h-10 w-10 rounded-full bg-green-500 flex">
         <CheckCheck className="text-white mx-auto my-auto" />
       </div>
-       </>
+       </div>
        }
 
       <div className="p-4 border ">

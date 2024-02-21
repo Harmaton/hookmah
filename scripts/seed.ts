@@ -139,25 +139,25 @@ async function addDepatments() {
   }
 }
 
-//EXPERIENCE MODEL SEEDING
+// //EXPERIENCE MODEL SEEDING
 
-async function addExperienceEducationLevels() {
-  try {
-    await database.educationLevel__experience.createMany({
-      data: [
-        { name: "Initial (3,4,5 years)" },
-        { name: "Primary(1st - 6th grades)" },
-        { name: "Secondary (1st - 5th grades)" },
-      ],
-    });
+// async function addExperienceEducationLevels() {
+//   try {
+//     await database.educationLevel__experience.createMany({
+//       data: [
+//         { name: "Initial (3,4,5 years)" },
+//         { name: "Primary(1st - 6th grades)" },
+//         { name: "Secondary (1st - 5th grades)" },
+//       ],
+//     });
 
-    console.log("Success");
-  } catch (error) {
-    console.log("Error seeding the database education Levels", error);
-  } finally {
-    await database.$disconnect();
-  }
-}
+//     console.log("Success");
+//   } catch (error) {
+//     console.log("Error seeding the database education Levels", error);
+//   } finally {
+//     await database.$disconnect();
+//   }
+// }
 
 async function addExperienceAverageAge() {
   try {
@@ -308,11 +308,38 @@ async function addSessionEducationLevels() {
     await database.$disconnect();
   }
 }
+
+async function addtime() {
+  try {
+    await database.SessionTime.createMany({
+      data: [
+        { name: "15 minutos" },
+        { name: "30 minutos" },
+        { name: "45 minutos" },
+        { name: "60 minutos" },
+        { name: "75 minutos" },
+        { name: "90 minutos" },
+        { name: "105 minutos" },
+        { name: "120minutos" },
+        { name: "135 minutos" },
+        { name: "150 minutos" },
+      ],
+    });
+
+    console.log("Success");
+  } catch (error) {
+    console.log("Error seeding the database education Levels", error);
+  } finally {
+    await database.$disconnect();
+  }
+}
+
+addtime()
   
 
 // addSessionAcademicLevel()
 // addSessionCourseName()
-addSessionEducationLevels()
+// addSessionEducationLevels()
 // deleteAllGaps();
 
 //GAPS

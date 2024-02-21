@@ -222,6 +222,10 @@ model Session {
   educationid  String?
   education_level EducationLevel_Session? @relation(fields: [educationid], references: [id])
 
+  ageid String?
+  sessionage sessionAge? @relation(fields: [ageid], references: [id])
+
+
   competence       String?
   perfomance       String?
   product           String?
@@ -232,18 +236,18 @@ model Session {
 //inicio
 timeid String?
 time SessionTime? @relation(fields: [timeid], references: [id])
-motivation String?
-knowinadvance String?
-cognitiveconflict String?
-learningpurpose String?
+motivation String? @db.Text
+knowinadvance String? @db.Text
+cognitiveconflict String? @db.Text
+learningpurpose String? @db.Text
           
 //process
-theoreticalcontent String?
-practicalcontent String?
-complimentaryactivities String?
+theoreticalcontent String? @db.Text
+practicalcontent String? @db.Text
+complimentaryactivities String? @db.Text
 
 //closing
- assesment        String?
+ assesment        String? @db.Text
 
   createdAt DateTime @default(now())
   @@index([experienceid ])
@@ -251,6 +255,7 @@ complimentaryactivities String?
   @@index([courseid])
   @@index([educationid])
   @@index([timeid])
+  @@index([ageid])
 }
 
 model AcademicLevel_Session{
@@ -278,3 +283,8 @@ model SessionTime {
   session Session[]
 }
 
+model sessionAge {
+  id String @id @default(uuid())
+  name String
+  session Session[]
+}

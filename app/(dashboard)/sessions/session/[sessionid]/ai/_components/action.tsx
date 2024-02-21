@@ -24,7 +24,7 @@ export const Actions = ({
 
   const onClick = async () => {
     try {
-        router.push(`/sessions/session/${sessionid}/ai`)
+        router.push(`/sessions/session/${sessionid}/proceso`)
     } catch {
       toast.error("Algo salió mal");
     } 

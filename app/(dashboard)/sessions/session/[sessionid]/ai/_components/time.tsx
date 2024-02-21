@@ -4,11 +4,11 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { PenBox, Pencil } from "lucide-react";
+import { ListPlus, Pencil } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { Course, Experience, GAP } from "@prisma/client";
+import {  Session } from "@prisma/client";
 
 import {
   Form,
@@ -20,22 +20,24 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
+import { Combobox } from "@/components/ui/combobox";
 
-interface pnpcharacteristicsFormProps {
-  initialData: Experience;
-  experienceid: string;
-}
+interface TimeProps {
+  initialData: Session;
+  sessionid: string;
+  options: { label: string; value: string; }[];
+};
 
 const formSchema = z.object({
-  pnpcharacteristics: z.string().min(1, {
-    message: "Se requiere descripción",
-  }),
+  timeid: z.string().min(1),
 });
 
-export const PnpcharacteristicsForm = ({
+
+export const TimeForm = ({
   initialData,
-  experienceid,
-}: pnpcharacteristicsFormProps) => {
+  sessionid,
+  options,
+}: TimeProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -45,7 +47,7 @@ export const PnpcharacteristicsForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      pnpcharacteristics: initialData?.pnpcharacteristics || "",
+      timeid: initialData?.timeid || "",
     },
   });
 
@@ -53,8 +55,8 @@ export const PnpcharacteristicsForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/experience/${experienceid}`, values);
-      toast.success(" pnpcharacteristics actualizado");
+      await axios.patch(`/api/session/${sessionid}`, values);
+      toast.success("tiempo actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -62,29 +64,29 @@ export const PnpcharacteristicsForm = ({
     }
   };
 
+  const selectedOption = options ? options.find((option) => option.value === initialData.timeid) : null;
+
   return (
-    <div className="mt-6 rounded-md p-4">
+    <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      necesidades y problemáticas
+      Tiempo
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimizar</>
           ) : (
             <>
-              <PenBox className="h-4 w-4 mr-2 text-blue-500" />
-              Editar Caracterización
+              <ListPlus className="h-4 w-4 mr-2 text-red-500" />
+              Editar 
             </>
           )}
         </Button>
       </div>
       {!isEditing && (
-        <p
-          className={cn(
-            "text-sm mt-2",
-            !initialData.pnpcharacteristics && "text-slate-500 italic"
-          )}
-        >
-          {initialData.pnpcharacteristics || "Sin Caracterización"}
+        <p className={cn(
+          "text-sm mt-2",
+          !initialData.timeid && "text-slate-500 italic"
+        )}>
+          {selectedOption?.label || "sin tiempo"}
         </p>
       )}
       {isEditing && (
@@ -95,13 +97,12 @@ export const PnpcharacteristicsForm = ({
           >
             <FormField
               control={form.control}
-              name="pnpcharacteristics"
+              name="timeid"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Textarea
-                      disabled={isSubmitting}
-                      placeholder="Anota la caracterización"
+                    <Combobox
+                      options={options || []}
                       {...field}
                     />
                   </FormControl>
@@ -110,7 +111,10 @@ export const PnpcharacteristicsForm = ({
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button disabled={!isValid || isSubmitting} type="submit">
+              <Button
+                disabled={!isValid || isSubmitting}
+                type="submit"
+              >
                 Ahorrar
               </Button>
             </div>
