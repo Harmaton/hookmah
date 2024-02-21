@@ -228,20 +228,19 @@ model Session {
   instrument String?
   him String?
 
-
 //didactic sequence
 //inicio
-time String?
+timeid String?
+time SessionTime? @relation(fields: [timeid], references: [id])
 motivation String?
 knowinadvance String?
 cognitiveconflict String?
 learningpurpose String?
-
+          
 //process
 theoreticalcontent String?
 practicalcontent String?
 complimentaryactivities String?
-
 
 //closing
  assesment        String?
@@ -251,6 +250,7 @@ complimentaryactivities String?
   @@index([academicid])
   @@index([courseid])
   @@index([educationid])
+  @@index([timeid])
 }
 
 model AcademicLevel_Session{
@@ -271,3 +271,10 @@ model SessionCourse {
   session Session[]
 
 }
+
+model SessionTime {
+  id String @id @default(uuid()) 
+  name String
+  session Session[]
+}
+
