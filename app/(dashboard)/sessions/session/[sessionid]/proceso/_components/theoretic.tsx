@@ -39,7 +39,12 @@ const router = useRouter();
     setisLoading(true);
 
     const prompt =   `Taking into account the following topic, ${initialData.him}  and the competence to be developed,  ${initialData.competence}, which is for the course called ${course} that is recommended for the age ${age}.
-    offer 5 alternatives that motivate the student to enter the topic, these alternatives must be songs, games, stories, or any other recreational activity that generates movement and interactivity
+    offer 3 levels of information, for basic learning, for intermediate learning and for advanced, offer me the following alternatives:
+- Video Link that explains the topic in greater depth, appropriate to the age and understanding of the child.
+- A PowerPoint presentation or other resource where this topic is presented, appropriate to the age and understanding of the child.
+- Theoretical explanation of origin, development over time and use given by society.
+- Scientific data validated by science for said learning.
+- Uses, methods and forms of application in other contexts.)
     
     . Generate everything in Spanish.
     `;

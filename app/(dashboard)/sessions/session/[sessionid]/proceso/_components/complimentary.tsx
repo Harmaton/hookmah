@@ -40,7 +40,10 @@ export const ComplimentaryForm = ({
     setisLoading(true);
 
     const prompt = `Taking into account the following topic, ${initialData.him}  and the competence to be developed,  ${initialData.competence}, which is for the course called ${course} that is recommended for the age ${age}.
-    offer 5 alternatives that motivate the student to enter the topic, these alternatives must be songs, games, stories, or any other recreational activity that generates movement and interactivity
+    offer 3 levels of information, for basic learning, for intermediate learning and for advanced, offer me the following alternatives:
+- 5 additional practical basic level exercises to do at home. These exercises must be solved and with the resolution methodology explained.
+- 5 additional practical intermediate level exercises to do at home. These exercises must be solved and with the resolution methodology explained.
+- 5 additional practical advanced level exercises to do at home. These exercises must be solved and with the resolution methodology explained.
     
     . Generate everything in Spanish.
     `;

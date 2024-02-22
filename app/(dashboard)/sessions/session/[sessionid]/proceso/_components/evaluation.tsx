@@ -40,7 +40,15 @@ export const EvaluationForm = ({
     setisLoading(true);
 
     const prompt = `Taking into account the following topic, ${initialData.him}  and the competence to be developed,  ${initialData.competence}, which is for the course called ${course} that is recommended for the age ${age}.
-    offer 5 alternatives that motivate the student to enter the topic, these alternatives must be songs, games, stories, or any other recreational activity that generates movement and interactivity
+    Offer me the following alternatives:
+    - A checklist containing several alternatives to choose one. This list must have the correct answer and the solution explained.
+    - A true false checklist. This list must have the correct answer and the solution explained.
+    - An exam with questions or exercises to solve. This exam must have the correct answers and the solution explained. Include two questions that analyze the student's critical thinking.
+    - A questionnaire that interweaves information and connects with other subjects or transversal areas. This questionnaire must have the correct answers and the solution explained.
+    - A collection portfolio of free work, with clear instructions on how to do it, extension and times.
+    - A list of self-assessment questions, where the student can measure their growth and their applicability in everyday life.
+    - Preparation of a short project that reflects the learning, with clear instructions and all the steps to follow in the preparation of the project.
+    - Development of a game with clear instructions so that the student can put it into practice.
     
     . Generate everything in Spanish.
     `;
