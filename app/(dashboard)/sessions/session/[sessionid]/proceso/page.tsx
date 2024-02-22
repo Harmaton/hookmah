@@ -4,6 +4,10 @@ import { redirect } from "next/navigation";
 import { Progress } from "@/components/ui/progress";
 import { CheckCheck } from "lucide-react";
 import { Actions } from "./_components/actions";
+import { TheoryForm } from "./_components/theoretic";
+import { PracticalForm } from "./_components/practical";
+import { ComplimentaryForm } from "./_components/complimentary";
+import { EvaluationForm } from "./_components/evaluation";
 
 
  const Page = async ({
@@ -25,13 +29,11 @@ import { Actions } from "./_components/actions";
     redirect("/")
   }
 
-  const minutos = await db.sessionTime.findMany({orderBy: {name: 'desc'}})
-
   const requiredfields = [
-    session.learningpurpose,
-    session.knowinadvance,
-    session.cognitiveconflict,
-    session.motivation,
+    session.practicalcontent,
+    session.theoreticalcontent,
+    session.complimentaryactivities,
+    session.assesment,
   ];
 
   const allFields = requiredfields.length;
@@ -55,7 +57,7 @@ import { Actions } from "./_components/actions";
    redirect('/sessions')
   }
 
-  return <div className="P-4">
+  return <div className="P-4 m-2">
 
 <div className="p-4 ">
         <h1 className="font-bold text-center text-4xl">
@@ -78,22 +80,25 @@ import { Actions } from "./_components/actions";
        </div>
        }
   </div>
-      
-
 
       <div className="p-4 border rounded-md m-2 ">
-       
+       <TheoryForm initialData={session} sessionid={session.id} course={course.name} age={age.name} />
           
         </div>
 
         <div className="p-4 border rounded-md m-2 ">
-       
+
+       <PracticalForm initialData={session} sessionid={session.id} course={course.name} age={age.name} />
            
         </div>
 
         <div className="p-4 border rounded-md m-2 ">
-        
+        <ComplimentaryForm initialData={session} sessionid={session.id} course={course.name} age={age.name} />
       
+        </div>
+
+        <div className="p-4 border rounded-md m-2 ">
+            <EvaluationForm initialData={session} sessionid={session.id} course={course.name} age={age.name} />
         </div>
 
 
