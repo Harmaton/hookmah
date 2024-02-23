@@ -8,6 +8,7 @@ import { TheoryForm } from "./_components/theoretic";
 import { PracticalForm } from "./_components/practical";
 import { ComplimentaryForm } from "./_components/complimentary";
 import { EvaluationForm } from "./_components/evaluation";
+import { SessionWordAction } from "./_components/word-session";
 
 
  const Page = async ({
@@ -73,7 +74,7 @@ import { EvaluationForm } from "./_components/evaluation";
 
       {isComplete &&
        <div className="items-center justify-center m-auto">
-       <Actions disabled={false} sessionid={session.id}  /> 
+       <SessionWordAction disabled={false} expData={session} academyLevel={null} averageAge={age} educationLevel={null} time={null} />
         <div className="h-10 w-10 rounded-full bg-green-500 flex">
         <CheckCheck className="text-white mx-auto my-auto" />
       </div>

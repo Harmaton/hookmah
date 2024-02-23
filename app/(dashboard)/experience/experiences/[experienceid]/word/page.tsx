@@ -1,20 +1,8 @@
 import React from "react";
 import * as fs from "fs";
-import {
-  Document,
-  Table,
-  TableCell,
-  TableRow,
-  VerticalAlign,
-  Paragraph,
-  Packer,
-  ImageRun,
-  HeadingLevel,
-} from "docx";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
 import { db } from "@/lib/db";
-import { BibliographyForm } from "../generate/_components/bibliography";
 import { Separator } from "@/components/ui/separator";
 import { CheckCircle, ChevronDownCircle } from "lucide-react";
 import { MaterialsForm } from "../generate/_components/materials";

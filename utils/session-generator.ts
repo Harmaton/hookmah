@@ -1,8 +1,7 @@
 import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
-import { Experience } from "@prisma/client";
-
+import { Experience, Session } from "@prisma/client";
 
 let PizZipUtils: any = null;
 if (typeof window !== "undefined") {
@@ -18,15 +17,15 @@ export const loadFile = (
   PizZipUtils.getBinaryContent(url, callback);
 };
 
-export const generateExperienceWordDocument = async (
-  expData: Experience,
+export const generateSessionWordDocument = async (
+  expData: Session,
   academyLevel: { name: string } | null,
   averageAge: { name: string } | null,
   educationLevel: { name: string } | null,
+  time: { name: string } | null
 ) => {
-
   try {
-    const templateUrl = "/templates/template-2.docx";
+    const templateUrl = "/templates/temp-3.docx";
 
     loadFile(templateUrl, async (error: any, content: any) => {
       if (error) throw error;
@@ -36,26 +35,23 @@ export const generateExperienceWordDocument = async (
 
       doc.setData({
         title: expData.title,
-        prof_Name: expData.prof_name,
-        psecharacteristics: expData.psecharacteristics,
-        pnpcharacteristics: expData.pnpcharacteristics,
-        piccharacteristics: expData.piccharacteristics,
-        resources: expData.resources,
-        methodStrategies: expData.methods_strategies,
-        materials: expData.materials ,
-        bibliography: expData.bibliography,
-        academyLevel: academyLevel?.name,
-        averageAge: averageAge?.name,
-        educationLevel: educationLevel?.name,
-        thematicFields: expData.thematic_fields,
+        institutionName: expData.institution_name,
+        profName: expData.prof_name,
+        educationLevel: educationLevel,
+        academyLevel: academyLevel,
+        time: time,
+        competence: expData.competence,
+        performance: expData.perfomance,
         product: expData.product,
-        assesmentTool: expData.eval_instrument,
-        skills: expData.skills,
-        evaluationCriteria: expData.evaluation_criteria,
-        sequenceoflearningactivities: expData.sequence_activities,
-        context: expData.reality_context,
-        question: expData.question_ai
-        
+        instrument: expData.instrument,
+        motivation: expData.motivation,
+        knowinadvance: expData.knowinadvance,
+        cognitiveconflict: expData.cognitiveconflict,
+        learningpurpose: expData.learningpurpose,
+        theoreticalcontent: expData.theoreticalcontent,
+        practicalcontent: expData.practicalcontent,
+        complimentaryactivities: expData.complimentaryactivities,
+        assesment: expData.assesment
       });
 
       // Perform the templating process
@@ -67,9 +63,8 @@ export const generateExperienceWordDocument = async (
         mimeType:
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       });
-
       // Save the generated document as a file
-      saveAs(generatedDoc, "experiencia de aprendizaje-hokmahv1-document.docx");
+      saveAs(generatedDoc, "sesión -hokmahv1-document.docx");
     });
   } catch (error: any) {
     console.error("Error generating Word document:", error);
