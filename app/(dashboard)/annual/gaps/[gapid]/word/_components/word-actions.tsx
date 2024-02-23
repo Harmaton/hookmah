@@ -28,6 +28,7 @@ interface ActionsProps {
   averageAge: { name: string; } | null;
   educationLevel: { name: string; } | null;
   department: { name: string; } | null;
+  course: { name: string; } | null
 }
 
 export const WordAction = ({
@@ -38,6 +39,7 @@ export const WordAction = ({
   averageAge,
   educationLevel,
   department,
+  course
 }: ActionsProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +51,8 @@ export const WordAction = ({
         academyLevel,
         averageAge,
         educationLevel,
-        department
+        department,
+        course
       );
       toast.success("Descargado exitosamente")
       router.refresh();
@@ -59,7 +62,7 @@ export const WordAction = ({
   };
 
   return (
-    <div className="flex items-center gap-x-2 ">
+    
       <Button
         onClick={onClick}
         disabled={disabled || isLoading}
@@ -70,6 +73,6 @@ export const WordAction = ({
         Generar documento de Word
         <BookText className="h-4 w-4 ml-4 text-white" />
       </Button>
-    </div>
+  
   );
 };

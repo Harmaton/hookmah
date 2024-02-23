@@ -9,8 +9,6 @@ import { MaterialsForm } from "../generate/_components/materials";
 import { ResourcesForm } from "../generate/_components/resources";
 import { EXPWordAction } from "./_components/exp-word-actions";
 
-
-
 const ExperienceWordPage = async ({ params }: { params: { experienceid: string } }) => {
   const { userId } = auth();
 

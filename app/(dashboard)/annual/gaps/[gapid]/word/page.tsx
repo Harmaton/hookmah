@@ -68,6 +68,11 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
     select: { name: true },
   })
 
+  const course = await db.course.findUnique({
+    where: { id: gap.courseid },
+    select: { name: true },
+  })
+
   const requiredFields = [gap.methodsStrategies, gap.resources, gap.materials];
 
   const allFields = requiredFields.length;
@@ -85,10 +90,20 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
       <h1 className="text-2xl text-red-500"> Paso 3/3</h1>
       <Actions disabled={false} gapid={gap.id} />
       </div>
-      <div className="flex space-x-5 flex-row p-2 ">
+      <div className="flex space-x-5  p-2 ">
         <h1 className="text-3xl ">
         Genera los detalles finales y accede al botón para convertir todo a Word.
         </h1>
+        {isComplete && (
+      <>
+      <div className="flex justify-center items-center">
+        <ChevronDownCircle className="animate animate-bounce m-4" />
+      </div>
+      <div className="flex justify-center items-center rounded-full p-2 mt-2 bg-red-500">
+        <WordAction gapData={gap} disabled={false} gapid={gap.id} academyLevel={academyLevel} averageAge={ageRecord} educationLevel={educationLevel} department={department} course={course} />
+      </div>
+    </>
+      )}
       </div>
       <MethodsForm initialData={gap} gapid={gap.id} ageRecord={ageRecord} />
       <MaterialsForm initialData={gap} gapid={gap.id} ageRecord={ageRecord} />
@@ -104,8 +119,8 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
       <div className="flex justify-center items-center">
         <ChevronDownCircle className="animate animate-bounce m-4" />
       </div>
-      <div className="flex justify-center items-center rounded-full p-2 mt-2 bg-red-500">
-        <WordAction gapData={gap} disabled={false} gapid={gap.id} academyLevel={academyLevel} averageAge={ageRecord} educationLevel={educationLevel} department={department} />
+      <div className="flex justify-center items-center rounded-md p-2 mt-2 bg-red-500">
+        <WordAction gapData={gap} disabled={false} gapid={gap.id} academyLevel={academyLevel} averageAge={ageRecord} educationLevel={educationLevel} department={department} course={course} />
       </div>
     </>
       )}

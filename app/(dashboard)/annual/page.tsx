@@ -13,7 +13,7 @@ const GapPage = async () => {
         return redirect("/");
     }
 
-    const currentTime = new Date().toLocaleString(); 
+    const currentTime = new Date().toLocaleString('es-ES'); 
 
     const gaps = await db.gAP.findMany({
         where: {
@@ -28,7 +28,7 @@ const GapPage = async () => {
             <div className="p-6 justify-center">
                 <h1 className="text-3xl m-2 p-4 font-bold ">Su plan de estudios de programación anual de 2024</h1>
                 <Link href={`/annual/gaps/${gap.id}`}>
-                    <Card className="border-black shadow  hover:bg-rose-50" data-aos="fade-up">
+                    <Card className="border-black shadow " data-aos="fade-up">
                         <CardHeader className="font-bold capitalize text-3xl ">
                             {gap.title}
                         </CardHeader>
@@ -51,7 +51,6 @@ const GapPage = async () => {
         return (
             <div className="p-6 justify-center">
                  <h1 className="text-3xl m-2 p-2 font-bold ">Bienvenido, comienza a crear tus documentos aquí</h1>
-                
                 <Link href='/annual/create'>
                     <Card className="rounded-ml ">
                         <CardHeader className="font-bold ">
@@ -60,12 +59,12 @@ const GapPage = async () => {
                         <CardContent className="font-bold">
                             ¡Empiece hoy!
                             <Image 
-      src='/empty-red.svg'
-      alt='undraw create image'
-      width={150}
-      height={150}
-      className='m-auto'
-      />
+                        src='/empty-red.svg'
+                        alt='undraw create image'
+                        width={150}
+                        height={150}
+                        className='m-auto'
+                            />
                         </CardContent>
                         <CardFooter>
                             {currentTime}

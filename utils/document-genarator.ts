@@ -3,7 +3,6 @@ import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 import { GAP } from "@prisma/client";
 
-
 let PizZipUtils: any = null;
 if (typeof window !== "undefined") {
   import("pizzip/utils/index.js").then(function (r) {
@@ -23,10 +22,22 @@ export const generateWordDocument = async (
   academyLevel: { name: string } | null,
   averageAge: { name: string } | null,
   educationLevel: { name: string } | null,
-  department: { name: string } | null
+  department: { name: string } | null,
+  course: { name: string } | null
 ) => {
+  function formatWords(words: string) {
+    // Remove all characters that are not word characters or asterisks
+    let cleanedText = words.replace(/[^\w*\s]/g, "");
+    // Remove occurrences of "**" and "**\n\n**"
+    cleanedText = cleanedText.replace(/\*\*|\*\*\n\n\*\*/g, "");
+    // Replace consecutive newline characters with a single space
+    cleanedText = cleanedText.replace(/\n+/g, " ");
+    // Replace consecutive spaces with a single space
+    cleanedText = cleanedText.replace(/\s+/g, " ");
+    return cleanedText.trim(); // Trim leading/trailing spaces
+  }
+
   try {
-    
     const templateUrl = "/templates/temp-test.docx";
 
     loadFile(templateUrl, async (error: any, content: any) => {
@@ -35,23 +46,43 @@ export const generateWordDocument = async (
       const zip = new PizZip(content);
       const doc = new Docxtemplater(zip, { modules: [] });
 
+      const formattedBibliography = gapData.bibliography
+        ? formatWords(gapData.bibliography)
+        : "";
+
+      const formattedac = gapData.acdescription
+        ? formatWords(gapData.acdescription)
+        : "";
+
+      const formattedmaterials = gapData.materials
+        ? formatWords(gapData.materials)
+        : "";
+
+      const formatedstrategies = gapData.methodsStrategies
+        ? formatWords(gapData.methodsStrategies)
+        : "";
+
       doc.setData({
         institutionName: gapData.institutionName,
         proffesorName: gapData.proffesorName,
         characteristics: gapData.characteristics,
         values: gapData.values,
         resources: gapData.resources,
-        acdescription: gapData.acdescription,
+        acdescription: formattedac,
         learningPurposes: gapData.learningPurposes,
-        methodStrategies: gapData.methodsStrategies,
-        materials: gapData.materials,
+        methodStrategies: formatedstrategies,
+        materials: formattedmaterials,
         attitudes: gapData.attitudes,
-        bibliography: gapData.bibliography,
+        bibliography: formattedBibliography,
         city: gapData.city,
         academyLevel: academyLevel?.name,
         averageAge: averageAge?.name,
         educationLevel: educationLevel?.name,
         department: department?.name,
+        district: gapData.district,
+        course: course?.name,
+        year: gapData.year,
+        title: gapData.title,
         // gapimage: gapData.companyLogo
       });
 

@@ -81,10 +81,8 @@ import { SessionWordAction } from "./_components/word-session";
        </div>
        }
   </div>
-
       <div className="p-4 border rounded-md m-2 ">
        <TheoryForm initialData={session} sessionid={session.id} course={course.name} age={age.name} />
-          
         </div>
 
         <div className="p-4 border rounded-md m-2 ">

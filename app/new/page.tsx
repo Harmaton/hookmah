@@ -60,9 +60,9 @@ const NewUser = () => {
 
 
   return (
-    <div className=' flex justify-center items-center p-10 flex-col bg- space-x-4'>
+    <div className='p-10'>
       <div className='max-w-2xl flex justify-center items-center flex-col space-y-3'>
-      <div className="fixed mx-auto inset-0 m-4 p-4 max-w-xs w-full bg-white/90 rounded-lg shadow-lg z-50 overflow-auto h-80 hover:h-full " >
+      <div className="fixed mx-auto inset-0 m-4 p-4  w-full bg-black text-white rounded-lg shadow-lg z-50 overflow-auto h-80 hover:h-full mb-10 " >
 
   <h2 className="text-lg font-bold text-slate-900 p-4">Términos y Condiciones</h2>
   <p className={`text-sm leading-relaxed text-slate-600 ${isExpanded ? '' : 'line-clamp-3'}`}>
@@ -474,7 +474,7 @@ const NewUser = () => {
       Aceptas nuestros Términos de servicio y Política de privacidad. Aceptas la publicidad
         </p>
   <AlertDialog>
-            <AlertDialogTrigger className="p-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 m-6 ">Aceptar Términos y Políticas</AlertDialogTrigger>
+            <AlertDialogTrigger className="p-4 bg-gradient-to-r from-green-400 to-red-500 hover:from-red-500 hover:to-black m-6 ">Aceptar Términos y Políticas</AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>¿Estás absolutamente seguro?</AlertDialogTitle>
