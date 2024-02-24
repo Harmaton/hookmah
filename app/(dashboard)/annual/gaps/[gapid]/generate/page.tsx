@@ -142,17 +142,6 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
                 gapid={gap.id}
                 ageRecord={ageRecord}
               />
-
-            {/* <AttitudesForm
-              initialData={gap}
-              gapid={gap.id}
-              ageRecord={ageRecord}
-            /> */}
-            {/* <ValuesForm
-              initialData={gap}
-              gapid={gap.id}
-              ageRecord={ageRecord}
-            /> */}
           </div>
 
           <div className="space-y-6">

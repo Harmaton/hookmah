@@ -52,10 +52,12 @@ export const generateWordDocument = async (
         ? formatWords(gapData.methodsStrategies)
         : "";
 
+        const formattedxtics = gapData.characteristics ? formatWords(gapData.characteristics) : ""
+
       doc.setData({
         institutionName: gapData.institutionName,
         proffesorName: gapData.proffesorName,
-        characteristics: gapData.characteristics,
+        characteristics: formattedxtics,
         values: gapData.values,
         resources: gapData.resources,
         acdescription: formattedac,

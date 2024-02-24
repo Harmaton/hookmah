@@ -44,6 +44,7 @@ const router = useRouter();
     setisLoading(true);
 
     const prompt =   `Generate the general characterization table of students in Spanish Based on the student's location in the department of ${departmentRecord?.name}, district of ${district}, and city of ${city}, considering their age of ${ageRecord?.name} and enrolled course of ${courseRecord?.name}. Use and refer to the the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru which outlines the following student characterization:
+    Offer the following -> 
     - Describe the student's physical characteristics.
     - Outline their psychological traits and characteristics.
     - Identify the student's interests and curiosities.
@@ -62,7 +63,7 @@ const router = useRouter();
       const res = await axios.patch(`/api/gaps/${gapid}/characteristics`, { text: JSON.stringify(text) });
 
       console.log(res)
-      toast.success("Characteristics actualizado");
+      toast.success("características actualizadas");
       toggleEdit();
       router.refresh();
 
