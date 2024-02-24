@@ -2,6 +2,7 @@ import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 import { GAP } from "@prisma/client";
+import formatWords from "./formatWords";
 
 let PizZipUtils: any = null;
 if (typeof window !== "undefined") {
@@ -25,17 +26,6 @@ export const generateWordDocument = async (
   department: { name: string } | null,
   course: { name: string } | null
 ) => {
-  function formatWords(words: string) {
-    // Remove all characters that are not word characters or asterisks
-    let cleanedText = words.replace(/[^\w*\s]/g, "");
-    // Remove occurrences of "**" and "**\n\n**"
-    cleanedText = cleanedText.replace(/\*\*|\*\*\n\n\*\*/g, "");
-    // Replace consecutive newline characters with a single space
-    cleanedText = cleanedText.replace(/\n+/g, " ");
-    // Replace consecutive spaces with a single space
-    cleanedText = cleanedText.replace(/\s+/g, " ");
-    return cleanedText.trim(); // Trim leading/trailing spaces
-  }
 
   try {
     const templateUrl = "/templates/temp-test.docx";

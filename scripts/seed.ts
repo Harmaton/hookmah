@@ -1,3 +1,4 @@
+
 const { PrismaClient } = require("@prisma/client");
 
 const database = new PrismaClient();
@@ -5,25 +6,26 @@ const database = new PrismaClient();
 async function addCourses() {
   try {
     await database.course.createMany({
-      data: [
-        { name: "Personal Development, Citizenship and Civics" },
-        { name: "Communication" },
-        { name: "Art" },
-        { name: "English" },
-        { name: "Technology and Projects" },
-        { name: "Religious Education" },
-        { name: "Physical Education" },
-        { name: "Math" },
-        { name: "Science and Environment" },
-        { name: "philosophy" },
-        { name: "Accounting" },
-        { name: "Geographic and Economic History" },
-        { name: "Citizenship and Civic Education" },
-        { name: "Physical Education and Health" },
-        { name: "Economy" },
-        { name: "Consumer Rights" },
-        { name: "Education for Work Financial and Tax Education" },
-      ],
+      data:[
+        { "name": "Desarrollo Personal, Ciudadanía y Civismo" },
+        { "name": "Comunicación" },
+        { "name": "Arte" },
+        { "name": "English" },
+        { "name": "Tecnología y Proyectos" },
+        { "name": "Educación Religiosa" },
+        { "name": "Educación Física" },
+        { "name": "Matemáticas" },
+        { "name": "Ciencia y Medio Ambiente" },
+        { "name": "Filosofía" },
+        { "name": "Contabilidad" },
+        { "name": "Historia Geográfica y Económica" },
+        { "name": "Educación Ciudadana y Cívica" },
+        { "name": "Educación Física y Salud" },
+        { "name": "Economía" },
+        { "name": "Derechos del Consumidor" },
+        { "name": "Educación para el Trabajo, Financiera y Fiscal" }
+    ]
+    ,
     });
 
     console.log("Success");
@@ -34,14 +36,18 @@ async function addCourses() {
   }
 }
 
+
+
+
 async function addAcademyLevels() {
   try {
     await database.academy.createMany({
       data: [
-        { name: "Initial Education" },
-        { name: "Primary Education" },
-        { name: "Secondary Education" },
-      ],
+        { "name": "Educación Inicial" },
+        { "name": "Educación Primaria" },
+        { "name": "Educación Secundaria" }
+    ]
+    ,
     });
 
     console.log("Success");
@@ -52,14 +58,16 @@ async function addAcademyLevels() {
   }
 }
 
+
 async function addEducationLevels() {
   try {
     await database.educationLevel.createMany({
-      data: [
-        { name: "Initial (3,4,5 years)" },
-        { name: "Primary(1st - 6th grades)" },
-        { name: "Secondary (1st - 5th grades)" },
-      ],
+      data:[
+        { "name": "Inicial (3,4,5 años)" },
+        { "name": "Primaria (1ro - 6to grado)" },
+        { "name": "Secundaria (1ro - 5to grado)" }
+    ]
+    ,
     });
 
     console.log("Success");
@@ -69,6 +77,8 @@ async function addEducationLevels() {
     await database.$disconnect();
   }
 }
+
+
 
 async function addAverageAges() {
   try {
@@ -141,23 +151,23 @@ async function addDepatments() {
 
 // //EXPERIENCE MODEL SEEDING
 
-// async function addExperienceEducationLevels() {
-//   try {
-//     await database.educationLevel__experience.createMany({
-//       data: [
-//         { name: "Initial (3,4,5 years)" },
-//         { name: "Primary(1st - 6th grades)" },
-//         { name: "Secondary (1st - 5th grades)" },
-//       ],
-//     });
+async function addExperienceEducationLevels() {
+  try {
+    await database.educationLevel__experience.createMany({
+      data:[
+        { "name": "Inicial (3,4,5 años)" },
+        { "name": "Primaria (1ro - 6to grado)" },
+        { "name": "Secundaria (1ro - 5to grado)" }
+    ],
+    });
 
-//     console.log("Success");
-//   } catch (error) {
-//     console.log("Error seeding the database education Levels", error);
-//   } finally {
-//     await database.$disconnect();
-//   }
-// }
+    console.log("Success");
+  } catch (error) {
+    console.log("Error seeding the database education Levels", error);
+  } finally {
+    await database.$disconnect();
+  }
+}
 
 async function addExperienceAverageAge() {
   try {
@@ -189,29 +199,31 @@ async function addExperienceAverageAge() {
     await database.$disconnect();
   }
 }
+
+
 async function addExperienceCourseName() {
   try {
     await database.course_experience.createMany({
       data: [
-        { name: "Personal Development, Citizenship and Civics" },
-        { name: "Communication" },
-        { name: "Art" },
-        { name: "English" },
-        { name: "Technology and Projects" },
-        { name: "Religious Education" },
-        { name: "Physical Education" },
-        { name: "Math" },
-        { name: "Science and Environment" },
-        { name: "philosophy" },
-        { name: "Accounting" },
-        { name: "Geographic and Economic History" },
-        { name: "Citizenship and Civic Education" },
-        { name: "Physical Education and Health" },
-        { name: "Economy" },
-        { name: "Consumer Rights" },
-        { name: "Education for Work Financial and Tax Education" },
-      ],
-    });
+        { "name": "Desarrollo Personal, Ciudadanía y Civismo" },
+        { "name": "Comunicación" },
+        { "name": "Arte" },
+        { "name": "English" },
+        { "name": "Tecnología y Proyectos" },
+        { "name": "Educación Religiosa" },
+        { "name": "Educación Física" },
+        { "name": "Matemáticas" },
+        { "name": "Ciencia y Medio Ambiente" },
+        { "name": "Filosofía" },
+        { "name": "Contabilidad" },
+        { "name": "Historia Geográfica y Económica" },
+        { "name": "Educación Ciudadana y Cívica" },
+        { "name": "Educación Física y Salud" },
+        { "name": "Economía" },
+        { "name": "Derechos del Consumidor" },
+        { "name": "Educación para el Trabajo, Financiera y Fiscal" }
+    ],
+    })
 
     console.log("Success");
   } catch (error) {
@@ -225,10 +237,11 @@ async function addExperienceAcademicLevel() {
   try {
     await database.academicLevel_experience.createMany({
       data: [
-        { name: "Initial Education" },
-        { name: "Primary Education" },
-        { name: "Secondary Education" },
-      ],
+        { "name": "Educación Inicial" },
+        { "name": "Educación Primaria" },
+        { "name": "Educación Secundaria" }
+    ]
+    ,
     });
 
     console.log("Success");
@@ -239,15 +252,23 @@ async function addExperienceAcademicLevel() {
   }
 }
 
+// addExperienceCourseName()
+// addExperienceEducationLevels()
+// addExperienceAcademicLevel()
+
+
+//SESSION SEEDING
+
 
 async function addSessionAcademicLevel() {
   try {
     await database.AcademicLevel_Session.createMany({
       data: [
-        { name: "Initial Education" },
-        { name: "Primary Education" },
-        { name: "Secondary Education" },
-      ],
+        { "name": "Educación Inicial" },
+        { "name": "Educación Primaria" },
+        { "name": "Educación Secundaria" }
+    ]
+    ,
     });
 
     console.log("Success");
@@ -262,25 +283,26 @@ async function addSessionAcademicLevel() {
 async function addSessionCourseName() {
   try {
     await database.SessionCourse.createMany({
-      data: [
-        { name: "Personal Development, Citizenship and Civics" },
-        { name: "Communication" },
-        { name: "Art" },
-        { name: "English" },
-        { name: "Technology and Projects" },
-        { name: "Religious Education" },
-        { name: "Physical Education" },
-        { name: "Math" },
-        { name: "Science and Environment" },
-        { name: "philosophy" },
-        { name: "Accounting" },
-        { name: "Geographic and Economic History" },
-        { name: "Citizenship and Civic Education" },
-        { name: "Physical Education and Health" },
-        { name: "Economy" },
-        { name: "Consumer Rights" },
-        { name: "Education for Work Financial and Tax Education" },
-      ],
+      data:[
+        { "name": "Desarrollo Personal, Ciudadanía y Civismo" },
+        { "name": "Comunicación" },
+        { "name": "Arte" },
+        { "name": "English" },
+        { "name": "Tecnología y Proyectos" },
+        { "name": "Educación Religiosa" },
+        { "name": "Educación Física" },
+        { "name": "Matemáticas" },
+        { "name": "Ciencia y Medio Ambiente" },
+        { "name": "Filosofía" },
+        { "name": "Contabilidad" },
+        { "name": "Historia Geográfica y Económica" },
+        { "name": "Educación Ciudadana y Cívica" },
+        { "name": "Educación Física y Salud" },
+        { "name": "Economía" },
+        { "name": "Derechos del Consumidor" },
+        { "name": "Educación para el Trabajo, Financiera y Fiscal" }
+    ]
+    ,
     });
 
     console.log("Success");
@@ -295,10 +317,11 @@ async function addSessionEducationLevels() {
   try {
     await database.educationLevel_Session.createMany({
       data: [
-        { name: "Initial (3,4,5 years)" },
-        { name: "Primary(1st - 6th grades)" },
-        { name: "Secondary (1st - 5th grades)" },
-      ],
+        { "name": "Inicial (3,4,5 años)" },
+        { "name": "Primaria (1ro - 6to grado)" },
+        { "name": "Secundaria (1ro - 5to grado)" }
+    ]
+    ,
     });
 
     console.log("Success");
@@ -334,7 +357,7 @@ async function addtime() {
   }
 }
 
-addtime()
+// addtime()
   
 
 // addSessionAcademicLevel()
@@ -356,3 +379,17 @@ addtime()
 // addExperienceAverageAge()
 // addExperienceEducationLevels()
 
+async function deleteallEnglishNames(){
+  try {
+    await database.educationLevel__experience.deleteMany({})
+    await database.course_experience.deleteMany({})
+    await database.academicLevel_experience.deleteMany({})
+
+    console.log("successfully deleted")
+    
+  } catch (error) {
+    console.log("Deletion Error --> ",error)
+  }
+}
+
+// deleteallEnglishNames()

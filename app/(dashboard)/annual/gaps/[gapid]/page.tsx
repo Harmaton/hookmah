@@ -70,7 +70,6 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
     gap.departmentId,
     gap.proffesorName,
     gap.institutionName,
-    gap.year,
     gap.city,
     gap.academyid,
     gap.district,
@@ -129,7 +128,6 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
           <div className="border rounded-md ">
             <ProffForm initialData={gap} gapid={gap.id} />
             <InstitutionForm initialData={gap} gapid={gap.id} />
-            <YearForm initialData={gap} gapid={gap.id} />
             <CityForm initialData={gap} gapid={gap.id} />
             <DistrictForm initialData={gap} gapid={gap.id} />
             <div className="border">
