@@ -51,6 +51,7 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
   const ageRecord = await db.averageAge.findUnique({
     where: { id: gap.ageid },
     select: { name: true },
+  
   });
 
   const educationLevel = await db.educationLevel.findUnique({

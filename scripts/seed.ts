@@ -313,6 +313,8 @@ async function addSessionCourseName() {
   }
 }
 
+addSessionCourseName()
+
 async function addSessionEducationLevels() {
   try {
     await database.educationLevel_Session.createMany({
@@ -356,6 +358,7 @@ async function addtime() {
     await database.$disconnect();
   }
 }
+addSessionEducationLevels()
 
 // addtime()
   
@@ -381,9 +384,9 @@ async function addtime() {
 
 async function deleteallEnglishNames(){
   try {
-    await database.educationLevel__experience.deleteMany({})
-    await database.course_experience.deleteMany({})
-    await database.academicLevel_experience.deleteMany({})
+    await database.SessionCourse.deleteMany({})
+    await database.educationLevel_Session.deleteMany({})
+    // await database.academicLevel_experience.deleteMany({})
 
     console.log("successfully deleted")
     
