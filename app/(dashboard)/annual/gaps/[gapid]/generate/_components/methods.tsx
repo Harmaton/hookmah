@@ -16,12 +16,20 @@ interface MethodsFormProps {
   initialData: GAP;
   ageRecord: {name: string } | null;
   gapid: string;
+  course: { name: string } | null;
+  academiclevel: { name: string } | null;
+  learningpurposes: string
+  characterization: string
 }
 
 export const MethodsForm = ({
   initialData,
   gapid,
-  ageRecord
+  ageRecord,
+  learningpurposes,
+  academiclevel,
+  characterization,
+  course
 }: MethodsFormProps) => {
   const [isLoading, setisLoading] = useState(false);
 
@@ -37,7 +45,10 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =  `Taking as an example the National Curriculum for Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, describe to me the method and strategy that should be implemented for the development of everything built so far which includes,characterization of students{}. I want a method and a strategy for an educational model based on competencies, I want another method and strategy for an educational model based on problem-based learning, another method and strategy for an educational learning model that guides spiritual development, emotional well-being and Mental health. Generate everything is spanish.
+    const prompt =  `Taking as an example the National Curriculum for Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, describe to me the method and strategy that should be implemented for the development of everything built so far which includes,characterization of students ${characterization}.
+    learning purposes child must develop at this stage as follows ${learningpurposes}
+    The age of students is ${ageRecord}, the course they are taking is ${course} and the academic level is ${academiclevel}
+    I want a method and a strategy for an educational model based on competencies, I want another method and strategy for an educational model based on problem-based learning, another method and strategy for an educational learning model that guides spiritual development, emotional well-being and Mental health. Generate everything is spanish.
     `;
 
     try{

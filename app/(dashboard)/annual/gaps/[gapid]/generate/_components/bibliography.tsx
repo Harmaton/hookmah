@@ -15,12 +15,26 @@ interface BibliographyFormProps {
   initialData: GAP;
   ageRecord: {name: string } | null;
   gapid: string;
+  acdescription: string;
+  methods: string;
+  characterization: string;
+  learningpurposes: string;
+  recommendations: string
+  educationlevel: {name: string } | null;
+  course: {name: string } | null;
 }
 
 export const BibliographyForm = ({
   initialData,
   gapid,
-  ageRecord
+  ageRecord,
+  educationlevel,
+  recommendations,
+  characterization,
+  acdescription,
+  learningpurposes,
+  course,
+  methods
 }: BibliographyFormProps) => {
   const [isLoading, setisLoading] = useState(false);
 
@@ -36,7 +50,15 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Design me a complete bibliography of all the places you have gone to to obtain the constructed information. Generate everything in Spanish.
+    const prompt =   `Design me a complete bibliography of all the places you have gone to to obtain the constructed information. Stay relevant and only refer the following information which you have generated.
+    The said information included the following : 
+    ,characterization of students ${characterization}.
+    then you also produced the following ${acdescription}
+    methods and strategies which are ${methods}
+    You also built the following recoomendations for recommend favorable environmental and educational situations for the development of all these learning situations built which are ${recommendations}
+    learning purposes child must develop at this stage as follows ${learningpurposes}.
+    The course you developed this for (for the purpose of relevancy) is ${course}, which is for the following education level ${educationlevel} of the age ${ageRecord}
+    Generate the bibliography in Spanish and it should look like a bibliography designed for the content reffered to above only.
     `;
 
     try{

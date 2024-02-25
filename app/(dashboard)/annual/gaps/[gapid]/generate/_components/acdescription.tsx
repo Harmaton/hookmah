@@ -42,7 +42,8 @@ export const AcDescriptionForm = ({
   async function aiRun() {
     setisLoading(true);
 
-    const prompt = `According to the National Curriculum of Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, it describes the area of city ${city} and its competencies for the ${educationLevel}. Generate everything in Spanish.
+    const prompt = `According to the National Curriculum of Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, it describe the area of city ${city} and its competencies for the ${educationLevel}.
+    Generate everything in Spanish.
     `;
 
     try {

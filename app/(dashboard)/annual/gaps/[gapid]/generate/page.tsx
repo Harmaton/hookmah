@@ -1,6 +1,12 @@
 import { auth } from "@clerk/nextjs";
 import { redirect, useRouter } from "next/navigation";
-import { ArrowLeftCircleIcon, BookAIcon, CheckCheck, CheckCircle, SprayCan } from "lucide-react";
+import {
+  ArrowLeftCircleIcon,
+  BookAIcon,
+  CheckCheck,
+  CheckCircle,
+  SprayCan,
+} from "lucide-react";
 
 import { db } from "@/lib/db";
 
@@ -83,7 +89,7 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
   return (
     <>
       <div className="p-6 border">
-        <div className='flex space-x-5 items-center p-2 border rounded-md mb-2'>
+        <div className="flex space-x-5 items-center p-2 border rounded-md mb-2">
           <CheckCircle className="h-4 w-4 text-red-500" />
           <h1 className="text-2xl text-red-500"> Paso 2/3</h1>
           <BackActions disabled={false} gapid={gap.id} />
@@ -91,7 +97,8 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
         <div className="flex items-center justify-between flex-col md:flex-row">
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-medium flex">
-              Aquí, anima los detalles en los cuadros y ajústalos a tu estilo más tarde.
+              Aquí, anima los detalles en los cuadros y ajústalos a tu estilo
+              más tarde.
               <SprayCan className="h-4 w-4 flex ml-2 text-blue-500 " />
             </h1>
             <span className="text-sm text-slate-700">
@@ -137,16 +144,21 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
               ageRecord={ageRecord}
             />
 
-            <MethodsForm
-                initialData={gap}
-                gapid={gap.id}
-                ageRecord={ageRecord}
-              />
+          { (gap.learningPurposes && gap.characteristics)  && <MethodsForm
+              initialData={gap}
+              gapid={gap.id}
+              ageRecord={ageRecord}
+              course={courseRecord}
+              academiclevel={educationLevel}
+              learningpurposes={gap.learningPurposes}
+              characterization={gap.characteristics}
+            />}
+
+
           </div>
 
           <div className="space-y-6">
             <div className="border rounded-md">
-             
               <LearningfORM
                 initialData={gap}
                 gapid={gap.id}
