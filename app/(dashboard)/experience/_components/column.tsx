@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import {  Experience } from "@prisma/client"
-import { ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, BadgeCheck, MoreHorizontal, Pencil } from "lucide-react"
+import { Experience } from "@prisma/client";
+import { ColumnDef } from "@tanstack/react-table";
+import { ArrowUpDown, BadgeCheck, MoreHorizontal, PenLine, Pencil } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -24,13 +24,13 @@ export const columns: ColumnDef<Experience>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Título
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+           <PenLine className="mr-2 h-4 w-4" />
+          Tema
         </Button>
-      )
+      );
     },
   },
-  
+
   {
     id: "actions",
     cell: ({ row }) => {
@@ -41,19 +41,19 @@ export const columns: ColumnDef<Experience>[] = [
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-4 w-8 p-0">
               <span className="sr-only">Menú abierto</span>
-              <MoreHorizontal className="h-4 w-4" />
+              <PenLine className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <Link href={`/experience/experiences/${id}`}>
               <DropdownMenuItem>
                 <Pencil className="h-4 w-4 mr-2" />
-                Editar Sesión
+                Editar experiencia de aprendizaje
               </DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
-    }
-  }
-]
+      );
+    },
+  },
+];

@@ -58,9 +58,9 @@ export const BibliographyForm = ({
     Methods and strategies employed: ${methods}
     Recommendations for favorable learning environments: ${recommendations}
     Learning purposes for children at this stage: ${learningpurposes}
-     The Course in for relevancy of the bibliography is: ${course}
-    the Education level: ${educationlevel}
-    Age group: ${ageRecord}
+     The Course in for relevancy of the bibliography is: ${course?.name}
+    the Education level: ${educationlevel?.name}
+    Age group: ${ageRecord?.name}
     The bibliography should be formatted in Spanish and structured to resemble a bibliography tailored for the aforementioned content exclusively. Include relevant details such as author names, titles, publication years, etc., ensuring the bibliography closely aligns with the provided information and must be present, never empty.
     `;
 

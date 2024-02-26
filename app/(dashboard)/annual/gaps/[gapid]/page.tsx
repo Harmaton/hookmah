@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { BookAIcon, CheckCheck, CheckCircle } from "lucide-react";
-import { Prisma } from '@prisma/client';
+import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 
 import { YearForm } from "./_components/year";
@@ -17,7 +17,9 @@ import { EducationLevelForm } from "./_components/education-level";
 import { Actions } from "./_components/actions";
 import { CourseForm } from "./_components/course-name";
 import { Progress } from "@/components/ui/progress";
-import { BackActions } from "./_components/back-action";
+import { BackActions } from "./_components/generate-back-action";
+import HeaderInPage from "./_components/header";
+import Subheader from "./generate/_components/subheader";
 
 const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
   const { userId } = auth();
@@ -58,10 +60,9 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
 
   const averageages = await db.averageAge.findMany({
     orderBy: {
-      name: Prisma.SortOrder.asc as 'desc',
+      name: Prisma.SortOrder.asc as "desc",
     },
   });
-  
 
   if (!gap) {
     return redirect("/");
@@ -91,39 +92,19 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
   return (
     <>
       <div className="p-6 border">
-      <div className='flex space-x-5 items-center p-2 border mb-2'>
-      <CheckCircle className="h-4 w-4 text-red-500" />
-      <h1 className="text-2xl text-red-500"> Paso 1/3 </h1>
-      
-      </div>
+        <HeaderInPage id={gap.id} first={"annual"} second={"gaps"} page={"1"} pagetwo={null} />
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-medium flex">
               Configuración Annual Programming Document
-              
             </h1>
             <span className="text-sm text-slate-700">
-            Campos requeridos : {completionText}
+              Campos requeridos : {completionText}
             </span>
-            {!isComplete && <Progress value={completedFields} />}
-            {isComplete && (
-              <div className="h-10 w-10 rounded-full bg-green-500 flex">
-                <CheckCheck className="text-white mx-auto my-auto" />
-              </div>
-            )}
-            {!isComplete && (
-              <span className="text-sm text-red-300">
-             Complete todos los campos para acceder a Hookmah A.I.
-              </span>
-            )}
-             {isComplete && (
-            <>
-              <Actions disabled={false} gapid={gap.id} />
-            </>
-          )}
+            {!isComplete && <Progress value={completedFields} />}  
           </div>
-         
         </div>
+        {isComplete && <Subheader id={gap.id} completedFields={completedFields} isComplete={true} isfirst={true} issecond={false} />}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           <div className="border rounded-md ">

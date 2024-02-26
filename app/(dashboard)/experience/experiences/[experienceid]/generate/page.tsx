@@ -22,6 +22,7 @@ import { MethodsForm } from "./_components/methods_strategies";
 import { PICForm } from "./_components/pic";
 import { PSEForm } from "./_components/pse";
 import { PNPForm } from "./_components/pnp";
+import { BackActions } from "./_components/back-actions";
 
 const ExperirnceGeneratePage = async ({
   params,
@@ -84,9 +85,11 @@ const ExperirnceGeneratePage = async ({
     <>
       <div className="p-6 border">
         <div className="flex space-x-5 items-center p-2 border rounded-md mb-2">
+          <div>
           <CheckCircle className="h-4 w-4 text-red-500" />
           <h1 className="text-2xl text-red-500"> Paso 2/3</h1>
-          {/* <BackActions disabled={false} experienceid={experience.id} /> */}
+          </div>
+          <BackActions disabled={false} experienceid={experience.id} />
         </div>
         <div className="flex items-center justify-between flex-col md:flex-row">
           <div className="flex flex-col experience-y-2">

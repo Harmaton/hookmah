@@ -52,7 +52,7 @@ export const MaterialsForm = ({
     Método y estrategia para un modelo educativo basado en el aprendizaje basado en problemas.
     Método y estrategia para un modelo educativo que oriente el desarrollo espiritual, el bienestar emocional y la salud mental.
     Propósitos de aprendizaje que los niños deben desarrollar en esta etapa: ${learningpurposes}
-    Asegúrese de que las actividades propuestas estén alineadas con la edad de los estudiantes (${ageRecord}), el curso que están tomando (${course}), y el nivel académico (${academiclevel}).
+    Asegúrese de que las actividades propuestas estén alineadas con la edad de los estudiantes (${ageRecord?.name}), el curso que están tomando (${course?.name}), y el nivel académico (${academiclevel?.name}).
     `;
 
     try {

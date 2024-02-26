@@ -5,26 +5,23 @@ import { BookCheck, BookOpenCheckIcon, SkipBack, SprayCan, Trash } from "lucide-
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
 import { Button } from "@/components/ui/button";
-import { ConfirmModal } from "@/components/modals/confirm-modal";
-import { useConfettiStore } from "@/hooks/use-confetti";
 
 interface ActionsProps {
   disabled: boolean;
-  gapid: string;
+  experienceid: string;
 };
 
 export const BackActions = ({
   disabled,
-  gapid
+  experienceid
 }: ActionsProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const onClick = async () => {
     try {
-        router.push(`/annual/gaps/${gapid}`)
+        router.push(`/experience/experiences/${experienceid}/generate`)
 
     } catch {
       toast.error("Algo salió mal");
@@ -40,7 +37,7 @@ export const BackActions = ({
         size="sm"
         className="border-blue-500 space-x-2"
        >
-      Volver al paso 1
+      Volver al paso 2
        <SkipBack className="h-4 w-4 ml-2" />
       </Button>
     </div>

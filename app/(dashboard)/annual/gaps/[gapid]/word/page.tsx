@@ -8,8 +8,11 @@ import { ResourcesForm } from "../generate/_components/resources";
 import { BibliographyForm } from "../generate/_components/bibliography";
 import { WordAction } from "./_components/word-actions";
 import { Separator } from "@/components/ui/separator";
-import { CheckCircle, ChevronDownCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCheck, CheckCircle, ChevronDownCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { Actions } from "./_components/action";
+import HeaderInPage from "../_components/header";
+import { WordBackActions } from "../_components/word-back-actions";
+import Subheader from "../generate/_components/subheader";
 
 const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
   const { userId } = auth();
@@ -73,21 +76,16 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
 
   return (
     <div className="p-6 border">
-      <div className="flex space-x-5 items-center p-2 border mb-2">
-        <CheckCircle className="h-4 w-4 text-red-500" />
-        <h1 className="text-2xl text-red-500"> Paso 3/3</h1>
-        <Actions disabled={false} gapid={gap.id} />
-      </div>
+     <HeaderInPage id={gap.id} first={"annual"} second={"gaps"} page={"3"} pagetwo={"null"} />
       <div className="flex space-x-5  p-2 ">
         <h1 className="text-3xl ">
           Genera los detalles finales y accede al botón para convertir todo a
           Word.
         </h1>
+       
         {isComplete && (
           <>
-            <div className="flex justify-center items-center">
-              <ChevronRight className="animate animate-bounce m-4" />
-            </div>
+          
             <div className="flex justify-center items-center rounded-full p-2 mt-2 ">
               <WordAction
                 gapData={gap}
@@ -103,6 +101,7 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
           </>
         )}
       </div>
+      {isComplete &&  <Subheader id={gap.id} completedFields={completedFields} isComplete={false} isfirst={false} issecond={false} />}
     {(gap.learningPurposes && gap.characteristics) && <MethodsForm
       initialData={gap}
       gapid={gap.id}

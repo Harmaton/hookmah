@@ -42,7 +42,7 @@ export const AcDescriptionForm = ({
   async function aiRun() {
     setisLoading(true);
 
-    const prompt = `Según el Currículo Nacional de Educación Básica Regular (DCN-EBR) del Ministerio de Educación del Perú, se describe el área de la ciudad de ${city} y sus competencias para el nivel educativo de ${educationLevel}.
+    const prompt = `Según el Currículo Nacional de Educación Básica Regular (DCN-EBR) del Ministerio de Educación del Perú, se describe el área de la ciudad de ${city} y sus competencias para el nivel educativo de ${educationLevel?.name}.
 
     Genera todo en español.
     `;

@@ -23,7 +23,9 @@ import { ResourcesForm } from "./_components/resources";
 import { BibliographyForm } from "./_components/bibliography";
 import { AcDescriptionForm } from "./_components/acdescription";
 import { Button } from "@/components/ui/button";
-import { BackActions } from "../_components/back-action";
+import { BackActions } from "../_components/generate-back-action";
+import HeaderInPage from "../_components/header";
+import Subheader from "./_components/subheader";
 
 const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
   const { userId } = auth();
@@ -74,7 +76,6 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
     gap.characteristics,
     gap.learningPurposes,
     gap.methodsStrategies,
-    // gap.values,
     gap.recommendations,
   ];
 
@@ -89,11 +90,8 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
   return (
     <>
       <div className="p-6 border">
-        <div className="flex space-x-5 items-center p-2 border rounded-md mb-2">
-          <CheckCircle className="h-4 w-4 text-red-500" />
-          <h1 className="text-2xl text-red-500"> Paso 2/3</h1>
-          <BackActions disabled={false} gapid={gap.id} />
-        </div>
+        <HeaderInPage id={gap.id} first={"annual"} second={"gaps"} page={"2"} pagetwo={null} />
+
         <div className="flex items-center justify-between flex-col md:flex-row">
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-medium flex">
@@ -105,23 +103,19 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
               Campos requeridos: {completionText}
             </span>
             {!isComplete && <Progress value={completedFields} />}
-            {isComplete && (
-              <div className="h-10 w-10 flex rounded-full bg-green-500">
-                <CheckCheck className="mx-auto my-auto" />
-              </div>
-            )}
+
             {!isComplete && (
               <span className="text-sm text-red-300">
                 Complete todos los campos para acceder a su documento de Word
               </span>
             )}
-            {isComplete && (
-              <>
-                <Actions disabled={false} gapid={gap.id} />
-              </>
-            )}
+            
           </div>
-        </div>
+          
+        </div>'
+        {completedFields && (
+              <Subheader id={gap.id} completedFields={completedFields} isComplete={true} isfirst={false} issecond={true} />
+            )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           <div className="border rounded-md">
@@ -144,17 +138,17 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
               ageRecord={ageRecord}
             />
 
-          { (gap.learningPurposes && gap.characteristics)  && <MethodsForm
-              initialData={gap}
-              gapid={gap.id}
-              ageRecord={ageRecord}
-              course={courseRecord}
-              academiclevel={educationLevel}
-              learningpurposes={gap.learningPurposes}
-              characterization={gap.characteristics}
-            />}
-
-
+            {gap.learningPurposes && gap.characteristics && (
+              <MethodsForm
+                initialData={gap}
+                gapid={gap.id}
+                ageRecord={ageRecord}
+                course={courseRecord}
+                academiclevel={educationLevel}
+                learningpurposes={gap.learningPurposes}
+                characterization={gap.characteristics}
+              />
+            )}
           </div>
 
           <div className="space-y-6">

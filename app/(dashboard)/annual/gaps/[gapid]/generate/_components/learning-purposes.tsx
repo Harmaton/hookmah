@@ -37,7 +37,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Considerando la edad registrada (${ageRecord}) del niño, construye una tabla de valores con una definición detallada de los valores que el niño debe desarrollar en esta etapa. Crea una tabla que contenga ideas y actividades que deben ser fomentadas durante el año, así como un sistema de medición para evaluar si los valores han sido inculcados en la persona. Genera todo en español.
+    const prompt =   `Considerando la edad registrada (${ageRecord?.name}) del niño, construye una tabla de valores con una definición detallada de los valores que el niño debe desarrollar en esta etapa. Crea una tabla que contenga ideas y actividades que deben ser fomentadas durante el año, así como un sistema de medición para evaluar si los valores han sido inculcados en la persona. Genera todo en español.
     `;
 
     try{

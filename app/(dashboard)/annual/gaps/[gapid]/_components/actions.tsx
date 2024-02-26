@@ -15,7 +15,7 @@ interface ActionsProps {
   gapid: string;
 };
 
-export const Actions = ({
+export const FirstAction = ({
   disabled,
   gapid,
 }: ActionsProps) => {

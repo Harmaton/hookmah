@@ -40,7 +40,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Taking into account the description made previously about the global and Peruvian context of the characterization described as physical, social, cognitive and emotional which are as follows ${psecharacteristics}, as well as interests and curiosities which are as followsm${piccharacteristics}, as well as needs and problems which are as follows ${pnpcharacteristics}. And taking into account that what we are going to build is a "Learning Experience" according to the National Curriculum of Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, prepare 3 questions that motivate students to a possible solution or addressing the topic. Generate everything in Spanish.
+    const prompt =   `Teniendo en cuenta la descripción realizada anteriormente sobre el contexto global y peruano de las caracterizaciones descritas como físicas, sociales, cognitivas y emocionales las cuales son las siguientes ${psecharacteristics}, así como los intereses y curiosidades que son las siguientesm ${piccharacteristics}, así así como necesidades y problemas que son los siguientes ${pnpcharacteristics}. Y teniendo en cuenta que lo que vamos a construir es una “Experiencia de Aprendizaje” según el Currículo Nacional de Educación Básica Regular (DCN-EBR) del Ministerio de Educación del Perú, preparar 3 preguntas que motiven a los estudiantes a una posible solución o abordando el tema. Genera todo en español.
     `;
 
     try{

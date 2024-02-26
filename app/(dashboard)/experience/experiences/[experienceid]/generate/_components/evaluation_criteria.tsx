@@ -58,7 +58,7 @@ const router = useRouter();
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Destrezas y competencias
+      Criterios de evaluación
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
             <>generando ...</>
@@ -77,7 +77,7 @@ const router = useRouter();
             !initialData.evaluation_criteria && "text-slate-500 italic"
           )}
         >
-          {initialData.evaluation_criteria || "SiDestrezas y competenciasn Bibliografía"}
+          {initialData.evaluation_criteria || "No se encontraron criterios"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

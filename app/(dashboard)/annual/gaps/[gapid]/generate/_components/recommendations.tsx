@@ -45,7 +45,7 @@ const router = useRouter();
     setisLoading(true);
 
     const prompt =   `recommend favorable environmental and educational situations for the development of all these learning situations which are 
-    ${ageRecord}, ${courseRecord}, ${departmentRecord} while in the city of ${city} and the district ${district}. Generate everything in Spanish.
+    ${ageRecord?.name}, ${courseRecord?.name}, ${departmentRecord?.name} while in the city of ${city} and the district ${district}. Generate everything in Spanish.
     `;
 
     try{

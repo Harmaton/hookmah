@@ -51,7 +51,7 @@ const router = useRouter();
     Caracterización de los estudiantes: ${characterization}.
     Recomendaciones para situaciones ambientales y educativas favorables para el desarrollo de todos estos aprendizajes construidos, que son: ${recommendations}.
     Propósitos de aprendizaje que los niños deben desarrollar en esta etapa, que son: ${learningpurposes}.
-    La edad de los estudiantes es ${ageRecord}, el curso que están tomando es ${course}, y el nivel académico es ${academiclevel}.
+    La edad de los estudiantes es ${ageRecord?.name}, el curso que están tomando es ${course?.name}, y el nivel académico es ${academiclevel?.name}.
     
     Genera todo en español.
     

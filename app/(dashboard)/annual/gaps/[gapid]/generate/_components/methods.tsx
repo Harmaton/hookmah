@@ -47,7 +47,7 @@ const router = useRouter();
 
     const prompt =  `Tomando como ejemplo el Currículo Nacional de Educación Básica Regular (DCN-EBR) del Ministerio de Educación del Perú, descríbeme el método y la estrategia que se deberían implementar para el desarrollo de todo lo construido hasta ahora, lo cual incluye la caracterización de los estudiantes: ${characterization} y los propósitos de aprendizaje que los niños deben desarrollar en esta etapa, que son: ${learningpurposes}.
 
-    La edad de los estudiantes es ${ageRecord}, el curso que están tomando es ${course}, y el nivel académico es ${academiclevel}.
+    La edad de los estudiantes es ${ageRecord?.name}, el curso que están tomando es ${course?.name}, y el nivel académico es ${academiclevel?.name}.
     
     Debes generar un método y una estrategia para un modelo educativo basado en competencias. También quiero otro método y estrategia para un modelo educativo basado en el aprendizaje basado en problemas, y otro método y estrategia para un modelo educativo que oriente el desarrollo espiritual, el bienestar emocional y la salud mental.
     

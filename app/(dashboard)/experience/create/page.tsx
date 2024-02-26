@@ -49,10 +49,10 @@ const CreatePage = () => {
   }
 
   return ( 
-    <div className=" mx-auto my-auto flex md:items-end md:justify-center h-full p-6">
+    <div className=" mx-auto m-4 my-auto flex md:items-end h-full p-6 border rounded-md">
       <div>
         <h1 className="text-3xl mb-6">
-        experiencia de aprendizaje
+        Experiencia de aprendizaje
         </h1>
        <Separator /> 
         <Form {...form}>
@@ -66,12 +66,12 @@ const CreatePage = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                  Título del experiencia de aprendizaje
+                  Para comenzar, cree el tema para esta experiencia de aprendizaje
                   </FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="Ingrese el título de su creatividad"
+                      placeholder="Ingrese el tema de su creatividad"
                       {...field}
                     />
                   </FormControl>
