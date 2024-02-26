@@ -8,13 +8,8 @@ import { ProfnameForm } from "./_components/prof-name";
 import { CourseNameForm } from "./_components/course-name";
 import { DateForm } from "./_components/date";
 import { AverageAgeForm } from "./_components/average-age";
-import { CharacterizationForm } from "./_components/characterization";
 import { EducationLevelForm } from "./_components/education_level";
 import { AcademicLevelForm } from "./_components/academic-level";
-import { PSEcharacteristicsForm } from "./_components/psecharacteristics";
-import { PiccharacteristicsForm } from "./_components/piccharacteristics";
-import { PnpcharacteristicsForm } from "./_components/pnpcharacteristics";
-
 
 const ExprienceIDPage = async ({ params }: { params: { experienceid: string } }) => {
 const { userId } = auth();
@@ -38,11 +33,8 @@ if (!experience) {
     experience.educationid,
     experience.prof_name,
     experience.ageid,
-    experience.psecharacteristics,
     experience.date,
     experience.courseid,
-    experience.piccharacteristics,
-    experience.pnpcharacteristics
   ];
 
   const allFields = requiredFields.length;
@@ -58,7 +50,6 @@ if (!experience) {
       name: "asc",
     },
   });
-
 
   const ages = await db.averageAge_experience.findMany({
     orderBy: {
@@ -81,7 +72,7 @@ if (!experience) {
 return (
     <>
     <div className="p-6 border">
-      <div className='flex space-x-5 items-center p-2 border mb-2'>
+      <div className=' space-x-5 items-center p-2 border mb-2'>
       <CheckCircle className="h-4 w-4 text-red-500" />
       <h1 className="text-2xl text-red-500"> Paso 1/3 </h1>
       </div>
@@ -124,12 +115,18 @@ return (
 
             <div className="border">
              <DateForm initialData={experience} experienceid={experience.id} />
-             <AverageAgeForm initialData={experience} experienceid={experience.id} options={ages.map((courses) => ({
+             
+
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="border rounded-md">
+            <AverageAgeForm initialData={experience} experienceid={experience.id} options={ages.map((courses) => ({
                     label: courses.name,
                     value: courses.id,
                   }))}   />
-
-<AcademicLevelForm initialData={experience} experienceid={experience.id} options={academiclevels.map((courses) => ({
+            <AcademicLevelForm initialData={experience} experienceid={experience.id} options={academiclevels.map((courses) => ({
                     label: courses.name,
                     value: courses.id,
                   }))}  />   
@@ -138,22 +135,6 @@ return (
                     label: courses.name,
                     value: courses.id,
                   }))}  />
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div className="border rounded-md">
-             
-                  <PSEcharacteristicsForm initialData={experience} experienceid={experience.id} />
-                  <PiccharacteristicsForm initialData={experience} experienceid={experience.id} />
-                  <PnpcharacteristicsForm initialData={experience} experienceid={experience.id} />
-             
-              <div className="border">
-
-                 
-              
-               
-              </div>
             </div>
           </div>
         </div>

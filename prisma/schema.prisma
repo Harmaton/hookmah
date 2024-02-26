@@ -134,9 +134,9 @@ model Experience {
   date             String?
   characterization String?
 
-  psecharacteristics String?
-  piccharacteristics String?
-  pnpcharacteristics String?
+  psecharacteristics String? @db.Text
+  piccharacteristics String? @db.Text
+  pnpcharacteristics String? @db.Text
 
   //dropdown
   academicid     String?

@@ -19,6 +19,9 @@ import { ProductForm } from "./_components/product";
 import { SEQForm } from "./_components/sequence_activities";
 import { EvalInstrument } from "./_components/eval-instrument";
 import { MethodsForm } from "./_components/methods_strategies";
+import { PICForm } from "./_components/pic";
+import { PSEForm } from "./_components/pse";
+import { PNPForm } from "./_components/pnp";
 
 const ExperirnceGeneratePage = async ({
   params,
@@ -64,6 +67,9 @@ const ExperirnceGeneratePage = async ({
     experience.thematic_fields,
     experience.sequence_activities,
     experience.methods_strategies,
+    experience.piccharacteristics,
+    experience.psecharacteristics,
+    experience.pnpcharacteristics
   ];
 
   const allFields = requiredFields.length;
@@ -113,6 +119,9 @@ const ExperirnceGeneratePage = async ({
 
         <div className="grid grid-cols-1 md:grid-cols-2 experience-6 mt-10">
           <div className="border rounded-md">
+            <PICForm initialData={experience} age={age} experienceid={experience.id} />
+            <PSEForm initialData={experience} age={age} experienceid={experience.id} />
+           <PNPForm initialData={experience} age={age} experienceid={experience.id} />
             <Reality_contextForm
               initialData={experience}
               psecharacteristics={experience.psecharacteristics}

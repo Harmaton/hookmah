@@ -89,7 +89,6 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
               <ChevronRight className="animate animate-bounce m-4" />
             </div>
             <div className="flex justify-center items-center rounded-full p-2 mt-2 ">
-             
               <WordAction
                 gapData={gap}
                 disabled={false}
