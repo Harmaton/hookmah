@@ -8,7 +8,7 @@ import { ResourcesForm } from "../generate/_components/resources";
 import { BibliographyForm } from "../generate/_components/bibliography";
 import { WordAction } from "./_components/word-actions";
 import { Separator } from "@/components/ui/separator";
-import { CheckCircle, ChevronDownCircle } from "lucide-react";
+import { CheckCircle, ChevronDownCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { Actions } from "./_components/action";
 
 const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
@@ -86,9 +86,9 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
         {isComplete && (
           <>
             <div className="flex justify-center items-center">
-              <ChevronDownCircle className="animate animate-bounce m-4" />
+              <ChevronRight className="animate animate-bounce m-4" />
             </div>
-            <div className="flex justify-center items-center rounded-full p-2 mt-2 bg-red-500">
+            <div className="flex justify-center items-center rounded-full p-2 mt-2 ">
               <WordAction
                 gapData={gap}
                 disabled={false}
@@ -150,7 +150,7 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
           <div className="flex justify-center items-center">
             <ChevronDownCircle className="animate animate-bounce m-4" />
           </div>
-          <div className="flex justify-center items-center rounded-md p-2 mt-2 bg-red-500">
+          <div className="flex justify-center items-center rounded-md p-2 mt-2">
             <WordAction
               gapData={gap}
               disabled={false}

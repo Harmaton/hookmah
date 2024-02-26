@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import {
+  ArrowDown,
   BookA,
   BookCheckIcon,
   BookKeyIcon,
@@ -68,10 +69,10 @@ export const WordAction = ({
         disabled={disabled || isLoading}
         variant="outline"
         size="sm"
-        className="bg-blue-500 text-white"
+        className="bg-blue-500 "
       >
         Generar documento de Word
-        <BookText className="h-4 w-4 ml-4 text-white" />
+        <ArrowDown className="h-4 w-4 ml-4 " />
       </Button>
   
   );
