@@ -112,7 +112,7 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
             
           </div>
           
-        </div>'
+        </div>
         {completedFields && (
               <Subheader id={gap.id} completedFields={completedFields} isComplete={true} isfirst={false} issecond={true} />
             )}
