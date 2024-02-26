@@ -37,7 +37,7 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   `Depending on the ${ageRecord} age Record of the child, buiild a table of values with one-by-one defination that the child must develop at this stage. Build a table with ideas and activities that must be developed during the year and also build a measurement system to evaluate whether the values have been emphasized in the person. Generate everything in Spanish.
+    const prompt =   `Considerando la edad registrada (${ageRecord}) del niño, construye una tabla de valores con una definición detallada de los valores que el niño debe desarrollar en esta etapa. Crea una tabla que contenga ideas y actividades que deben ser fomentadas durante el año, así como un sistema de medición para evaluar si los valores han sido inculcados en la persona. Genera todo en español.
     `;
 
     try{
@@ -50,7 +50,7 @@ const router = useRouter();
       const res = await axios.patch(`/api/gaps/${gapid}/learning`, { text: JSON.stringify(text) });
 
       console.log(res)
-      toast.success("Values updated");
+      toast.success("propósitos de aprendizaje actualizados");
       router.refresh();
       toggleEdit();
 
@@ -83,7 +83,7 @@ const router = useRouter();
             !initialData.learningPurposes && "text-slate-500 italic"
           )}
         >
-          {initialData.learningPurposes || "Sin Propósitos"}
+          {initialData.learningPurposes || "Sin propósitos de aprendizaje"}
         </p>
       )}
       {isLoading && <Stars className="flex m-auto animate animate-pulse" />}

@@ -73,7 +73,7 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
     gap.acdescription,
     gap.characteristics,
     gap.learningPurposes,
-    // gap.attitudes,
+    gap.methodsStrategies,
     // gap.values,
     gap.recommendations,
   ];

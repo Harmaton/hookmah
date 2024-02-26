@@ -58,7 +58,7 @@ const router = useRouter();
       const res = await axios.patch(`/api/gaps/${gapid}/recommendations`, { text: JSON.stringify(text) });
 
       console.log(res)
-      toast.success("Recommendations actualizado");
+      toast.success("Recomendaciones actualizadas");
       toggleEdit();
       router.refresh();
 

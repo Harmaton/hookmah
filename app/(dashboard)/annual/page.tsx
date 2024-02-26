@@ -21,8 +21,9 @@ const GapPage = async () => {
         },
     });
 
+
     if (gaps.length > 0) {
-        const gap = gaps[0]; // Take the first gap if there are multiple
+        const gap = gaps[0];
 
         return (
             <div className="p-6 justify-center">

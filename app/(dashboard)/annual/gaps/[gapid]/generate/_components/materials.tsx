@@ -3,7 +3,7 @@
 import axios from "axios";
 import { SprayCan, Stars } from "lucide-react";
 import { useState } from "react";
-import {toast} from "sonner" ;
+import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { GAP } from "@prisma/client";
 import { Button } from "@/components/ui/button";
@@ -16,9 +16,9 @@ interface MaterialsFormProps {
   course: { name: string } | null;
   academiclevel: { name: string } | null;
   gapid: string;
-  characteristics: string
-  learningpurposes: string
-  methods: string
+  characteristics: string;
+  learningpurposes: string;
+  methods: string;
 }
 
 export const MaterialsForm = ({
@@ -28,8 +28,8 @@ export const MaterialsForm = ({
   characteristics,
   course,
   academiclevel,
-  methods, 
-  learningpurposes
+  methods,
+  learningpurposes,
 }: MaterialsFormProps) => {
   const [isLoading, setisLoading] = useState(false);
 
@@ -45,12 +45,14 @@ export const MaterialsForm = ({
   async function aiRun() {
     setisLoading(true);
 
-    const prompt = `Propose me 10 activities with materials that a teacher can prepare for the development of said contents. You created the following content and I want you to create a list of the materials you got all the information from. Be accurate and extremely relevant . Use the following information. 
-    You created the following general characterization table of students as follows ${characteristics}
-    You then created the following  method and a strategy for an educational model based on competencies, I want another method and strategy for an educational model based on problem-based learning, another method and strategy for an educational learning model that guides spiritual development, emotional well-being and Mental health as follows ${methods}
-    learning purposes child must develop at this stage as follows ${learningpurposes}
-    using the infomation above, Propose me 10 activities with materials that a teacher can prepare for the development of said contents. The age of students is ${ageRecord}, the course they are taking is ${course} and the academic level is ${academiclevel}
-    Generate everything in spanish.
+    const prompt = `Proporcióneme 10 actividades con sus respectivos materiales que un profesor pueda preparar para el desarrollo de los contenidos mencionados. Toda la información necesaria ya ha sido proporcionada. Utilice los siguientes detalles para asegurarse de que las actividades sean precisas y extremadamente relevantes:
+
+    Caracterización general de los estudiantes: ${characteristics}
+    Método y estrategia para un modelo educativo basado en competencias.
+    Método y estrategia para un modelo educativo basado en el aprendizaje basado en problemas.
+    Método y estrategia para un modelo educativo que oriente el desarrollo espiritual, el bienestar emocional y la salud mental.
+    Propósitos de aprendizaje que los niños deben desarrollar en esta etapa: ${learningpurposes}
+    Asegúrese de que las actividades propuestas estén alineadas con la edad de los estudiantes (${ageRecord}), el curso que están tomando (${course}), y el nivel académico (${academiclevel}).
     `;
 
     try {
@@ -65,7 +67,7 @@ export const MaterialsForm = ({
       });
 
       console.log(res);
-      toast.success("Values updated");
+      toast.success("Materiales actualizados");
       toggleEdit();
       router.refresh();
     } catch (error) {
@@ -76,7 +78,7 @@ export const MaterialsForm = ({
   return (
     <div className="rounded-md p-4 border-red-200">
       <div className="font-medium flex items-center justify-between">
-      Materiales (medios educativos)
+        Materiales (medios educativos)
         <Button onClick={aiRun} variant="ghost">
           {isLoading ? (
             <>Generando...</>

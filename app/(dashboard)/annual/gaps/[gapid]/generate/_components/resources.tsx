@@ -46,12 +46,16 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =   ` Propose me 10 resources that already exist and that I can use, be they platforms, virtual games, materials already prepared by other teachers throughout the network.  Be relevant strictly to the following content you generated before.
-    which includes,characterization of students ${characterization}.
-    You also built the following recoomendations for recommend favorable environmental and educational situations for the development of all these learning situations built which are ${recommendations}
-    learning purposes child must develop at this stage as follows ${learningpurposes}
-    The age of students is ${ageRecord}, the course they are taking is ${course} and the academic level is ${academiclevel}
-    Generate everything in spanish.
+    const prompt =   ` Proporcióneme 10 recursos que ya existen y que puedo utilizar, ya sean plataformas, juegos virtuales, materiales preparados por otros profesores en toda la red. Deben ser estrictamente relevantes para el siguiente contenido que generaste anteriormente:
+
+    Caracterización de los estudiantes: ${characterization}.
+    Recomendaciones para situaciones ambientales y educativas favorables para el desarrollo de todos estos aprendizajes construidos, que son: ${recommendations}.
+    Propósitos de aprendizaje que los niños deben desarrollar en esta etapa, que son: ${learningpurposes}.
+    La edad de los estudiantes es ${ageRecord}, el curso que están tomando es ${course}, y el nivel académico es ${academiclevel}.
+    
+    Genera todo en español.
+    
+    
     `;
 
     try{
@@ -64,7 +68,7 @@ const router = useRouter();
       const res = await axios.patch(`/api/gaps/${gapid}/resources`, { text: JSON.stringify(text) });
 
       console.log(res)
-      toast.success("Values updated");
+      toast.success("Recursos actualizados");
       toggleEdit();
       router.refresh();
 

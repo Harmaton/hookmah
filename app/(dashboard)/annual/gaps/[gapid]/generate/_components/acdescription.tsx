@@ -42,8 +42,9 @@ export const AcDescriptionForm = ({
   async function aiRun() {
     setisLoading(true);
 
-    const prompt = `According to the National Curriculum of Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, it describe the area of city ${city} and its competencies for the ${educationLevel}.
-    Generate everything in Spanish.
+    const prompt = `Según el Currículo Nacional de Educación Básica Regular (DCN-EBR) del Ministerio de Educación del Perú, se describe el área de la ciudad de ${city} y sus competencias para el nivel educativo de ${educationLevel}.
+
+    Genera todo en español.
     `;
 
     try {

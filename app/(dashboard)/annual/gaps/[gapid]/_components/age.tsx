@@ -57,7 +57,7 @@ export const AgeForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/gaps/${gapid}`, values);
-      toast.success("Age actualizado");
+      toast.success("Edad actualizado");
       toggleEdit();
       router.refresh();
     } catch {

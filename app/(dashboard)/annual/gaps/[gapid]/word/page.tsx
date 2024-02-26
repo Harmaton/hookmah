@@ -1,16 +1,4 @@
 import React from "react";
-import * as fs from "fs";
-import {
-  Document,
-  Table,
-  TableCell,
-  TableRow,
-  VerticalAlign,
-  Paragraph,
-  Packer,
-  ImageRun,
-  HeadingLevel,
-} from "docx";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
 import { db } from "@/lib/db";

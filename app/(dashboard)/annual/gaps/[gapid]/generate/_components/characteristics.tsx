@@ -43,14 +43,17 @@ const router = useRouter();
   async function aiRun() {  
     setisLoading(true);
 
-    const prompt =   `Generate the general characterization table of students in Spanish Based on the student's location in the department of ${departmentRecord?.name}, district of ${district}, and city of ${city}, considering their age of ${ageRecord?.name} and enrolled course of ${courseRecord?.name}. Use and refer to the the National Curriculum of Regular Basic Education (DCN-EBR) from the Ministry of Education of Peru which outlines the following student characterization:
-    Offer the following -> 
-    - Describe the student's physical characteristics.
-    - Outline their psychological traits and characteristics.
-    - Identify the student's interests and curiosities.
-    - Analyze any social challenges the student may be facing.
-    - Highlight the student's cognitive academic needs.
-     Generate evrything in Spanish.
+    const prompt =   `    
+    Genera la tabla de caracterización general de los estudiantes en español, basándote en la ubicación del estudiante en el departamento de ${departmentRecord?.name}, distrito de ${district}, y ciudad de ${city}, considerando su edad de ${ageRecord?.name} y el curso en el que está inscrito de ${courseRecord?.name}. Utiliza y refiérete al Currículo Nacional de Educación Básica Regular (DCN-EBR) del Ministerio de Educación del Perú, que describe la siguiente caracterización estudiantil:
+    
+    Ofrece lo siguiente:
+    
+    Describe las características físicas del estudiante.
+    Detalla sus rasgos y características psicológicas.
+    Identifica los intereses y curiosidades del estudiante.
+    Analiza los desafíos sociales que el estudiante pueda enfrentar.
+    Destaca las necesidades académicas cognitivas del estudiante.
+    Genera todo en español.
     `;
 
     try{

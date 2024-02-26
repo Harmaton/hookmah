@@ -45,10 +45,13 @@ const router = useRouter();
     
     setisLoading(true);
 
-    const prompt =  `Taking as an example the National Curriculum for Regular Basic Education (DCN-EBR) of the Ministry of Education of Peru, describe to me the method and strategy that should be implemented for the development of everything built so far which includes,characterization of students ${characterization}.
-    learning purposes child must develop at this stage as follows ${learningpurposes}
-    The age of students is ${ageRecord}, the course they are taking is ${course} and the academic level is ${academiclevel}
-    I want a method and a strategy for an educational model based on competencies, I want another method and strategy for an educational model based on problem-based learning, another method and strategy for an educational learning model that guides spiritual development, emotional well-being and Mental health. Generate everything is spanish.
+    const prompt =  `Tomando como ejemplo el Currículo Nacional de Educación Básica Regular (DCN-EBR) del Ministerio de Educación del Perú, descríbeme el método y la estrategia que se deberían implementar para el desarrollo de todo lo construido hasta ahora, lo cual incluye la caracterización de los estudiantes: ${characterization} y los propósitos de aprendizaje que los niños deben desarrollar en esta etapa, que son: ${learningpurposes}.
+
+    La edad de los estudiantes es ${ageRecord}, el curso que están tomando es ${course}, y el nivel académico es ${academiclevel}.
+    
+    Debes generar un método y una estrategia para un modelo educativo basado en competencias. También quiero otro método y estrategia para un modelo educativo basado en el aprendizaje basado en problemas, y otro método y estrategia para un modelo educativo que oriente el desarrollo espiritual, el bienestar emocional y la salud mental.
+    
+    Genera todo en español.
     `;
 
     try{
@@ -61,14 +64,12 @@ const router = useRouter();
       const res = await axios.patch(`/api/gaps/${gapid}/methods`, { text: JSON.stringify(text) });
 
       console.log(res)
-      toast.success("Values updated");
+      toast.success("métodos y estrategias actualizados");
       toggleEdit();
       router.refresh();
-
     } catch(error){
       console.log(error)
     }
-   
   }
 
 
