@@ -14,10 +14,8 @@ import { DepartmentForm } from "./_components/department";
 import { AcademyForm } from "./_components/academy";
 import { AgeForm } from "./_components/age";
 import { EducationLevelForm } from "./_components/education-level";
-import { Actions } from "./_components/actions";
 import { CourseForm } from "./_components/course-name";
 import { Progress } from "@/components/ui/progress";
-import { BackActions } from "./_components/generate-back-action";
 import HeaderInPage from "./_components/header";
 import Subheader from "./generate/_components/subheader";
 
@@ -136,8 +134,7 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
           <div className="space-y-6">
             <div className="border rounded-md">
               <ImageForm initialData={gap} gapid={gap.id} />
-              {/* <RegForm initialData={gap} gapid={gap.id} />
-              <ProfileForm initialData={gap} gapid={gap.id} /> */}
+             
               <div className="border">
                 <DepartmentForm
                   initialData={gap}
