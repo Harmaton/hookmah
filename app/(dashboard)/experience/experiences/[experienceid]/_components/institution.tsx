@@ -27,12 +27,12 @@ interface profnameFormProps {
 }
 
 const formSchema = z.object({
-  prof_name: z.string().min(1, {
+  inst_Name: z.string().min(1, {
     message: "Se requiere descripción",
   }),
 });
 
-export const ProfnameForm = ({
+export const InstForm = ({
   initialData,
   experienceid,
 }: profnameFormProps) => {
@@ -45,7 +45,7 @@ export const ProfnameForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      prof_name: initialData?.prof_name || "",
+      inst_Name: initialData?.inst_Name || "",
     },
   });
 
@@ -54,7 +54,7 @@ export const ProfnameForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/experience/${experienceid}`, values);
-      toast.success("Nombre de la profesora actualizada");
+      toast.success("profnamNombre de la institución actualizadoe actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -65,7 +65,7 @@ export const ProfnameForm = ({
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Nombre de la profesora
+      Nombre de la Institución
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimizar</>
@@ -81,10 +81,10 @@ export const ProfnameForm = ({
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.prof_name && "text-slate-500 italic"
+            !initialData.inst_Name && "text-slate-500 italic"
           )}
         >
-          {initialData.prof_name || "Sin nombre"}
+          {initialData.inst_Name || "Sin nombre"}
         </p>
       )}
       {isEditing && (
@@ -95,13 +95,13 @@ export const ProfnameForm = ({
           >
             <FormField
               control={form.control}
-              name="prof_name"
+              name="inst_Name"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}
-                      placeholder="Escribe el nombre de la profesora"
+                      placeholder="Actualizar institución"
                       {...field}
                     />
                   </FormControl>

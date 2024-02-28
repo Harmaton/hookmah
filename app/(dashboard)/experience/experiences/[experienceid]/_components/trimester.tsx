@@ -27,12 +27,12 @@ interface profnameFormProps {
 }
 
 const formSchema = z.object({
-  prof_name: z.string().min(1, {
+  trimester: z.string().min(1, {
     message: "Se requiere descripción",
   }),
 });
 
-export const ProfnameForm = ({
+export const TrimesterForm = ({
   initialData,
   experienceid,
 }: profnameFormProps) => {
@@ -45,7 +45,7 @@ export const ProfnameForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      prof_name: initialData?.prof_name || "",
+      trimester: initialData?.trimester || "",
     },
   });
 
@@ -54,7 +54,7 @@ export const ProfnameForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/experience/${experienceid}`, values);
-      toast.success("Nombre de la profesora actualizada");
+      toast.success("Trimestre actualizado");
       toggleEdit();
       router.refresh();
     } catch {
@@ -65,14 +65,14 @@ export const ProfnameForm = ({
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Nombre de la profesora
+      Trimestre
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimizar</>
           ) : (
             <>
               <PenBox className="h-4 w-4 mr-2 text-blue-500" />
-              Editar nombre
+              Editar trimestre
             </>
           )}
         </Button>
@@ -81,10 +81,10 @@ export const ProfnameForm = ({
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.prof_name && "text-slate-500 italic"
+            !initialData.trimester && "text-slate-500 italic"
           )}
         >
-          {initialData.prof_name || "Sin nombre"}
+          {initialData.trimester || "Sin Trimestre"}
         </p>
       )}
       {isEditing && (
@@ -95,13 +95,13 @@ export const ProfnameForm = ({
           >
             <FormField
               control={form.control}
-              name="prof_name"
+              name="trimester"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Textarea
                       disabled={isSubmitting}
-                      placeholder="Escribe el nombre de la profesora"
+                      placeholder="actualizar trimestre"
                       {...field}
                     />
                   </FormControl>

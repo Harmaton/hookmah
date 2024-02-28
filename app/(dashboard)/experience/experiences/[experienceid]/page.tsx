@@ -11,6 +11,8 @@ import { AcademicLevelForm } from "./_components/academic-level";
 import HeaderInPage from "./_components/header";
 import Subheader from "@/app/(dashboard)/annual/gaps/[gapid]/generate/_components/subheader";
 import SubheaderEXP from "./_components/subheader";
+import { InstForm } from "./_components/institution";
+import { TrimesterForm } from "./_components/trimester";
 
 const ExprienceIDPage = async ({
   params,
@@ -40,6 +42,8 @@ const ExprienceIDPage = async ({
     experience.ageid,
     experience.date,
     experience.courseid,
+    experience.inst_Name,
+    experience.trimester
   ];
 
   const allFields = requiredFields.length;
@@ -116,6 +120,8 @@ const ExprienceIDPage = async ({
               initialData={experience}
               experienceid={experience.id}
             />
+            <InstForm initialData={experience} experienceid={experience.id} />
+
             <CourseNameForm
               initialData={experience}
               experienceid={experience.id}
@@ -132,6 +138,9 @@ const ExprienceIDPage = async ({
 
           <div className="space-y-6">
             <div className="border rounded-md">
+
+              <TrimesterForm initialData={experience} experienceid={experience.id} />
+
               <AverageAgeForm
                 initialData={experience}
                 experienceid={experience.id}

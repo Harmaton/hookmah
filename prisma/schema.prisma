@@ -133,6 +133,7 @@ model Experience {
   prof_name        String?
   date             String?
   characterization String?
+  inst_Name String?
 
   psecharacteristics String? @db.Text
   piccharacteristics String? @db.Text

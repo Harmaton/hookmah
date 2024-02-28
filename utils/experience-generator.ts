@@ -2,7 +2,7 @@ import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 import { Experience } from "@prisma/client";
-
+import formatWords from "./formatWords";
 
 let PizZipUtils: any = null;
 if (typeof window !== "undefined") {
@@ -23,10 +23,56 @@ export const generateExperienceWordDocument = async (
   academyLevel: { name: string } | null,
   averageAge: { name: string } | null,
   educationLevel: { name: string } | null,
+  courseName: { name: string } | null
 ) => {
-
   try {
     const templateUrl = "/templates/template-2.docx";
+
+    const formattedpicxtics = expData.piccharacteristics
+      ? formatWords(expData.piccharacteristics)
+      : "";
+
+    const formattedpnpxtics = expData.pnpcharacteristics
+      ? formatWords(expData.pnpcharacteristics)
+      : "";
+
+    const formattedpsextics = expData.psecharacteristics
+      ? formatWords(expData.psecharacteristics)
+      : "";
+
+    const formattedcontext = expData.reality_context
+      ? formatWords(expData.reality_context)
+      : "";
+
+    const formattedquiz = expData.question_ai
+      ? formatWords(expData.question_ai)
+      : "";
+
+    const formattedskills = expData.skills ? formatWords(expData.skills) : "";
+
+    const eval_crit = expData.evaluation_criteria
+      ? formatWords(expData.evaluation_criteria)
+      : "";
+
+    const formatedThemetaic = expData.thematic_fields
+      ? formatWords(expData.thematic_fields)
+      : "";
+
+    const formatedSequence = expData.sequence_activities
+      ? formatWords(expData.sequence_activities)
+      : "";
+
+    const formatedmaterials = expData.materials
+      ? formatWords(expData.materials)
+      : "";
+
+    const formatedResos = expData.resources
+      ? formatWords(expData.resources)
+      : "";
+
+    const formatedbibl = expData.bibliography
+      ? formatWords(expData.bibliography)
+      : "";
 
     loadFile(templateUrl, async (error: any, content: any) => {
       if (error) throw error;
@@ -37,25 +83,27 @@ export const generateExperienceWordDocument = async (
       doc.setData({
         title: expData.title,
         prof_Name: expData.prof_name,
-        psecharacteristics: expData.psecharacteristics,
-        pnpcharacteristics: expData.pnpcharacteristics,
-        piccharacteristics: expData.piccharacteristics,
-        resources: expData.resources,
+        psecharacteristics: formattedpsextics,
+        pnpcharacteristics: formattedpnpxtics,
+        piccharacteristics: formattedpicxtics,
+        resources: formatedResos,
         methodStrategies: expData.methods_strategies,
-        materials: expData.materials ,
-        bibliography: expData.bibliography,
+        materials: formatedmaterials,
+        bibliography: formatedbibl,
         academyLevel: academyLevel?.name,
         averageAge: averageAge?.name,
         educationLevel: educationLevel?.name,
-        thematicFields: expData.thematic_fields,
+        thematicFields: formatedThemetaic,
         product: expData.product,
         assesmentTool: expData.eval_instrument,
-        skills: expData.skills,
-        evaluationCriteria: expData.evaluation_criteria,
-        sequenceoflearningactivities: expData.sequence_activities,
-        context: expData.reality_context,
-        question: expData.question_ai
-        
+        skills: formattedskills,
+        evaluationCriteria: eval_crit,
+        sequenceoflearningactivities: formatedSequence,
+        context: formattedcontext,
+        question: formattedquiz,
+        courseName: courseName?.name,
+        bimester: expData.trimester,
+        instName: expData.inst_Name,
       });
 
       // Perform the templating process

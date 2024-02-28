@@ -29,6 +29,7 @@ interface ActionsProps {
   academyLevel: { name: string; } | null;
   averageAge: { name: string; } | null;
   educationLevel: { name: string; } | null;
+  course: { name: string; } | null;
 }
 
 export const EXPWordAction = ({
@@ -36,7 +37,8 @@ export const EXPWordAction = ({
   expData,
   academyLevel,
   averageAge,
-  educationLevel
+  educationLevel,
+  course
 }: ActionsProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -48,6 +50,7 @@ export const EXPWordAction = ({
         academyLevel,
         averageAge,
         educationLevel,
+        course
       );
       toast.success("Descargado exitosamente")
       router.refresh();

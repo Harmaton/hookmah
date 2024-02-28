@@ -30,7 +30,7 @@ const ExperienceWordPage = async ({
     },
   });
 
-  if (!experience || !experience?.ageid || !experience?.educationid) {
+  if (!experience || !experience?.ageid || !experience?.educationid || !experience.courseid ) {
     return redirect("/");
   }
 
@@ -43,6 +43,11 @@ const ExperienceWordPage = async ({
 
   const grade = await db.educationLevel__experience.findUnique({
     where: { id: experience.educationid },
+    select: { name: true },
+  });
+
+  const course = await db.course_experience.findUnique({
+    where: { id: experience.courseid },
     select: { name: true },
   });
 
@@ -78,6 +83,7 @@ const ExperienceWordPage = async ({
               academyLevel={grade}
               averageAge={age}
               educationLevel={grade}
+              course={course}
             />
 
         {completionText}
@@ -133,6 +139,7 @@ const ExperienceWordPage = async ({
               academyLevel={grade}
               averageAge={age}
               educationLevel={grade}
+              course={course}
             />
           </div>
         </>
