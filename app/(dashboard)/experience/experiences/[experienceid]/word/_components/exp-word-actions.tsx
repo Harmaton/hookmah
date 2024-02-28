@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import {
+  ArrowDown,
   BookA,
   BookCheckIcon,
   BookKeyIcon,
@@ -55,18 +56,21 @@ export const EXPWordAction = ({
     }
   };
 
+  
   return (
-    <div className="flex items-center experience-x-2 ">
+    <div className="flex flex-col space-y-2">
+      
+    <p className="">Deberá realizar algunas ediciones simples en el contenido producido por hokmahai.</p>
       <Button
         onClick={onClick}
         disabled={disabled || isLoading}
         variant="outline"
         size="sm"
-        className="bg-blue-500 text-white"
+        className="bg-blue-500 "
       >
-        Generar experiencia de aprendizaje en Word
-        <BookText className="h-4 w-4 ml-4 text-white" />
+        Generar documento de Word
+        <ArrowDown className="h-4 w-4 ml-4 " />
       </Button>
-    </div>
+      </div>
   );
 };

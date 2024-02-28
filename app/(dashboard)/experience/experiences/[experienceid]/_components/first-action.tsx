@@ -15,7 +15,7 @@ interface ActionsProps {
   experienceid: string;
 };
 
-export const Actions = ({
+export const FirstActionsEXP = ({
   disabled,
   experienceid,
 }: ActionsProps) => {
@@ -24,7 +24,7 @@ export const Actions = ({
 
   const onClick = async () => {
     try {
-        router.push(`/experience/experiences/${experienceid}/word`)
+        router.push(`/experience/experiences/${experienceid}/generate`)
     } catch {
       toast.error("Algo salió mal");
     } 

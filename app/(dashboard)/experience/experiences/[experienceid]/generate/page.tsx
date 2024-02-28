@@ -1,15 +1,10 @@
 import { auth } from "@clerk/nextjs";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import {
-  CheckCheck,
-  CheckCircle,
   SprayCan,
 } from "lucide-react";
-
 import { db } from "@/lib/db";
-
 import { Progress } from "@/components/ui/progress";
-import { Actions } from "./_components/actions";
 import { Reality_contextForm } from "./_components/reality-context";
 import { SkillsForm } from "./_components/skills";
 import { Question_aiForm } from "./_components/question_ai";
@@ -22,7 +17,8 @@ import { MethodsForm } from "./_components/methods_strategies";
 import { PICForm } from "./_components/pic";
 import { PSEForm } from "./_components/pse";
 import { PNPForm } from "./_components/pnp";
-import { BackActions } from "./_components/back-actions";
+import HeaderInPage from "../_components/header";
+import SubheaderEXP from "../_components/subheader";
 
 const ExperirnceGeneratePage = async ({
   params,
@@ -72,7 +68,6 @@ const ExperirnceGeneratePage = async ({
     experience.psecharacteristics,
     experience.pnpcharacteristics
   ];
-
   const allFields = requiredFields.length;
 
   const completedFields = requiredFields.filter(Boolean).length;
@@ -84,13 +79,12 @@ const ExperirnceGeneratePage = async ({
   return (
     <>
       <div className="p-6 border">
-        <div className="flex space-x-5 items-center p-2 border rounded-md mb-2">
-          <div>
-          <CheckCircle className="h-4 w-4 text-red-500" />
-          <h1 className="text-2xl text-red-500"> Paso 2/3</h1>
-          </div>
-          <BackActions disabled={false} experienceid={experience.id} />
-        </div>
+
+
+
+       <HeaderInPage id={experience.id} first={"experience"} second={"experiences"} page={"2"} pagetwo={null} />
+
+
         <div className="flex items-center justify-between flex-col md:flex-row">
           <div className="flex flex-col experience-y-2">
             <h1 className="text-2xl font-medium flex">
@@ -102,23 +96,19 @@ const ExperirnceGeneratePage = async ({
               Campos requeridos: {completionText}
             </span>
             {!isComplete && <Progress value={completedFields} />}
-            {isComplete && (
-              <div className="h-10 w-10 flex rounded-full bg-green-500">
-                <CheckCheck className="mx-auto my-auto" />
-              </div>
-            )}
+
+
+
             {!isComplete && (
               <span className="text-sm text-red-300">
                 Complete todos los campos para acceder a su documento de Word
               </span>
             )}
-            {isComplete && (
-              <>
-                <Actions disabled={false} experienceid={experience.id} />
-              </>
-            )}
+           
           </div>
         </div>
+        
+        { isComplete && <SubheaderEXP id={experience.id} completedFields={completedFields} isComplete={isComplete} isfirst={false} issecond={true} />}
 
         <div className="grid grid-cols-1 md:grid-cols-2 experience-6 mt-10">
           <div className="border rounded-md">
