@@ -10,16 +10,11 @@ import {
   SprayCan,
   Trash,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import {toast} from "sonner";
 import { useRouter } from "next/navigation";
-
 import { Button } from "@/components/ui/button";
-import { ConfirmModal } from "@/components/modals/confirm-modal";
-import { useConfettiStore } from "@/hooks/use-confetti";
-import { Experience, Session } from "@prisma/client";
-import { generateWordDocument } from "@/utils/document-genarator";
-import { generateExperienceWordDocument } from "@/utils/experience-generator";
+import { Session } from "@prisma/client";
 import { generateSessionWordDocument } from "@/utils/session-generator";
 
 interface ActionsProps {
@@ -29,6 +24,8 @@ interface ActionsProps {
   averageAge: { name: string; } | null;
   educationLevel: { name: string; } | null;
   time: { name: string; } | null;
+  course: { name: string; } | null;
+
 }
 
 export const SessionWordAction = ({
@@ -37,7 +34,8 @@ export const SessionWordAction = ({
   academyLevel,
   averageAge,
   educationLevel,
-  time
+  time,
+  course
 }: ActionsProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +47,8 @@ export const SessionWordAction = ({
         academyLevel,
         averageAge,
         educationLevel,
-        time
+        time,
+        course
       );
       toast.success("Descargado exitosamente")
       router.refresh();

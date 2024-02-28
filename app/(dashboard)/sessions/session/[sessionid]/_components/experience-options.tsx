@@ -68,7 +68,7 @@ export const ExperienceForm = ({
   return (
     <div className="mt-6 bg-transparent rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-      Choose one experience
+      Elige una de tus experiencias de aprendizaje
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing ? (
             <>Minimize</>

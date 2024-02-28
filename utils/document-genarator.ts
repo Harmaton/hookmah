@@ -89,7 +89,7 @@ export const generateWordDocument = async (
       });
 
       // Save the generated document as a file
-      saveAs(generatedDoc, "generated-document.docx");
+      saveAs(generatedDoc, "documento hokmah del plan de estudios anual generado.docx");
     });
   } catch (error: any) {
     console.error("Error generating Word document:", error);

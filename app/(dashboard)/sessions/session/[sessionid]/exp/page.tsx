@@ -71,9 +71,6 @@ const SessionExperienceGeneratePage = async ({
       {isComplete &&
        <div className="items-center justify-center m-auto">
        <Actions disabled={false} sessionid={session.id}  /> 
-        <div className="h-10 w-10 rounded-full bg-green-500 flex">
-        <CheckCheck className="text-white mx-auto my-auto" />
-      </div>
        </div>
        }
 

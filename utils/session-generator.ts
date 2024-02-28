@@ -2,6 +2,7 @@ import Docxtemplater from "docxtemplater";
 import PizZip from "pizzip";
 import { saveAs } from "file-saver";
 import { Experience, Session } from "@prisma/client";
+import formatWords from "./formatWords";
 
 let PizZipUtils: any = null;
 if (typeof window !== "undefined") {
@@ -22,10 +23,59 @@ export const generateSessionWordDocument = async (
   academyLevel: { name: string } | null,
   averageAge: { name: string } | null,
   educationLevel: { name: string } | null,
-  time: { name: string } | null
+  time: { name: string } | null,
+  course: { name: string } | null
 ) => {
   try {
     const templateUrl = "/templates/temp-3.docx";
+
+    const formattedcompetence = expData.competence
+      ? formatWords(expData.competence)
+      : "";
+
+    const formattedPerfomance = expData.perfomance
+      ? formatWords(expData.perfomance)
+      : "";
+
+    const formattedProduct = expData.product
+      ? formatWords(expData.product)
+      : "";
+
+    const formattedinstrument = expData.instrument
+      ? formatWords(expData.instrument)
+      : "";
+
+    const formattedmotivation = expData.motivation
+      ? formatWords(expData.motivation)
+      : "";
+
+    const formattedkia = expData.knowinadvance
+      ? formatWords(expData.knowinadvance)
+      : "";
+
+    const formattedcogn = expData.cognitiveconflict
+      ? formatWords(expData.cognitiveconflict)
+      : "";
+
+    const formattedlp = expData.learningpurpose
+      ? formatWords(expData.learningpurpose)
+      : "";
+
+    const formattedtheorcont = expData.theoreticalcontent
+      ? formatWords(expData.theoreticalcontent)
+      : "";
+
+    const formattedPractical = expData.practicalcontent
+      ? formatWords(expData.practicalcontent)
+      : "";
+
+    const formattedAssesment = expData.assesment
+      ? formatWords(expData.assesment)
+      : "";
+
+    const formatedcompl = expData.complimentaryactivities
+      ? formatWords(expData.complimentaryactivities)
+      : "";
 
     loadFile(templateUrl, async (error: any, content: any) => {
       if (error) throw error;
@@ -37,21 +87,22 @@ export const generateSessionWordDocument = async (
         title: expData.title,
         institutionName: expData.institution_name,
         profName: expData.prof_name,
-        educationLevel: educationLevel,
-        academyLevel: academyLevel,
-        time: time,
-        competence: expData.competence,
-        performance: expData.perfomance,
-        product: expData.product,
-        instrument: expData.instrument,
-        motivation: expData.motivation,
-        knowinadvance: expData.knowinadvance,
-        cognitiveconflict: expData.cognitiveconflict,
-        learningpurpose: expData.learningpurpose,
-        theoreticalcontent: expData.theoreticalcontent,
-        practicalcontent: expData.practicalcontent,
-        complimentaryactivities: expData.complimentaryactivities,
-        assesment: expData.assesment
+        educationLevel: educationLevel?.name,
+        academyLevel: academyLevel?.name,
+        time: time?.name,
+        competence: formattedcompetence,
+        performance: formattedPerfomance,
+        product: formattedProduct,
+        instrument: formattedinstrument,
+        motivation: formattedmotivation,
+        knowinadvance: formattedkia,
+        cognitiveconflict: formattedcogn,
+        learningpurpose: formattedlp,
+        theoreticalcontent: formattedtheorcont,
+        practicalcontent: formattedPractical,
+        complimentaryactivities: formatedcompl,
+        assesment: formattedAssesment,
+        course: course?.name,
       });
 
       // Perform the templating process

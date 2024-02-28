@@ -13,6 +13,8 @@ import { YearForm } from "./_components/year";
 import { InstitutionForm } from "./_components/inst";
 import { ImageForm } from "./_components/logo";
 import { EducationForm } from "./_components/education";
+import HeaderInPage from "@/app/(dashboard)/experience/experiences/[experienceid]/_components/header";
+import SubheaderSES from "./_components/subheader";
 
 
 
@@ -83,10 +85,7 @@ const requiredFields = [
 return (
     <>
     <div className="p-6 border">
-      <div className='flex space-x-5 items-center p-2 border mb-2'>
-      <CheckCircle className="h-4 w-4 text-red-500" />
-      <h1 className="text-2xl text-red-500"> Paso 1/3 </h1>
-      </div>
+      <HeaderInPage id={session.id} first={"sessions"} second={"session"} page={"1"} pagetwo={null} />
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
             <h1 className="text-2xl font-medium flex">
@@ -97,25 +96,16 @@ return (
             Campos requeridos : {completionText}
             </span>
             {!isComplete && <Progress value={completedFields} />}
-            {isComplete && (
-              <div className="h-10 w-10 rounded-full bg-green-500 flex">
-                <CheckCheck className="text-white mx-auto my-auto" />
-              </div>
-            )}
             {!isComplete && (
               <span className="text-sm text-red-300">
              Complete todos los campos para acceder a Hookmah A.I.
               </span>
             )}
-             {isComplete && (
-            <>
-              <Actions disabled={false} sessionid={session.id}  />
-            </>
-          )}
+            
           </div>
          
         </div>
-
+        {isComplete && <SubheaderSES id={session.id} completedFields={completedFields} isComplete={isComplete} isfirst={true} issecond={false} /> }
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           <div className="border rounded-md ">
          

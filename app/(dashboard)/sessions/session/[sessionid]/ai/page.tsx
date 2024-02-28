@@ -9,6 +9,7 @@ import { LearnningForm } from "./_components/learning-p";
 import { Progress } from "@/components/ui/progress";
 import { CheckCheck } from "lucide-react";
 import { Actions } from "./_components/action";
+import HeaderInPage from "@/app/(dashboard)/experience/experiences/[experienceid]/_components/header";
 
  const Page = async ({
   params,
@@ -60,7 +61,7 @@ import { Actions } from "./_components/action";
   }
 
   return <div className="P-4">
-
+ <HeaderInPage id={session.id} first={"sessions"} second={"session"} page={"2"} pagetwo={null} />
 <div className="p-4 ">
         <h1 className="font-bold text-center text-4xl">
         SECUENCIA DIDÁCTICA{" "} INICO
@@ -76,9 +77,6 @@ import { Actions } from "./_components/action";
       {isComplete &&
        <div className="items-center justify-end m-auto flex">
        <Actions disabled={false} sessionid={session.id}  /> 
-        <div className="h-10 w-10 rounded-full bg-green-500 flex">
-        <CheckCheck className="text-white ml-2 mx-auto my-auto" />
-      </div>
        </div>
        }
   </div>
@@ -111,7 +109,7 @@ import { Actions } from "./_components/action";
         
             <LearnningForm initialData={session} sessionid={session.id} course={course.name} age={age.name} />
         </div>
-
+ 
   </div>;
 }
 
