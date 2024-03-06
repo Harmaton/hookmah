@@ -1,3 +1,4 @@
+
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
@@ -103,10 +104,12 @@ model Course {
 }
 
 model AverageAge {
-  id   String @id @default(uuid())
-  name String
-  gaps GAP[]
+  id     String  @id @default(uuid())
+  name   String
+  gaps   GAP[]
+  createdAt DateTime @default(now())
 }
+
 
 model Academy {
   id   String @id @default(uuid())
@@ -226,14 +229,12 @@ model Session {
   ageid String?
   sessionage sessionAge? @relation(fields: [ageid], references: [id])
 
-
   competence       String?
   perfomance       String?
   product           String?
   instrument String?
   him String?
 
-//didactic sequence
 //inicio
 timeid String?
 time SessionTime? @relation(fields: [timeid], references: [id])

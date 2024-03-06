@@ -58,7 +58,7 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
 
   const averageages = await db.averageAge.findMany({
     orderBy: {
-      name: Prisma.SortOrder.asc as "desc",
+      name: Prisma.SortOrder.asc as "asc",
     },
   });
 

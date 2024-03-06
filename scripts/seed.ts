@@ -36,6 +36,7 @@ async function addCourses() {
   }
 }
 
+// addCourses()
 
 
 
@@ -43,9 +44,20 @@ async function addAcademyLevels() {
   try {
     await database.academy.createMany({
       data: [
-        { "name": "Educación Inicial" },
-        { "name": "Educación Primaria" },
-        { "name": "Educación Secundaria" }
+        { "name": "Inicial: 3 años" },
+        { "name": "Inicial: 4 años" },
+        { "name": "Inicial: 5 años" },
+        { "name": "Primaria: 1 grado" },
+        { "name": "Primaria: 2do grado" },
+        { "name": "Primaria: 3er grado" },
+        { "name": "Primaria: 4to grado" },
+        { "name": "Primaria: 5to grado" },
+        { "name": "Primaria: 6to grado" },
+        { "name": "Secundaria: 1 año" },
+        { "name": "Secundaria: 2 años" },
+        { "name": "Secundaria: 3 años" },
+        { "name": "Secundaria: 4 años" },
+        { "name": "Secundaria: 5 años" }
     ]
     ,
     });
@@ -57,6 +69,13 @@ async function addAcademyLevels() {
     await database.$disconnect();
   }
 }
+
+// addAcademyLevels()
+
+
+// deleteall()
+
+
 
 
 async function addEducationLevels() {
@@ -77,6 +96,8 @@ async function addEducationLevels() {
     await database.$disconnect();
   }
 }
+
+
 
 
 
@@ -110,6 +131,24 @@ async function addAverageAges() {
     await database.$disconnect();
   }
 }
+
+
+addAverageAges()
+
+
+// async function deleteall(){
+//   try {
+//     await database.averageAge.deleteMany({})
+
+//     console.log("successfully deleted")
+    
+//   } catch (error) {
+//     console.log("Deletion Error --> ",error)
+//   }
+// }
+
+// deleteall()
+
 
 async function addDepatments() {
   try {
@@ -313,7 +352,7 @@ async function addSessionCourseName() {
   }
 }
 
-addSessionCourseName()
+// addSessionCourseName()
 
 async function addSessionEducationLevels() {
   try {
@@ -358,7 +397,7 @@ async function addtime() {
     await database.$disconnect();
   }
 }
-addSessionEducationLevels()
+// addSessionEducationLevels()
 
 // addtime()
   
@@ -384,8 +423,9 @@ addSessionEducationLevels()
 
 async function deleteallEnglishNames(){
   try {
-    await database.SessionCourse.deleteMany({})
-    await database.educationLevel_Session.deleteMany({})
+    await database.Course.deleteMany({})
+    // await database.SessionCourse.deleteMany({})
+    // await database.educationLevel_Session.deleteMany({})
     // await database.academicLevel_experience.deleteMany({})
 
     console.log("successfully deleted")
