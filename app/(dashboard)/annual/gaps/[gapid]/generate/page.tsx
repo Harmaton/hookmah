@@ -56,7 +56,7 @@ const GapGeneratePage = async ({ params }: { params: { gapid: string } }) => {
     select: { name: true },
   });
 
-  const ageRecord = await db.averageAge.findUnique({
+  const ageRecord = await db.newages.findUnique({
     where: { id: gap.ageid },
     select: { name: true },
   });

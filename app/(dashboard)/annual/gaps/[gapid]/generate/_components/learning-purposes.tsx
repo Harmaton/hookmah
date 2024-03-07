@@ -9,12 +9,11 @@ import { useRouter } from "next/navigation";
 import { GAP } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { generateCharacteristics } from "@/app/_actions/characteristics-ai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 interface LearningfORMProps {
   initialData: GAP;
-  ageRecord: {name: string } | null;
+  ageRecord: {name: number } | null;
   gapid: string;
 }
 

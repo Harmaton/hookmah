@@ -16,7 +16,7 @@ interface CharacteristicsFormProps {
   district: string | null;
   city: string | null;
   courseRecord: {name: string } | null;
-  ageRecord: {name: string } | null;
+  ageRecord: {name: number } | null;
   gapid: string;
 }
 
