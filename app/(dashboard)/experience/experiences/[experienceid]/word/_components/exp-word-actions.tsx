@@ -27,7 +27,7 @@ interface ActionsProps {
   experienceid: string;
   expData: Experience;
   academyLevel: { name: string; } | null;
-  averageAge: { name: string; } | null;
+  averageAge: { name: number; } | null;
   educationLevel: { name: string; } | null;
   course: { name: string; } | null;
 }

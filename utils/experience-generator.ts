@@ -21,7 +21,7 @@ export const loadFile = (
 export const generateExperienceWordDocument = async (
   expData: Experience,
   academyLevel: { name: string } | null,
-  averageAge: { name: string } | null,
+  averageAge: { name: number } | null,
   educationLevel: { name: string } | null,
   courseName: { name: string } | null
 ) => {

@@ -39,7 +39,7 @@ const Navbar = () => {
 
         <div className="flex items-center space-x-4">
           {/* <ModeToggle /> */}
-          { isTeacher &&
+          { (user.isSignedIn && isTeacher) &&
             <>
              <div className="flex mr-2 ">
               <Link href='/annual'>
@@ -83,7 +83,6 @@ const Navbar = () => {
              </div>
            </div>
           )}
-
         </div>
       </div>
     </nav>

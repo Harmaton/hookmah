@@ -193,24 +193,24 @@ async function addExperienceEducationLevels() {
 
 async function addExperienceAverageAge() {
   try {
-    await database.averageAge_experience.createMany({
+    await database.newagesExperience.createMany({
       data: [
-        { name: "3" },
-        { name: "4" },
-        { name: "5" },
-        { name: "6" },
-        { name: "7" },
-        { name: "8" },
-        { name: "9" },
-        { name: "10" },
-        { name: "11" },
-        { name: "12" },
-        { name: "13" },
-        { name: "14" },
-        { name: "15" },
-        { name: "16" },
-        { name: "17" },
-        { name: "18" },
+        { name: 3 },
+        { name: 4},
+        { name: 5 },
+        { name: 6 },
+        { name: 7 },
+        { name: 8 },
+        { name: 9 },
+        { name: 10 },
+        { name: 11 },
+        { name: 12 },
+        { name: 13 },
+        { name: 14 },
+        { name: 15 },
+        { name: 16 },
+        { name: 17 },
+        { name: 18 },
       ],
     });
 
@@ -259,9 +259,20 @@ async function addExperienceAcademicLevel() {
   try {
     await database.academicLevel_experience.createMany({
       data: [
-        { "name": "Educación Inicial" },
-        { "name": "Educación Primaria" },
-        { "name": "Educación Secundaria" }
+        { "name": "Inicial: 3 años" },
+        { "name": "Inicial: 4 años" },
+        { "name": "Inicial: 5 años" },
+        { "name": "Primaria: 1 grado" },
+        { "name": "Primaria: 2do grado" },
+        { "name": "Primaria: 3er grado" },
+        { "name": "Primaria: 4to grado" },
+        { "name": "Primaria: 5to grado" },
+        { "name": "Primaria: 6to grado" },
+        { "name": "Secundaria: 1 año" },
+        { "name": "Secundaria: 2 años" },
+        { "name": "Secundaria: 3 años" },
+        { "name": "Secundaria: 4 años" },
+        { "name": "Secundaria: 5 años" }
     ]
     ,
     });
@@ -277,6 +288,10 @@ async function addExperienceAcademicLevel() {
 // addExperienceCourseName()
 // addExperienceEducationLevels()
 // addExperienceAcademicLevel()
+// addExperienceAverageAge()
+
+
+// DELETE THE 
 
 
 //SESSION SEEDING
@@ -286,9 +301,20 @@ async function addSessionAcademicLevel() {
   try {
     await database.AcademicLevel_Session.createMany({
       data: [
-        { "name": "Educación Inicial" },
-        { "name": "Educación Primaria" },
-        { "name": "Educación Secundaria" }
+        { "name": "Inicial: 3 años" },
+        { "name": "Inicial: 4 años" },
+        { "name": "Inicial: 5 años" },
+        { "name": "Primaria: 1 grado" },
+        { "name": "Primaria: 2do grado" },
+        { "name": "Primaria: 3er grado" },
+        { "name": "Primaria: 4to grado" },
+        { "name": "Primaria: 5to grado" },
+        { "name": "Primaria: 6to grado" },
+        { "name": "Secundaria: 1 año" },
+        { "name": "Secundaria: 2 años" },
+        { "name": "Secundaria: 3 años" },
+        { "name": "Secundaria: 4 años" },
+        { "name": "Secundaria: 5 años" }
     ]
     ,
     });

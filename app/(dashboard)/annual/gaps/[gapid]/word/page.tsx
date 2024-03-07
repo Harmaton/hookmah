@@ -8,10 +8,8 @@ import { ResourcesForm } from "../generate/_components/resources";
 import { BibliographyForm } from "../generate/_components/bibliography";
 import { WordAction } from "./_components/word-actions";
 import { Separator } from "@/components/ui/separator";
-import { CheckCheck, CheckCircle, ChevronDownCircle, ChevronLeft, ChevronRight } from "lucide-react";
-import { Actions } from "./_components/action";
+import {  ChevronDownCircle  } from "lucide-react";
 import HeaderInPage from "../_components/header";
-import { WordBackActions } from "../_components/word-back-actions";
 import Subheader from "../generate/_components/subheader";
 
 const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
@@ -121,6 +119,7 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
         learningpurposes={gap.learningPurposes}
         methods={gap.methodsStrategies}
       />}
+
      {(gap.learningPurposes && gap.characteristics && gap.recommendations) &&  <ResourcesForm
         initialData={gap}
         gapid={gap.id}

@@ -79,9 +79,7 @@ const ExperirnceGeneratePage = async ({
   return (
     <>
       <div className="p-6 border">
-
-
-
+        
        <HeaderInPage id={experience.id} first={"experience"} second={"experiences"} page={"2"} pagetwo={null} />
 
 

@@ -9,7 +9,6 @@ import { useState } from "react";
 import {toast} from "sonner";
 import { useRouter } from "next/navigation";
 import {  Experience } from "@prisma/client";
- 
 import {
   Form,
   FormControl,
@@ -19,14 +18,14 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
-import { Combobox } from "@/components/ui/combobox";
+import { NumCombobox } from "@/components/ui/num-combobox";
 
 interface AgeFormProps {
   initialData: Experience;
   experienceid: string;
-  options: { label: string; value: string; }[];
+  options: { label: number; value: string; }[];
 };
+
 
 const formSchema = z.object({
   ageid: z.string().min(1),
@@ -102,7 +101,7 @@ export const AverageAgeForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox
+                    <NumCombobox
                       options={options || []}
                       {...field}
                     />

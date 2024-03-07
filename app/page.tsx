@@ -6,10 +6,9 @@ import About3 from "@/components/about3";
 import React from "react";
 import Features from "@/components/features";
 import FAQ from "@/components/faq";
-import Hero from "@/components/hero";
-import { GridBackground } from "@/components/grid-background";
 import { TypewriterEffectSmoothDemo } from "@/components/typewriter";
 import { DocumentTypes } from "@/components/three-cards";
+
 
 export default function Home() {
   return (

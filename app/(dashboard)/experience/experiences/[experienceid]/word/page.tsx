@@ -34,7 +34,7 @@ const ExperienceWordPage = async ({
     return redirect("/");
   }
 
-  const age = await db.averageAge_experience.findUnique({
+  const age = await db.newagesExperience.findUnique({
     where: {
       id: experience.ageid,
     },

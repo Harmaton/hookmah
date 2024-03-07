@@ -162,6 +162,9 @@ model Experience {
   ageid      String?
   averageAge AverageAge_experience? @relation(fields: [ageid], references: [id])
 
+  newagesid String?
+  newagesExperience newagesExperience? @relation(fields: [newagesid], references: [id])
+
   courseid    String?
   course_name Course_experience? @relation(fields: [courseid], references: [id])
   
@@ -184,11 +187,19 @@ model Experience {
 
   sessions Session[]
 
+  @@index([newagesid])
   @@index([ageid])
   @@index([academicid])
   @@index([courseid])
   @@index([educationid])
 }
+
+model newagesExperience {
+  id     String  @id @default(uuid())
+  name   Int
+  experiences Experience[]
+}
+
 
 model Course_experience {
   id         String       @id @default(uuid())
@@ -242,6 +253,9 @@ model Session {
   ageid String?
   sessionage sessionAge? @relation(fields: [ageid], references: [id])
 
+  newagesid String?
+  newagesSession newagesSession? @relation(fields: [newagesid], references: [id])
+
   competence       String?
   perfomance       String?
   product           String?
@@ -265,6 +279,8 @@ complimentaryactivities String? @db.Text
  assesment        String? @db.Text
 
   createdAt DateTime @default(now())
+
+  @@index([newagesid])
   @@index([experienceid ])
   @@index([academicid])
   @@index([courseid])
@@ -276,6 +292,12 @@ complimentaryactivities String? @db.Text
 model AcademicLevel_Session{
   id String @id @default(uuid())
   name String
+  session Session[]
+}
+
+model newagesSession {
+  id String @id @default(uuid())
+  name Int
   session Session[]
 }
 

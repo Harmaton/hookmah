@@ -9,13 +9,13 @@ import { AverageAgeForm } from "./_components/average-age";
 import { EducationLevelForm } from "./_components/education_level";
 import { AcademicLevelForm } from "./_components/academic-level";
 import HeaderInPage from "./_components/header";
-import Subheader from "@/app/(dashboard)/annual/gaps/[gapid]/generate/_components/subheader";
 import SubheaderEXP from "./_components/subheader";
 import { InstForm } from "./_components/institution";
 import { TrimesterForm } from "./_components/trimester";
 
+
 const ExprienceIDPage = async ({
-  params,
+  params
 }: {
   params: { experienceid: string };
 }) => {
@@ -60,7 +60,7 @@ const ExprienceIDPage = async ({
     },
   });
 
-  const ages = await db.averageAge_experience.findMany({
+  const ages = await db.newagesExperience.findMany({
     orderBy: {
       name: "asc",
     },

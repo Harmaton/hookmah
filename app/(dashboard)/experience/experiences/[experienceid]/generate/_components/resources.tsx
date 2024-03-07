@@ -16,7 +16,7 @@ interface resourcesFormProps {
   evaluationcriteria: string | null;
   thematicfields: string | null;
   product: string | null;
-  age: { name: string } | null;
+  age: { name: number } | null;
   skills: string | null;
   grade: { name: string } | null;
   experienceid: string;
