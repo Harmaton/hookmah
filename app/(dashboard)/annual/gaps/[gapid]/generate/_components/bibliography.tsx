@@ -13,7 +13,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 interface BibliographyFormProps {
   initialData: GAP;
-  ageRecord: { name: string } | null;
+  ageRecord: { name: number } | null;
   gapid: string;
   acdescription: string;
   methods: string;

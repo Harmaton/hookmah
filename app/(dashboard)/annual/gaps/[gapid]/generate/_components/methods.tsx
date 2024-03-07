@@ -14,7 +14,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 interface MethodsFormProps {
   initialData: GAP;
-  ageRecord: {name: string } | null;
+  ageRecord: {name: number } | null;
   gapid: string;
   course: { name: string } | null;
   academiclevel: { name: string } | null;

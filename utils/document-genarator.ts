@@ -11,6 +11,7 @@ if (typeof window !== "undefined") {
   });
 }
 
+
 export const loadFile = (
   url: string,
   callback: (error: any, content: any) => void

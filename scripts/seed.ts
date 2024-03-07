@@ -183,7 +183,6 @@ async function addExperienceEducationLevels() {
         { "name": "Secundaria (1ro - 5to grado)" }
     ],
     });
-
     console.log("Success");
   } catch (error) {
     console.log("Error seeding the database education Levels", error);

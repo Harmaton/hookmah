@@ -39,7 +39,7 @@ const GapWordPage = async ({ params }: { params: { gapid: string } }) => {
     return redirect("/");
   }
 
-  const ageRecord = await db.averageAge.findUnique({
+  const ageRecord = await db.newages.findUnique({
     where: { id: gap.ageid },
     select: { name: true },
   });
