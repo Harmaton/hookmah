@@ -133,22 +133,6 @@ async function addAverageAges() {
 }
 
 
-addAverageAges()
-
-
-// async function deleteall(){
-//   try {
-//     await database.averageAge.deleteMany({})
-
-//     console.log("successfully deleted")
-    
-//   } catch (error) {
-//     console.log("Deletion Error --> ",error)
-//   }
-// }
-
-// deleteall()
-
 
 async function addDepatments() {
   try {
@@ -188,7 +172,7 @@ async function addDepatments() {
   }
 }
 
-// //EXPERIENCE MODEL SEEDING
+//EXPERIENCE MODEL SEEDING
 
 async function addExperienceEducationLevels() {
   try {

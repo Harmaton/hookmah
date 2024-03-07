@@ -21,7 +21,7 @@ export const loadFile = (
 export const generateWordDocument = async (
   gapData: GAP,
   academyLevel: { name: string } | null,
-  averageAge: { name: string } | null,
+  averageAge: { name: number } | null,
   educationLevel: { name: string } | null,
   department: { name: string } | null,
   course: { name: string } | null
