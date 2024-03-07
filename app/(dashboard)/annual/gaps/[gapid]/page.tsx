@@ -1,10 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-import { BookAIcon, CheckCheck, CheckCircle } from "lucide-react";
 import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
-
-import { YearForm } from "./_components/year";
 import { ProffForm } from "./_components/prof-name";
 import { InstitutionForm } from "./_components/institution-name";
 import { ImageForm } from "./_components/logo-img";
@@ -56,11 +53,13 @@ const GapIdPage = async ({ params }: { params: { gapid: string } }) => {
     },
   });
 
-  const averageages = await db.averageAge.findMany({
+  const averageages = await db.newages.findMany({
     orderBy: {
-      name: Prisma.SortOrder.asc as "asc",
+      name: "asc",
     },
   });
+
+
 
   if (!gap) {
     return redirect("/");
