@@ -12,7 +12,6 @@ const Navbar = () => {
   const user = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [isTeacher, setIsTeacher] = useState(false);
-  const [isStudent, setIsStudent] = useState(false);
 
   useEffect(() => {
     const fetchIsTeacherStatus = async () => {
@@ -39,7 +38,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <ModeToggle />
+          {/* <ModeToggle /> */}
           { isTeacher &&
             <>
              <div className="flex mr-2 ">

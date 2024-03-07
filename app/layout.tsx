@@ -53,7 +53,7 @@ export default function RootLayout({
             )}
           >
             <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
               {children}
             </ThemeProvider>
             <Toaster position="top-center" richColors />
